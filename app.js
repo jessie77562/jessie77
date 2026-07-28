@@ -2,21 +2,23 @@ const STORAGE_KEY = "meno_assessment_state_v1";
 
 const assessmentGroups = [
   { id: "all", label: "全部" },
-  { id: "boneNutrition", label: "骨骼营养" },
-  { id: "body", label: "运动体重" },
-  { id: "sleepMood", label: "睡眠情绪" },
-  { id: "cognition", label: "认知" }
+  { id: "boneHealth", label: "骨骼健康" },
+  { id: "cognitiveFunction", label: "认知功能" },
+  { id: "emotionalHealth", label: "情绪心理" },
+  { id: "sleepHealth", label: "睡眠健康" },
+  { id: "bodyFunction", label: "身体机能" }
 ];
 
 const assessmentCatalog = [
-  { id: "osteoporosis", icon: "BO", title: "骨质疏松评估", category: "骨健康", group: "boneNutrition", minutes: "3 分钟", effect: "识别骨折、跌倒、早绝经等骨质疏松风险信号，帮助判断是否需要骨密度检查。", focus: ["骨健康", "骨折", "骨质疏松"] },
-  { id: "vitaminD", icon: "VD", title: "维生素D缺乏评估", category: "营养风险", group: "boneNutrition", minutes: "3 分钟", effect: "结合日晒、饮食、补充剂和肌肉骨骼表现，判断是否需要关注维生素D摄入。", focus: ["营养", "维生素 D", "维生素D", "钙", "骨健康"] },
-  { id: "exercise", icon: "EX", title: "运动能力评估", category: "运动能力", group: "body", minutes: "4 分钟", effect: "评估耐力、力量和平衡能力，帮助制定更适合围绝经期的运动管理重点。", focus: ["运动量不足", "运动", "疲劳"] },
-  { id: "abdominalFat", icon: "AF", title: "腹部脂肪堆积评估", category: "体脂代谢", group: "body", minutes: "3 分钟", effect: "关注腰围、体重变化和代谢风险，帮助识别需要优先管理的腹型肥胖信号。", focus: ["体重", "腹部脂肪", "腰围", "代谢", "血糖", "血脂"] },
-  { id: "sleep", icon: "PS", title: "匹兹堡睡眠评估", category: "睡眠质量", group: "sleepMood", minutes: "5 分钟", effect: "从入睡、睡眠时长、夜醒和日间影响判断睡眠质量，辅助解释疲劳、情绪和记忆波动。", focus: ["睡眠", "失眠", "疲劳", "夜醒"] },
-  { id: "depression", icon: "DP", title: "抑郁自评", category: "情绪心理", group: "sleepMood", minutes: "3 分钟", effect: "识别持续低落、兴趣下降和功能受影响情况，帮助判断是否需要进一步情绪支持。", focus: ["情绪", "低落", "严重情绪"] },
-  { id: "anxiety", icon: "AN", title: "焦虑评估", category: "情绪心理", group: "sleepMood", minutes: "3 分钟", effect: "识别过度担忧、紧张和身体化反应，帮助区分压力、睡眠和围绝经期症状影响。", focus: ["焦虑", "紧张", "担忧"] },
-  { id: "memory", icon: "EM", title: "记忆力下降评估（EMQ-R）", category: "认知记忆", group: "cognition", minutes: "5 分钟", effect: "记录日常遗忘、注意力和执行功能困扰，帮助结合睡眠与情绪判断认知波动来源。", focus: ["注意力", "疲劳", "记忆", "认知"] }
+  { id: "osteoporosis", icon: "BO", title: "骨质疏松评估", category: "骨骼健康", group: "boneHealth", minutes: "3 分钟", effect: "识别骨折、跌倒、早绝经等骨质疏松风险信号，帮助判断是否需要骨密度检查。", focus: ["骨健康", "骨折", "骨质疏松"] },
+  { id: "vitaminD", icon: "VD", title: "维生素D缺乏评估", category: "骨骼健康", group: "boneHealth", minutes: "3 分钟", effect: "结合日晒、饮食、补充剂和肌肉骨骼表现，判断是否需要关注维生素D摄入。", focus: ["营养", "维生素 D", "维生素D", "钙", "骨健康"] },
+  { id: "memory", icon: "EM", title: "记忆力下降评估", category: "认知功能", group: "cognitiveFunction", minutes: "5 分钟", effect: "记录日常遗忘、注意力和执行功能困扰，帮助结合睡眠与情绪判断认知波动来源。", focus: ["注意力", "疲劳", "记忆", "认知"] },
+  { id: "depression", icon: "DP", title: "抑郁自评", category: "情绪心理", group: "emotionalHealth", minutes: "3 分钟", effect: "识别持续低落、兴趣下降和功能受影响情况，帮助判断是否需要进一步情绪支持。", focus: ["情绪", "低落", "严重情绪"] },
+  { id: "anxiety", icon: "AN", title: "焦虑评估", category: "情绪心理", group: "emotionalHealth", minutes: "3 分钟", effect: "识别过度担忧、紧张和身体化反应，帮助区分压力、睡眠和围绝经期症状影响。", focus: ["焦虑", "紧张", "担忧"] },
+  { id: "sleep", icon: "PS", title: "匹兹堡睡眠评估", category: "睡眠健康", group: "sleepHealth", minutes: "5 分钟", effect: "从入睡、睡眠时长、夜醒和日间影响判断睡眠质量，辅助解释疲劳、情绪和记忆波动。", focus: ["睡眠", "失眠", "疲劳", "夜醒"] },
+  { id: "exercise", icon: "EX", title: "运动能力评估", category: "身体机能", group: "bodyFunction", minutes: "4 分钟", effect: "评估耐力、力量和平衡能力，帮助制定更适合围绝经期的运动管理重点。", focus: ["运动量不足", "运动", "疲劳"] },
+  { id: "incontinence", icon: "UI", title: "尿失禁评估", category: "身体机能", group: "bodyFunction", minutes: "3 分钟", effect: "关注咳嗽、运动或尿急时漏尿及其生活影响，帮助判断是否需要进一步评估。", focus: ["尿频", "尿急", "漏尿", "泌尿生殖"] },
+  { id: "abdominalFat", icon: "AF", title: "腹部脂肪堆积评估", category: "身体机能", group: "bodyFunction", minutes: "3 分钟", effect: "关注腰围、体重变化和代谢风险，帮助识别需要优先管理的腹型肥胖信号。", focus: ["体重", "腹部脂肪", "腰围", "代谢", "血糖", "血脂"] }
 ];
 
 const symptomItems = [
@@ -40,6 +42,7 @@ let wizardStep = 0;
 let activeDeepAssessmentId = null;
 let deepStep = 0;
 let activeAssessmentGroup = "all";
+let activeHistoryFilter = "all";
 let biometricPickerState = { field: "", value: "", trigger: null };
 
 const deepAssessments = {
@@ -94,11 +97,28 @@ const deepAssessments = {
     keyPrompts: [
       {
         id: "adultFragilityFracture",
-        text: "成年后轻微跌倒/碰撞就骨折：这是一项需要优先重视的骨折风险信号，建议尽快就医评估骨密度和骨折风险。骨质疏松常表现为轻微跌倒或碰撞后骨折。"
+        title: "成年后轻微跌倒/碰撞就骨折",
+        text: "这是一项需要优先重视的骨折风险信号，建议尽快就医评估骨密度和骨折风险。骨质疏松常表现为轻微跌倒或碰撞后骨折。"
       },
       {
         id: "parentHipFracture",
-        text: "父母有骨质疏松或轻微跌倒后骨折：家族史提示你可能有更高的骨健康风险，建议把骨密度评估提上日程。中国研究中，父母脆性骨折史与更高风险等级相关。"
+        title: "父母有骨质疏松或轻微跌倒后骨折",
+        text: "家族史提示你可能有更高的骨健康风险，建议把骨密度评估提上日程。中国研究中，父母脆性骨折史与更高风险等级相关。"
+      },
+      {
+        id: "heightLoss",
+        title: "40岁后身高下降超过3cm",
+        text: "身高明显变矮可能提示椎体受压或骨量变化，建议尽快做专业评估。这也是中国研究里与更高风险等级相关的重点项目。"
+      },
+      {
+        id: "earlyMenopause",
+        title: "45岁前绝经",
+        text: "较早绝经会缩短雌激素对骨骼的保护时间，是围绝经期女性尤其需要关注的风险信号。这也是研究中与更高风险等级相关的重点项目。"
+      },
+      {
+        id: "steroidUse",
+        title: "连续3个月以上使用糖皮质激素",
+        text: "长期使用糖皮质激素可能影响骨健康，建议与医生确认是否需要更早做骨密度检查。"
       }
     ],
     steps: [
@@ -153,11 +173,43 @@ const deepAssessments = {
     ]
   },
   vitaminD: {
-    title: "维生素D缺乏风险评估",
+    title: "维生素D缺乏评估",
     description: "通过日晒、饮食、补充剂和骨肌肉表现，快速判断维生素D缺乏相关风险。",
     note: "该评测用于围绝经期营养与骨健康管理参考，不能替代血液检测或医生诊断。",
     chips: ["已带入 年龄 45岁", "已带入 所在城市", "已带入 饮食记录"],
     resultKicker: "营养风险提示",
+    countLabel: "项维生素D缺乏风险",
+    resultBands: [
+      {
+        min: 8,
+        className: "is-high",
+        level: "维生素D缺乏高风险",
+        summary: "本次评估命中较多维生素D缺乏相关风险信号，建议尽快进行专业检测并主动干预。",
+        cta: "尽快开始干预",
+        tip: "若伴有持续骨骼肌肉疼痛、频繁抽筋、明显乏力或消化吸收问题，请优先就医。",
+        recommendations: ["建议尽快进行血清25(OH)D3检测。", "结合医生或营养师建议评估是否需要补充维生素D。", "同步改善日照、饮食和相关生活方式。"]
+      },
+      {
+        min: 4,
+        max: 7,
+        className: "is-medium",
+        level: "维生素D缺乏中风险",
+        summary: "本次评估发现一定的维生素D不足倾向，建议优先改善已勾选的风险因素。",
+        cta: "开始改善",
+        tip: "建议在1-3个月后重新评估一次。",
+        recommendations: ["增加安全日晒和富含维生素D的食物来源。", "关注体重、消化吸收和骨骼肌肉表现。", "如症状明显，可结合血清25(OH)D3检测进一步确认。"]
+      },
+      {
+        min: 0,
+        max: 3,
+        className: "is-low",
+        level: "维生素D缺乏低风险",
+        summary: "本次评估整体风险较低，建议继续保持良好的日照、饮食和生活习惯。",
+        cta: "延续良好状态",
+        tip: "维生素D水平会受季节和生活方式变化影响，仍值得持续关注。",
+        recommendations: ["保持规律、安全的日晒。", "继续关注饮食中的维生素D来源。", "生活方式变化后可再次评估。"]
+      }
+    ],
     resultLevels: ["维生素D缺乏风险较高", "维生素D摄入需关注", "暂未发现明显缺乏风险"],
     resultSummaries: [
       "本次评估命中多项维生素D缺乏相关信号，建议结合饮食、日晒和必要检测进一步确认。",
@@ -168,6 +220,19 @@ const deepAssessments = {
       ["可咨询医生是否需要检测 25(OH)D 水平。", "记录每周户外日晒时间和膳食来源。", "不要自行长期大剂量补充维生素D。"],
       ["增加安全日晒和富含维生素D/钙的食物来源。", "与骨健康、运动评估结果一起查看。", "建议 3 个月后复测。"],
       ["保持户外活动和均衡饮食。", "围绝经期仍建议定期关注骨健康。", "如出现肌无力或骨痛，可提前复测。"]
+    ],
+    keyPrompts: [
+      { id: "vdSunLess20", title: "阳光暴露", text: "每日皮肤直接接触阳光的时间不足20分钟。" },
+      { id: "vdStrictSunBlock", title: "阳光暴露", text: "日常防晒或物理遮挡较严密。" },
+      { id: "vdIndoorMost", title: "阳光暴露", text: "工作或生活大部分时间在室内。" },
+      { id: "vdFoodLess", title: "饮食摄入", text: "较少食用富含维生素D的天然食物。" },
+      { id: "vdBmiOver28", title: "体重管理", text: "BMI超过28。" },
+      { id: "vdMalabsorption", title: "消化吸收", text: "存在可能影响脂溶性维生素吸收的情况。" },
+      { id: "vdDarkerSkin", title: "肤色与日照需求", text: "肤色较深，可能需要更长的日照时间。" },
+      { id: "vdMusclePain", title: "骨骼肌肉不适", text: "存在腰背部隐痛、肌肉酸痛或下肢乏力。" },
+      { id: "vdLegCramps", title: "腿部抽筋", text: "夜间或受凉后容易出现腿部抽筋。" },
+      { id: "vdFatigueMood", title: "疲劳与情绪", text: "近期容易疲劳、情绪低落或焦虑。" },
+      { id: "vdBrittleNails", title: "指甲变化", text: "指甲变脆或容易劈裂。" }
     ],
     steps: [
       {
@@ -218,6 +283,16 @@ const deepAssessments = {
       ["逐步达到每周 150 分钟中等强度活动。", "加入抗阻和平衡训练。", "和骨健康评估结果一起看。"],
       ["保持规律运动。", "增加肌力和平衡训练可帮助长期骨健康。", "建议按月复盘运动记录。"]
     ],
+    keyPrompts: [
+      { id: "exWalkSlow", title: "日常耐力", text: "连续快走10分钟会明显吃力。" },
+      { id: "exStairsHard", title: "日常耐力", text: "上一层楼会明显气喘或腿软。" },
+      { id: "exSitStandHard", title: "下肢力量", text: "从椅子上起身时需要借助扶手。" },
+      { id: "exAvoid", title: "运动习惯与信心", text: "因为担心不适而回避运动。" },
+      { id: "exFall", title: "平衡与跌倒", text: "近6个月曾发生跌倒。" },
+      { id: "exBalance", title: "平衡与跌倒", text: "单脚站立或转身时容易不稳。" },
+      { id: "exPain", title: "运动后恢复", text: "运动后经常关节痛或肌肉痛超过2天。" },
+      { id: "exNoRoutine", title: "运动习惯与信心", text: "目前没有固定的每周运动习惯。" }
+    ],
     steps: [
       {
         title: "日常活动",
@@ -243,40 +318,239 @@ const deepAssessments = {
   },
   depression: {
     title: "抑郁自评",
-    description: "通过近期情绪、兴趣、精力和睡眠变化，初步了解抑郁相关困扰。",
+    description: "根据最近两周的感受，评估情绪、兴趣、睡眠和日常状态变化。",
     note: "该评测仅用于情绪健康自我观察；如有伤害自己的想法，请立即寻求专业帮助。",
     chips: ["已带入 睡眠记录", "已带入 情绪记录", "已带入 周期阶段"],
+    answerType: "score4",
+    countLabel: "分（满分27分）",
     resultKicker: "情绪风险提示",
-    resultLevels: ["抑郁风险需尽快关注", "抑郁情绪需关注", "暂未发现明显抑郁风险"],
-    resultSummaries: [
-      "本次评估命中多项情绪低落和功能受影响信号，建议尽快寻求专业支持。",
-      "本次评估发现部分抑郁情绪相关信号，建议连续记录并关注变化。",
-      "本次评估暂未提示明显抑郁风险，但围绝经期情绪会随睡眠和周期波动。"
-    ],
-    recommendations: [
-      ["如有自伤想法，请立即联系身边的人并寻求专业帮助。", "建议咨询心理/精神专科或妇科更年期门诊。", "记录睡眠、情绪和压力事件。"],
-      ["连续 2 周记录情绪、睡眠和兴趣变化。", "优先改善睡眠和规律活动。", "若影响工作生活，建议咨询专业人士。"],
-      ["保持规律作息和社交支持。", "若后续出现明显低落，可提前复测。", "可与焦虑评估一起查看。"]
-    ],
-    steps: [
+    scoreBands: [
       {
-        title: "情绪与兴趣",
-        subtitle: "看看最近两周的情绪变化。",
-        questions: [
-          ["dpLowMood", "是否经常感到情绪低落、空虚或想哭?"],
-          ["dpInterest", "是否对平时喜欢的事情明显失去兴趣?"],
-          ["dpWorthless", "是否经常自责或觉得自己没有价值?"],
-          ["dpHopeless", "是否明显感到无望或提不起劲?"]
+        min: 20,
+        max: 27,
+        level: 5,
+        className: "is-high",
+        label: "重度抑郁",
+        management: "立即就医提醒；联系心理危机干预服务，并重点关注自杀风险。",
+        summary: "结果显示你正处于重度抑郁，真的非常担心和心疼你。剧烈的生理波动和现实重压让你极度痛苦，甚至闪过危险的念头。请立刻停止独自硬扛，你只是生了一场重病，必须求助！",
+        actionIntro: "此时此刻，你的生命安全高于一切，请立刻遵照以下最高级别的危机应对指南来保护自己：",
+        recommendations: [
+          {
+            title: "紧急就医",
+            kicker: "马上告诉家人，立即寻求专业帮助",
+            iconKey: "hospital",
+            body: "请立即告诉家人或其他可信任的人，并尽快前往医院精神科急诊或门诊。如果此刻感到绝望或可能伤害自己，请点击下方心理援助热线一键拨号，由专业人员陪你度过危机时刻。"
+          },
+          {
+            title: "24小时安全陪伴",
+            kicker: "绝不独处，先把危险隔离开",
+            iconKey: "shield",
+            body: "请确保身边持续有家人或可信任的人陪伴，并请他们协助收起锐器、过量药物等可能带来危险的物品，共同建立更安全的环境。"
+          },
+          {
+            title: "严格遵医嘱",
+            kicker: "用药调整交给医生",
+            iconKey: "care",
+            body: "确诊后请按医生制定的方案接受治疗。抗抑郁药通常需要数周逐渐起效，具体因人而异；即使出现副作用或暂时未好转，也不要自行停药、减药或加量，应及时与医生沟通。"
+          },
+          {
+            title: "完全休养",
+            kicker: "先度过眼前的这一个小时",
+            iconKey: "calendar",
+            body: "暂时停止非必要的工作、家务和社交，把生活简化到基本的饮食、睡眠和治疗安排。不必急着解决明天的问题，安全度过眼前的时间，就是重要的进展。"
+          },
+          {
+            title: "把自己交给支持系统",
+            kicker: "接受照顾，也是治疗的一部分",
+            iconKey: "care",
+            body: "允许家人和医疗团队协助安排饮食、休息与就医。饮食以容易入口、易消化为主；任何助眠或其他药物都应由医生评估和指导。接受治疗，你不需要一个人承担。"
+          }
         ]
       },
       {
-        title: "功能影响",
-        subtitle: "继续了解睡眠、精力和日常影响。",
+        min: 15,
+        max: 19,
+        level: 4,
+        className: "is-high",
+        label: "中重度抑郁",
+        management: "强烈建议到精神科或心理科就诊。",
+        summary: "看到中重度抑郁的结果，很心疼你。这段时间的身体变化叠加心理无力感，让你陷入深深的疲惫。但请你明白，这不是因为你“不够坚强”，而是大脑内分泌失衡生病了，不要硬抗了。",
+        actionIntro: "你现在最需要的是专业的帮助和充分的休息，请务必参考以下建议行动起来，不要独自硬扛：",
+        recommendations: [
+          {
+            title: "精神心理科就诊",
+            kicker: "专业治疗，是走出阴霾的重要一步",
+            iconKey: "hospital",
+            body: "请尽快在家人陪同下前往正规医院的精神科或临床心理科就诊，接受专业评估，并由医生判断是否需要药物治疗、心理治疗或联合干预。"
+          },
+          {
+            title: "家属支持与陪伴",
+            kicker: "把报告给最信任的人看",
+            iconKey: "care",
+            body: "告诉信任的家人：“我现在状态不好、没有力气，需要你的帮助。”请他们陪伴就医，并协助你处理近期的生活安排。"
+          },
+          {
+            title: "给自己减负",
+            kicker: "现在最重要的任务是恢复",
+            iconKey: "calendar",
+            body: "如果工作或家务已经让你难以承受，请允许自己请假或暂停非必要事务，把精力优先留给休息、治疗和基本生活。"
+          },
+          {
+            title: "维持基本作息",
+            kicker: "不用强求运动或社交",
+            iconKey: "monitor",
+            body: "先做到按时吃饭、遵医嘱用药并尽量保持固定的休息时间。完成这些基本安排，本身就是积极的恢复。"
+          },
+          {
+            title: "阻断负面行为",
+            kicker: "避免让情绪进一步恶化",
+            iconKey: "shield",
+            body: "远离酒精和其他可能加重情绪或影响判断的物质，减少持续接触悲伤刺激；在状态脆弱时，尽量不要独自做出辞职、离婚等重大决定。"
+          }
+        ]
+      },
+      {
+        min: 10,
+        max: 14,
+        level: 3,
+        className: "is-medium",
+        label: "中度抑郁",
+        management: "推荐线上心理课程和心理支持，并建议进行心理咨询评估。",
+        summary: "你目前处于中度抑郁状态。激素波动可能让你常感浑身乏力、失去兴趣甚至失眠。你可能觉得变糟了，但这绝不是你的错，是身心压力超载的求救信号，需要重视了。",
+        actionIntro: "面对当前的困扰，我们建议你通过以下几个方面积极干预，给身心按下“减压键”：",
+        recommendations: [
+          {
+            title: "寻求医生帮助",
+            kicker: "先做一次专业评估",
+            iconKey: "hospital",
+            body: "预约心理咨询或精神心理科评估；如同时存在明显潮热、睡眠障碍等围绝经期症状，也可以到妇科或更年期门诊就诊，由医生结合症状、病史与风险判断是否适合绝经激素治疗（MHT/HRT），不要自行使用激素。"
+          },
+          {
+            title: "深度助眠",
+            kicker: "把睡眠问题纳入整体干预",
+            iconKey: "calendar",
+            body: "白天尽量避免长时间补觉，并适度接触日光；睡前可尝试渐进式肌肉放松或温水泡脚。如果持续失眠，请及时就医，并仅在医生指导下使用助眠药物。"
+          },
+          {
+            title: "给生活做减法",
+            kicker: "不用勉强自己做到完美",
+            iconKey: "care",
+            body: "划掉待办事项中不紧急的复杂家务和非必要应酬，主动向家人开口，请他们分担具体事务，为恢复留出空间。"
+          },
+          {
+            title: "调整饮食",
+            kicker: "为神经系统提供稳定支持",
+            iconKey: "nutrition",
+            body: "在均衡饮食基础上，可适量选择深海鱼、核桃、全谷物和瘦肉等食物。饮食只能作为支持，不能替代心理治疗、药物治疗或医生评估。"
+          }
+        ]
+      },
+      {
+        min: 5,
+        max: 9,
+        level: 2,
+        className: "is-medium",
+        label: "轻度抑郁",
+        management: "使用平台内心理支持，包括情绪打卡、正念练习和放松训练。",
+        summary: "抱抱你，测评显示你有轻度抑郁情绪，别紧张。进入围绝经期，雌激素下降易引发潮热心烦，常让人感到低落疲惫。这是身体在“换季”，并非抑郁症，请多给自己一些耐心。",
+        actionIntro: "为了缓解激素波动带来的不适与小情绪，你可以尝试以下几个实用的自我调理方法：",
+        recommendations: [
+          {
+            title: "睡眠调节",
+            kicker: "睡得好，才是稳定状态的地基",
+            iconKey: "calendar",
+            body: "建议睡前换上透气吸汗的衣物，卧室温度可按体感保持在约20–22℃的凉爽舒适范围。睡前1小时尽量放下手机，减少屏幕刺激；可用阅读纸质书或听舒缓白噪音替代刷手机，逐步建立稳定的入睡习惯。"
+          },
+          {
+            title: "饮食避雷",
+            kicker: "吃得温和，情绪也能少一点起伏",
+            iconKey: "nutrition",
+            body: "下午3点后尽量减少浓茶和咖啡，近期也少吃容易加重潮热、心悸或胃肠不适的辛辣刺激食物。日常以清淡、均衡、规律的饮食为主。"
+          },
+          {
+            title: "运动释放压力",
+            kicker: "轻运动，是温和的情绪调节方式",
+            iconKey: "strength",
+            body: "建议每周3–4次、每次20–30分钟的轻松户外快走，强度以能够轻松交谈、身体微微发热为宜。规律的轻度有氧运动有助于改善情绪与睡眠。"
+          },
+          {
+            title: "专注自己",
+            kicker: "把时间还给自己，才更有力气照顾生活",
+            iconKey: "care",
+            body: "尝试每天为自己留出半小时“勿扰时间”，暂时放下家庭和社会角色，用来听喜欢的音乐、泡脚、放松或安静休息。关注自己不是自私，而是在补充能量。"
+          }
+        ]
+      },
+      {
+        min: 0,
+        max: 4,
+        level: 1,
+        className: "is-low",
+        label: "无/极少抑郁",
+        management: "保持日常心理维护即可。",
+        summary: "恭喜你！测评显示你的心理很健康。处在围绝经期，激素波动偶尔带来的烦躁失落都是正常的生理反应。你的自我调节能力非常棒，请继续保持这份从容，随遇而安！",
+        actionIntro: "针对你目前良好的状态，为你提供以下日常保养小建议，帮助你更平稳地度过这个特殊时期：",
+        recommendations: [
+          {
+            title: "接纳情绪变化",
+            kicker: "允许自己偶尔有一点起伏",
+            iconKey: "care",
+            body: "每天花几分钟关注身体和情绪。出现心烦时，可以提醒自己：“这可能与近期身体和激素变化有关。”允许短暂的情绪起伏，不必急着责怪自己。"
+          },
+          {
+            title: "均衡饮食",
+            kicker: "适量豆制品，也要兼顾钙和蛋白质",
+            iconKey: "nutrition",
+            body: "日常可适量选择含大豆异黄酮的豆浆、豆腐等豆制品，并搭配牛奶或其他含钙食物、绿叶蔬菜和优质蛋白。食物可以作为均衡饮食的一部分，不建议把它当作激素治疗的替代品。"
+          },
+          {
+            title: "适度运动",
+            kicker: "让身体和情绪一起保持活力",
+            iconKey: "strength",
+            body: "保持每周3–4次、每次约30分钟的轻中度运动，例如快走、瑜伽或其他自己喜欢的活动，有助于维持情绪、睡眠和骨骼健康。"
+          },
+          {
+            title: "作息规律",
+            kicker: "稳定的节奏，是身体的安全感",
+            iconKey: "calendar",
+            body: "尽量保持相对固定的入睡和起床时间，减少长期熬夜。可以把晚上11点前准备入睡作为目标，但也要结合自己的工作与生活节奏逐步调整。"
+          }
+        ]
+      }
+    ],
+    keyPrompts: [
+      {
+        id: "dpSelfHarm",
+        title: "安全相关题目出现非零得分",
+        text: "你在“有不如死掉或用某种方式伤害自己的念头”一题选择了非零频率。请不要独自承受，尽快联系信任的人陪伴你，并寻求精神科、心理科或当地心理危机干预服务的专业帮助。"
+      }
+    ],
+    steps: [
+      {
+        title: "兴趣、情绪与睡眠",
+        subtitle: "根据最近两周的实际感受选择最符合的频率。",
         questions: [
-          ["dpSleep", "是否出现持续失眠或睡很多仍疲惫?"],
-          ["dpFatigue", "是否经常精力不足、做事困难?"],
-          ["dpWork", "情绪是否已经影响工作、家庭或社交?"],
-          ["dpSelfHarm", "是否出现伤害自己的想法?"]
+          ["dpInterest", "做事时提不起劲或没有兴趣"],
+          ["dpLowMood", "感到心情低落、沮丧或绝望"],
+          ["dpSleep", "入睡困难、睡不安稳或睡眠过多"]
+        ]
+      },
+      {
+        title: "精力、食欲与自我评价",
+        subtitle: "继续了解身体状态和自我感受。",
+        questions: [
+          ["dpFatigue", "感觉疲倦或没有活力"],
+          ["dpAppetite", "食欲不振或吃太多"],
+          ["dpSelfWorth", "觉得自己很糟、觉得自己很失败，或让自己/家人失望"]
+        ]
+      },
+      {
+        title: "专注、行为与安全",
+        subtitle: "最后了解专注、行为变化和安全相关感受。",
+        questions: [
+          ["dpConcentration", "对事物专注有困难，例如阅读报纸或看电视时不能集中注意力"],
+          ["dpMovement", "动作或说话速度缓慢到别人已经察觉？或刚好相反，烦躁或坐立不安、动来动去的情况更胜于平常"],
+          ["dpSelfHarm", "有不如死掉或用某种方式伤害自己的念头"]
         ]
       }
     ]
@@ -297,6 +571,16 @@ const deepAssessments = {
       ["记录焦虑触发场景、持续时间和身体反应。", "如伴随胸痛、濒死感或呼吸困难，应优先排除急症。", "建议咨询心理/精神专科或更年期门诊。"],
       ["尝试规律呼吸训练、运动和睡眠管理。", "连续 2 周记录担忧内容和频率。", "如影响日常生活，建议进一步咨询。"],
       ["保持规律作息和运动。", "压力增加或睡眠变差时可提前复测。", "可与抑郁自评一起查看。"]
+    ],
+    keyPrompts: [
+      { id: "anWorry", title: "持续担忧", text: "经常控制不住地担心很多事情。" },
+      { id: "anTense", title: "紧张与不安", text: "经常感到紧绷或坐立不安。" },
+      { id: "anIrritable", title: "情绪易激惹", text: "近期明显更容易烦躁或易怒。" },
+      { id: "anFear", title: "预期性恐惧", text: "经常突然害怕会发生不好的事情。" },
+      { id: "anPalpitation", title: "身体反应", text: "经常出现心慌、胸闷或呼吸不顺。" },
+      { id: "anSleep", title: "睡眠影响", text: "担忧正在影响入睡或导致容易醒来。" },
+      { id: "anAvoid", title: "生活回避", text: "因为担心而回避外出、社交或工作。" },
+      { id: "anPanic", title: "惊恐反应", text: "曾出现突发的强烈恐惧或惊恐感。" }
     ],
     steps: [
       {
@@ -322,7 +606,7 @@ const deepAssessments = {
     ]
   },
   memory: {
-    title: "记忆力下降评估（EMQ-R）",
+    title: "记忆力下降评估",
     description: "参考日常记忆错误场景，了解近期遗忘、注意力和执行功能困扰。",
     note: "该评测用于自我观察，不等同于认知障碍诊断；睡眠、情绪和压力都会影响记忆表现。",
     chips: ["已带入 睡眠记录", "已带入 情绪状态", "已带入 年龄 45岁"],
@@ -337,6 +621,16 @@ const deepAssessments = {
       ["记录遗忘发生频率、场景和是否影响工作生活。", "优先改善睡眠和焦虑/抑郁相关因素。", "若进展明显或影响安全，建议咨询医生。"],
       ["使用备忘录、清单和固定收纳位置。", "减少多任务切换，给重要事项设置提醒。", "2-4 周后复测观察变化。"],
       ["保持规律睡眠、运动和社交活动。", "压力或睡眠波动时可提前复测。", "可与焦虑、抑郁评估一起查看。"]
+    ],
+    keyPrompts: [
+      { id: "memNames", title: "日常遗忘", text: "经常想不起熟人的名字或称呼。" },
+      { id: "memItems", title: "日常遗忘", text: "经常忘记物品放在哪里。" },
+      { id: "memTasks", title: "日常遗忘", text: "经常忘记原本计划要做的事情。" },
+      { id: "memWords", title: "语言提取", text: "说话时经常卡住，想不起合适的词。" },
+      { id: "memFocus", title: "注意与专注", text: "读完内容后经常不记得主要意思。" },
+      { id: "memRepeat", title: "重复行为", text: "经常重复提问或重复做同一件事情。" },
+      { id: "memPlan", title: "计划与执行", text: "安排步骤或处理复杂任务变得更困难。" },
+      { id: "memAffect", title: "生活与安全影响", text: "记忆问题已经影响工作、家庭或日常安全。" }
     ],
     steps: [
       {
@@ -378,6 +672,16 @@ const deepAssessments = {
       ["固定起床时间，避免过长午睡。", "把潮热盗汗、焦虑和夜醒放在一起记录。", "2-4 周后复测观察变化。"],
       ["保持规律作息和适度运动。", "围绝经期睡眠易受潮热和情绪影响，变化时可提前复测。", "可与焦虑、抑郁评估一起查看。"]
     ],
+    keyPrompts: [
+      { id: "psqiSleepLatency", title: "入睡与睡眠时长", text: "近1个月经常需要超过30分钟才能入睡。" },
+      { id: "psqiNightWake", title: "夜间睡眠中断", text: "每周多次夜间醒来，或早醒后难以再次入睡。" },
+      { id: "psqiHotFlush", title: "夜间睡眠中断", text: "潮热、盗汗或心慌正在影响睡眠。" },
+      { id: "psqiShortSleep", title: "入睡与睡眠时长", text: "平均每晚实际睡眠少于6小时。" },
+      { id: "psqiDaySleepy", title: "日间功能", text: "白天经常困倦、打盹或注意力下降。" },
+      { id: "psqiEnergy", title: "日间功能", text: "睡眠问题已经影响工作、家务或社交。" },
+      { id: "psqiMedicine", title: "助眠依赖", text: "经常需要借助助眠药物或保健品入睡。" },
+      { id: "psqiSnore", title: "睡眠呼吸", text: "存在明显打鼾、憋醒或呼吸暂停提示。" }
+    ],
     steps: [
       {
         title: "睡眠质量",
@@ -401,6 +705,59 @@ const deepAssessments = {
       }
     ]
   },
+  incontinence: {
+    title: "尿失禁评估",
+    description: "从压力性漏尿、尿急漏尿和生活影响等表现，了解近期膀胱控制情况。",
+    note: "该评测用于健康风险初筛，不替代妇科、泌尿外科或盆底专科诊断；如出现血尿、排尿疼痛或无法排空膀胱，请及时就医。",
+    resultKicker: "膀胱健康提示",
+    resultLevels: ["尿失禁相关困扰需重点关注", "膀胱控制情况需关注", "暂未发现明显尿失禁信号"],
+    resultSummaries: [
+      "本次评估命中多项漏尿及生活影响信号，建议记录漏尿场景、频率和用垫情况，并尽快咨询专业医生。",
+      "本次评估发现部分膀胱控制相关信号，建议开始记录排尿与漏尿情况并关注变化。",
+      "本次评估暂未提示明显尿失禁信号，建议继续关注咳嗽、运动或尿急时是否出现漏尿。"
+    ],
+    recommendations: [
+      ["建议咨询妇科、泌尿外科或盆底康复专科。", "连续记录 3 天排尿时间、尿急、漏尿场景和用垫情况。", "如有血尿、排尿疼痛或无法排尿，请及时就医。"],
+      ["记录咳嗽、运动或尿急时的漏尿次数。", "可在专业指导下进行盆底肌训练。", "若已影响外出、运动或睡眠，建议尽早咨询。"],
+      ["保持规律饮水和排尿习惯。", "避免因担心漏尿而过度限制饮水。", "症状出现或加重时可提前复测。"]
+    ],
+    keyPrompts: [
+      { id: "uiStressLeak", title: "压力性漏尿", text: "咳嗽、打喷嚏、大笑、跑跳或搬重物时会漏尿。" },
+      { id: "uiUrgencyLeak", title: "尿急性漏尿", text: "突然产生强烈尿意时，来不及到厕所就会漏尿。" },
+      { id: "uiNoWarningLeak", title: "无预警漏尿", text: "没有明显尿意或预警时也曾出现漏尿。" },
+      { id: "uiNightLeak", title: "夜间漏尿", text: "夜间睡眠时出现过漏尿或尿床。" },
+      { id: "uiFrequent", title: "尿频与夜尿", text: "每天排尿8次及以上，或经常夜间起床排尿。" },
+      { id: "uiPad", title: "生活影响", text: "因担心漏尿而需要使用护垫、卫生巾或更换内裤。" },
+      { id: "uiLimitActivity", title: "生活影响", text: "因担心漏尿而减少运动、外出、社交或性生活。" },
+      {
+        id: "uiBloodPainRetention",
+        title: "优先就医信号",
+        text: "出现血尿、排尿疼痛或无法排空膀胱时，不应仅按尿失禁自行管理，建议及时就医排查感染、尿潴留或其他泌尿系统问题。"
+      }
+    ],
+    steps: [
+      {
+        title: "漏尿表现",
+        subtitle: "先了解漏尿发生的常见场景。",
+        questions: [
+          ["uiStressLeak", "咳嗽、打喷嚏、大笑、跑跳或搬重物时是否会漏尿？"],
+          ["uiUrgencyLeak", "突然产生强烈尿意时，是否会来不及到厕所就漏尿？"],
+          ["uiNoWarningLeak", "是否曾在没有明显尿意或预警的情况下漏尿？"],
+          ["uiNightLeak", "夜间睡眠时是否出现过漏尿或尿床？"]
+        ]
+      },
+      {
+        title: "频率与生活影响",
+        subtitle: "继续了解症状频率、排尿异常和日常影响。",
+        questions: [
+          ["uiFrequent", "是否每天排尿 8 次及以上，或经常夜间起床排尿？"],
+          ["uiPad", "是否因为担心漏尿而需要使用护垫、卫生巾或更换内裤？"],
+          ["uiLimitActivity", "是否因担心漏尿而减少运动、外出、社交或性生活？"],
+          ["uiBloodPainRetention", "是否出现血尿、排尿疼痛，或感觉膀胱无法排空？"]
+        ]
+      }
+    ]
+  },
   abdominalFat: {
     title: "腹部脂肪堆积评估",
     description: "从腰围、体重变化、饮食运动和代谢指标，了解腹型肥胖与代谢风险信号。",
@@ -417,6 +774,16 @@ const deepAssessments = {
       ["建议记录腰围、体重和每周运动量。", "优先减少含糖饮料、精制主食和久坐时间。", "如血糖、血脂或血压异常，建议咨询医生。"],
       ["每周固定时间测量腰围。", "增加抗阻训练和中等强度有氧运动。", "与睡眠、情绪和运动能力评估一起查看。"],
       ["保持均衡饮食和规律活动。", "围绝经期体脂分布可能变化，建议每月复盘腰围。", "如体重或腰围持续上升，可提前复测。"]
+    ],
+    keyPrompts: [
+      { id: "afWaistHigh", title: "腰围与体重", text: "腰围明显增加，或裤腰比过去更紧。" },
+      { id: "afWeightGain", title: "腰围与体重", text: "近6个月体重增加超过3公斤。" },
+      { id: "afBelly", title: "腰围与体重", text: "脂肪主要堆积在腹部，腰腹赘肉更明显。" },
+      { id: "afPostMeal", title: "饮食与餐后反应", text: "餐后容易困倦或腹胀。" },
+      { id: "afSitLong", title: "久坐与运动", text: "每天久坐时间超过6小时。" },
+      { id: "afSugar", title: "饮食与餐后反应", text: "经常饮用含糖饮料，或食用甜食、夜宵。" },
+      { id: "afLowExercise", title: "久坐与运动", text: "每周中等强度运动少于150分钟。" },
+      { id: "afMetabolic", title: "代谢指标", text: "已有血压、血糖、血脂偏高或脂肪肝提示。" }
     ],
     steps: [
       {
@@ -442,6 +809,257 @@ const deepAssessments = {
     ]
   }
 };
+
+const osteoporosisInterpretations = [
+  {
+    min: 5,
+    body: "抱抱你，这次的结果确实需要你重视起来。你目前出现了5项及以上的骨质疏松相关风险因素，说明骨量流失可能已经在悄悄发生，只是骨质疏松早期通常没什么明显感觉，很容易被忽略，直到真的摔一跤骨折了，才被“揪出来”。别怕，这不是终点，而是及时止损的机会。"
+  },
+  {
+    min: 3,
+    max: 4,
+    body: "看到这个结果，先别自己吓自己，但也确实需要认真对待了。你目前已经出现了3-4项骨质疏松相关风险因素，多个因素叠加在一起，会让骨量流失的速度比单一因素时快不少。尤其是围绝经期女性，激素波动加上这些风险因素，骨骼其实比你感觉到的更“脆弱”一些，该找专业医生聊聊了。"
+  },
+  {
+    min: 1,
+    max: 2,
+    body: "先别紧张，1-2项风险因素并不代表你已经患病，更像是身体在轻轻提醒你：“该开始留意骨头的状态了。”围绝经期本身就是骨量变化比较活跃的阶段，加上你目前的一些生活习惯，会让骨量流失得比别人快一点点。好消息是，这个阶段介入还来得及，越早调整，效果越明显。"
+  },
+  {
+    min: 0,
+    max: 0,
+    body: "放心，这次的结果很不错。根据你的作答，目前没有发现明显的骨质疏松风险信号。这说明你在饮食、运动、生活习惯这些方面，一直做得还不错。不过骨骼健康是个需要长期经营的事，尤其进入围绝经期后，雌激素水平的波动会悄悄加快骨量流失的速度，即使现在没有信号，也值得你继续留心。"
+  }
+];
+
+const osteoporosisActionPlans = [
+  {
+    min: 5,
+    items: [
+      {
+        title: "优先就医",
+        kicker: "别再等“方便的时候”",
+        body: "建议尽快、优先前往正规医院的骨质疏松专科或内分泌科就诊，做双能X线吸收法（DXA）骨密度检测，把当前骨量情况摸清楚。医生也会帮你排查甲状腺、甲状旁腺、性激素等方面的问题，找到根源，而不是头痛医头脚痛医脚。"
+      },
+      {
+        title: "骨折立即就医",
+        kicker: "摔了、骨折了，别犹豫",
+        body: "哪怕只是轻轻绊了一下、磕了一下，如果因此发生了骨折，这本身就是身体在拉响警报，说明骨量已经明显偏低。请不要犹豫，尽快就医，别抱着“再等等看”的心态，早一点处理，就能少一点后续的麻烦和风险。"
+      },
+      {
+        title: "遵医嘱治疗",
+        kicker: "别自己乱补",
+        body: "如果确诊了骨质疏松或骨量减少，医生可能会建议用药物来帮助控制病情、减缓流失速度，请务必遵医嘱，不要单纯依赖保健品，也不要自己随意加量、停药，专业的事，交给专业的人来判断更放心。"
+      },
+      {
+        title: "严防跌倒",
+        kicker: "“防摔”比什么都重要",
+        body: "家里的地面、灯光、扶手，都值得重新检查一遍，该加装的加装、该整理的整理；如果吃的药有头晕的副作用，或者有视力、血压方面的问题，也建议一并跟医生说明，一次跌倒带来的后果，远比想象中严重。"
+      },
+      {
+        title: "长期规律管理",
+        kicker: "这不是一次检查就结束的事",
+        body: "钙和维生素D的补充建议在医生指导下规范进行，戒烟限酒、保证优质蛋白摄入，维持肌肉力量。同时按医生安排定期复查骨密度，长期、规律地跟踪管理，才是真正对自己负责的方式。"
+      }
+    ]
+  },
+  {
+    min: 3,
+    max: 4,
+    items: [
+      {
+        title: "骨密度检查",
+        kicker: "建议尽快做，别再拖",
+        body: "双能X线吸收法（DXA）骨密度检测是目前诊断骨质疏松最权威的方法，建议尽快前往骨质疏松专科或内分泌科挂号检查。医生还会结合你的骨折史、慢性病、激素水平，进一步评估骨折风险，把模糊的担心变成清晰的数据。"
+      },
+      {
+        title: "基础疾病管理",
+        kicker: "有病别拖着",
+        body: "甲亢、甲旁亢、糖尿病、乳糜泻等疾病，或者长期服用糖皮质激素类药物，都可能在悄悄影响你的骨代谢，加速骨量流失。如果你正好属于这种情况，建议和医生讨论清楚，把原发病管理好，这是保护骨骼最根本的一步。"
+      },
+      {
+        title: "科学运动",
+        kicker: "运动要“量身定做”",
+        body: "这个阶段的运动，不再是随便动动就好，盲目锻炼反而可能增加受伤风险。建议在医生或康复师指导下制定个体化方案，兼顾负重、抗阻和平衡训练，避免高冲击、容易摔跤的运动方式，安全第一，循序渐进。"
+      },
+      {
+        title: "排查跌倒风险",
+        kicker: "把隐患彻底查一遍",
+        body: "视力模糊、走路不稳、腿脚发软，这些看似不起眼的小问题，都会明显增加摔倒的概率。建议做一次全面的居家安全检查，同时留意自己是否存在类似情况，该矫正矫正，该锻炼锻炼，别等摔了才后悔。"
+      },
+      {
+        title: "特殊情况就医",
+        kicker: "找专科医生一起管",
+        body: "如果你提前绝经、切除过卵巢又没有使用激素替代治疗，或者患有类风湿关节炎等免疫性疾病，这些都建议和妇科、内分泌科或风湿免疫科医生共同讨论，制定更适合你的管理方案，别自己盲目摸索。"
+      }
+    ]
+  },
+  {
+    min: 1,
+    max: 2,
+    items: [
+      {
+        title: "负重训练",
+        kicker: "不是所有运动都能养骨",
+        body: "散步固然好，但对骨骼来说，快走、爬楼梯、跳绳这类让身体承受一点重量的运动效果更明显。建议每周安排3-4次，每次30分钟以上，条件允许的话，再搭配哑铃、弹力带做一些抗阻训练，骨骼和肌肉双管齐下一起强化。"
+      },
+      {
+        title: "防跌倒",
+        kicker: "把“跌倒”这件事重视起来",
+        body: "骨量下降之后，一次不起眼的摔跤都可能带来麻烦，甚至引发骨折。建议检查一下家里的地面是否容易打滑，浴室有没有防滑垫和扶手，走道有没有堆放杂物，这些小改造花不了多少功夫，却能实实在在省去很多风险。"
+      },
+      {
+        title: "钙与维生素D",
+        kicker: "该补就补，别硬扛",
+        body: "如果你平时喝不了牛奶、吃不了奶制品，或者很少晒太阳，长期下来钙的摄入很容易跟不上。建议在医生或营养师的指导下，规范补充钙片和维生素D，而不是靠意志力硬扛着不管，这样反而更伤骨头。"
+      }
+    ]
+  },
+  {
+    min: 0,
+    max: 0,
+    items: [
+      {
+        title: "晒太阳",
+        kicker: "骨头也需要被“唤醒”",
+        body: "钙的吸收离不开维生素D，而维生素D最天然的来源就是阳光。建议每天找10-30分钟，在上午或傍晚出门走走，让皮肤晒到自然光。哪怕只是散步去买菜、饭后在小区遛弯，都比闷在室内、单纯指望靠钙片补足要有效得多，也更省心。"
+      },
+      {
+        title: "负重运动",
+        kicker: "动一动，比补一补更管用",
+        body: "快走、慢跑、跳绳这类会让骨骼“感受到重量”的运动，能持续给骨骼一个“该变强壮了”的信号，比单纯静态拉伸更有养骨效果。建议每周坚持3-4次，每次30分钟左右，强度不用太大，微微出汗、心跳加快即可，贵在长期坚持而非一时兴起。"
+      },
+      {
+        title: "均衡饮食",
+        kicker: "吃对了，骨头才有本钱",
+        body: "牛奶、豆腐、深绿色蔬菜、坚果里都藏着丰富的钙，不用刻意大补，把它们规律地放进一日三餐，就是最省心的养骨方式。同时别忘了蛋白质，鸡蛋、鱼肉、瘦肉里的优质蛋白能撑起肌肉和骨骼，肌肉有力，骨头才更稳。"
+      },
+      {
+        title: "自我监测",
+        kicker: "留意身体给你的小信号",
+        body: "建议每年测一次身高，把数字记下来做对比，如果发现比以前矮了不少，或者月经、绝经的情况有明显变化，都值得去医院问一问，别自己瞎猜、拖着不管，早发现才能早安心，也能少走弯路。"
+      },
+      {
+        title: "定期复评",
+        kicker: "把这份好状态延续下去",
+        body: "建议每1-2年重新做一次这份评估，尤其是进入围绝经期以后，身体变化会比平时更快一些，定期回顾能帮你更早发现变化，及时调整生活方式，而不是等身体真的“喊疼”了才后知后觉。"
+      }
+    ]
+  }
+];
+
+const osteoporosisAdviceHighlights = {
+  晒太阳: ["每天找10-30分钟", "让皮肤晒到自然光"],
+  负重运动: ["每周坚持3-4次", "每次30分钟左右"],
+  均衡饮食: ["丰富的钙", "优质蛋白"],
+  自我监测: ["每年测一次身高", "早发现才能早安心"],
+  定期复评: ["每1-2年重新做一次", "及时调整生活方式"],
+  负重训练: ["每周安排3-4次", "抗阻训练"],
+  防跌倒: ["防滑垫和扶手", "实实在在省去很多风险"],
+  钙与维生素D: ["在医生或营养师的指导下", "规范补充钙片和维生素D"],
+  骨密度检查: ["双能X线吸收法（DXA）骨密度检测", "尽快前往骨质疏松专科或内分泌科"],
+  基础疾病管理: ["原发病管理好", "保护骨骼最根本的一步"],
+  科学运动: ["在医生或康复师指导下", "避免高冲击、容易摔跤的运动方式"],
+  排查跌倒风险: ["全面的居家安全检查", "别等摔了才后悔"],
+  特殊情况就医: ["妇科、内分泌科或风湿免疫科医生", "制定更适合你的管理方案"],
+  优先就医: ["尽快、优先前往正规医院的骨质疏松专科或内分泌科", "双能X线吸收法（DXA）骨密度检测"],
+  骨折立即就医: ["尽快就医", "身体在拉响警报"],
+  遵医嘱治疗: ["务必遵医嘱", "不要单纯依赖保健品"],
+  严防跌倒: ["家里的地面、灯光、扶手", "一次跌倒带来的后果"],
+  长期规律管理: ["医生指导下规范进行", "长期、规律地跟踪管理"]
+};
+
+const vitaminDActionPlans = [
+  {
+    min: 8,
+    lead: "接下来这几步，建议你尽快行动起来：",
+    note: "建议尽快进行血清25(OH)D3检测，并结合医生或营养师的建议评估是否需要补充维生素D。若你同时伴有持续骨骼肌肉疼痛、反复腿抽筋、乏力明显或消化吸收问题，应优先就医。在此之前，你可以先从这几个方面着手改善：",
+    items: [
+      {
+        title: "你可能需要比别人多晒一会儿",
+        iconKey: "晒太阳",
+        highlights: ["适当延长日常日照时间", "在医生指导下评估"],
+        body: "皮肤中的黑色素虽然能防晒，但也会在一定程度上减慢维生素D的合成速度，肤色较深的人往往需要更长的日照时间才能获得同样的效果。建议适当延长日常日照时间，或在医生指导下评估是否需要额外补充维生素D。"
+      },
+      {
+        title: "这些“隐隐的不舒服”，别只当成累",
+        iconKey: "自我监测",
+        highlights: ["腰背部隐痛、全身肌肉酸痛、下肢沉重乏力", "及时就医检查"],
+        body: "腰背部隐痛、全身肌肉酸痛、下肢沉重乏力，有时候并不只是劳累，也可能和维生素D缺乏、骨骼肌肉代谢受影响有关。建议先调整日照和饮食习惯，如果症状持续没有改善，建议及时就医检查，排查具体原因。"
+      },
+      {
+        title: "总抽筋，可能是身体在“喊缺钙”",
+        iconKey: "钙与维生素D",
+        highlights: ["增加日照和富含维生素D、钙的食物摄入", "建议就医检测相关指标"],
+        body: "夜间或受凉后容易腿部抽筋，往往和钙、维生素D水平不足有关，因为维生素D能帮助身体更好地吸收和利用钙。建议增加日照和富含维生素D、钙的食物摄入，同时注意睡前腿部保暖，若抽筋频繁，建议就医检测相关指标。"
+      },
+      {
+        title: "莫名的累和低落，也值得关注一下",
+        iconKey: "长期规律管理",
+        highlights: ["多留意自己的情绪变化", "咨询医生做进一步检查"],
+        body: "维生素D不仅影响骨骼健康，也和情绪、精力状态有一定关联，缺乏时容易出现容易疲劳、情绪低落或说不清原因的焦虑感。建议在改善日照和饮食习惯的同时，多留意自己的情绪变化，如果持续没有好转，建议咨询医生做进一步检查。"
+      },
+      {
+        title: "指甲的小变化，也是身体的信号",
+        iconKey: "自我监测",
+        highlights: ["增加日照时间和富含维生素D的食物摄入", "必要时可就医检测营养状况"],
+        body: "指甲变脆、容易劈裂，除了常见的营养和护理因素外，也可能与维生素D等营养素缺乏有关。建议增加日照时间和富含维生素D的食物摄入，同时避免频繁接触洗涤剂等刺激指甲的物质，必要时可就医检测营养状况。"
+      }
+    ]
+  },
+  {
+    min: 4,
+    max: 7,
+    lead: "您可以从以下几步开始改善：",
+    note: "建议优先改善你勾选的这几项风险因素，并在1-3个月后重新评估一次。如果近期已经出现肌肉酸痛、腿部抽筋、疲劳明显等表现，建议结合血清25(OH)D3检测进一步确认，具体可以这样调整：",
+    items: [
+      {
+        title: "餐桌上，给这几样食材留个位置",
+        iconKey: "均衡饮食",
+        highlights: ["每周安排2-3次深海鱼", "天然维生素D的优质来源"],
+        body: "深海鱼（三文鱼、鲭鱼）、蛋黄、动物肝脏都是天然维生素D的优质来源。建议每周安排2-3次深海鱼，日常炒菜、煮汤时不刻意丢弃蛋黄，适量吃一些动物肝脏，通过饮食为身体补上阳光照射不足的那部分缺口。"
+      },
+      {
+        title: "体重管理，也是在帮维生素D“归位”",
+        iconKey: "负重训练",
+        highlights: ["在医生或营养师指导下", "循序渐进地管理体重"],
+        body: "维生素D是脂溶性的，容易被体内多余的脂肪组织“锁住”，难以被身体有效利用，所以BMI较高的人往往更容易缺乏维生素D。建议在医生或营养师指导下，通过合理饮食和规律运动，循序渐进地管理体重，帮助维生素D更好地发挥作用。"
+      },
+      {
+        title: "吸收环节出了问题，得先从根上管",
+        iconKey: "基础疾病管理",
+        highlights: ["积极治疗和管理原发疾病", "更易吸收的维生素D补充形式"],
+        body: "慢性腹泻、胆囊疾病或胆汁淤积会影响脂肪（以及脂溶性维生素D）的吸收，即使晒够了太阳、吃对了食物，身体也可能“吸收不进去”。建议积极治疗和管理原发疾病，并与医生讨论是否需要选择更易吸收的维生素D补充形式。"
+      }
+    ]
+  },
+  {
+    min: 0,
+    max: 3,
+    lead: "你可以试试下面的方法，把这份好状态延续下去：",
+    note: "虽然目前风险较低，但你勾选的这几项，依然是值得关注和改善的小细节，一起来看看：",
+    items: [
+      {
+        title: "先把“晒太阳”这件小事做起来",
+        iconKey: "晒太阳",
+        highlights: ["每天保证20分钟左右", "上午10点前或下午4点后"],
+        body: "每天保证20分钟左右的皮肤直接晒太阳（不涂防晒、不打伞），是身体合成维生素D最天然、最省钱的方式。建议选在上午10点前或下午4点后，阳光不算太烈的时段，露出手臂、小腿等部位晒10-20分钟，比闷在室内、单纯靠饮食补充要有效得多。"
+      },
+      {
+        title: "适度露出一点皮肤，给维生素D一个机会",
+        iconKey: "晒太阳",
+        highlights: ["每周挑几次", "暴露10-15分钟不涂防晒"],
+        body: "严密的防晒虽然能保护皮肤，但也会大大阻挡维生素D的合成。建议不必完全放弃防晒，而是每周挑几次，在阳光温和的时段，让手臂或小腿暴露10-15分钟不涂防晒，之后再正常防晒，兼顾护肤和补充维生素D两不误。"
+      },
+      {
+        title: "每天给自己安排一点“出门时间”",
+        iconKey: "晒太阳",
+        highlights: ["每天刻意安排一小段户外时间", "短短十几分钟"],
+        body: "如果工作和生活大部分时间都在室内，皮肤接触阳光的机会自然就少了。建议每天刻意安排一小段户外时间，比如午休时到楼下走走、通勤时提前一站下车步行，哪怕只是短短十几分钟，也能帮身体多合成一点维生素D。"
+      }
+    ]
+  }
+];
 
 const steps = [
   {
@@ -594,7 +1212,11 @@ function updateAppNav() {
   backButton.dataset.route = backRoute;
   backButton.setAttribute("aria-label", label);
   backButton.setAttribute("title", label);
-  if (historyButton) historyButton.hidden = route === "history";
+  if (historyButton) {
+    historyButton.hidden = route === "history";
+    historyButton.setAttribute("aria-label", "我的测评");
+    historyButton.setAttribute("title", "我的测评");
+  }
   if (title) {
     title.textContent = {
       report: "详情",
@@ -606,6 +1228,7 @@ function updateAppNav() {
 }
 
 function render() {
+  updateAppNav();
   renderDashboard();
   renderAssessmentLists();
   renderHistory();
@@ -682,12 +1305,7 @@ function isReadyForRetest(completedAt) {
 }
 
 function getSortedAssessments() {
-  const report = getLatestFullReport();
-  return [...assessmentCatalog].sort((a, b) => {
-    const focusDiff = getFocusScore(b, report) - getFocusScore(a, report);
-    if (focusDiff !== 0) return focusDiff;
-    return assessmentCatalog.findIndex((item) => item.id === a.id) - assessmentCatalog.findIndex((item) => item.id === b.id);
-  });
+  return [...assessmentCatalog];
 }
 
 function getFocusScore(item, report) {
@@ -701,6 +1319,7 @@ function getFocusScore(item, report) {
     anxiety: psychologicalScore >= 8 || context.includes("焦虑") ? 1 : 0,
     memory: totalScore >= 18 || psychologicalScore >= 8 ? 1 : 0,
     sleep: psychologicalScore >= 6 || context.includes("睡眠") ? 1 : 0,
+    incontinence: context.includes("尿频") || context.includes("尿急") || context.includes("漏尿") || context.includes("泌尿生殖") ? 1 : 0,
     abdominalFat: context.includes("血压") || context.includes("血糖") || context.includes("血脂") ? 1 : 0,
     vitaminD: context.includes("骨健康") ? 1 : 0,
     exercise: context.includes("疲劳") ? 1 : 0
@@ -715,21 +1334,26 @@ function renderAssessmentCards(container, items) {
       const deepReport = getLatestDeepReport(item.id);
       const status = getAssessmentStatus(item, report, deepReport);
       const cardClass = status.cardClass || "is-pending";
+      const actionText = deepReport ? "重新测评" : "开始测评";
       return `
         <article class="assessment-card ${cardClass}" role="button" tabindex="0" data-action="start-deep" data-id="${item.id}" aria-label="${item.title}，${status.text || status.ariaText}">
           <div class="assessment-card-main">
-            <h3>${item.title}</h3>
+            <div class="assessment-card-head">
+              <h3>${item.title}</h3>
+              ${
+                status.text
+                  ? `<span class="tag status-pill ${status.className}">
+                      <i aria-hidden="true">${status.icon}</i>${status.text}
+                    </span>`
+                  : ""
+              }
+            </div>
             <p class="muted">${item.category} · ${item.minutes}</p>
             <p class="assessment-effect">${item.effect}</p>
-            ${
-              status.text
-                ? `<div class="card-meta">
-                    <span class="tag status-pill ${status.className}">
-                      <i aria-hidden="true">${status.icon}</i>${status.text}
-                    </span>
-                  </div>`
-                : ""
-            }
+            <div class="assessment-card-action">
+              <span>${actionText}</span>
+              <i aria-hidden="true">›</i>
+            </div>
           </div>
           <div class="assessment-visual assessment-visual-${item.id}" aria-hidden="true"><span></span><i></i><b></b></div>
         </article>
@@ -756,31 +1380,267 @@ function renderHistory() {
     bindDynamicActions(container);
     return;
   }
-  container.innerHTML = state.reports
-    .map((report) => renderHistoryItem(report))
-    .join("");
+  const entries = getGroupedHistoryEntries();
+  const filteredEntries = entries.filter((entry) => {
+    if (activeHistoryFilter === "attention") return entry.risk.rank >= 2;
+    if (activeHistoryFilter === "retest") return entry.retest.ready;
+    return true;
+  });
+  container.innerHTML = `
+    ${renderHistoryFilterTabs(entries)}
+    <div class="history-card-list">
+      ${
+        filteredEntries.length
+          ? filteredEntries.map((entry) => renderHistoryItem(entry)).join("")
+          : `<article class="notice-panel history-empty-state">
+              <h2>暂无符合条件的测评</h2>
+              <p>切换其他筛选项，查看已完成的测评记录。</p>
+            </article>`
+      }
+    </div>
+  `;
   bindDynamicActions(container);
 }
 
-function renderHistoryItem(report) {
+function getGroupedHistoryEntries() {
+  const groups = new Map();
+  state.reports.forEach((report) => {
+    const key =
+      getReportType(report) === "deep"
+        ? report.assessmentId || report.title || report.id
+        : "full";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(report);
+  });
+  return Array.from(groups.entries())
+    .map(([key, reports]) => {
+      const sortedReports = reports
+        .slice()
+        .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime());
+      const latest = sortedReports[0];
+      const previous = sortedReports[1] || null;
+      return {
+        key,
+        latest,
+        previous,
+        count: sortedReports.length,
+        risk: getHistoryRisk(latest),
+        trend: getHistoryTrend(latest, previous),
+        retest: getHistoryRetestStatus(latest)
+      };
+    })
+    .sort((a, b) => {
+      const bucketDifference = getHistorySortBucket(b) - getHistorySortBucket(a);
+      if (bucketDifference) return bucketDifference;
+      return new Date(b.latest.completedAt).getTime() - new Date(a.latest.completedAt).getTime();
+    });
+}
+
+function getHistorySortBucket(entry) {
+  if (entry.risk.rank >= 3) return 3;
+  if (entry.retest.ready) return 2;
+  if (entry.risk.rank >= 2) return 1;
+  return 0;
+}
+
+function getHistoryRisk(report) {
+  const score = getHistorySeverityScore(report);
+  if (getReportType(report) === "full") {
+    if ((report.redFlags || []).length || score >= 45) {
+      return { label: "高风险", rank: 3, className: "is-high-risk" };
+    }
+    if (score >= 25) {
+      return { label: "需关注", rank: 2, className: "is-attention" };
+    }
+    return { label: "状态稳定", rank: 1, className: "is-stable" };
+  }
+  if (report.assessmentId === "depression") {
+    const level = getHistoryDepressionLevel(report);
+    if (level >= 4) return { label: "高风险", rank: 3, className: "is-high-risk" };
+    if (level >= 2) return { label: "需关注", rank: 2, className: "is-attention" };
+    return { label: "状态稳定", rank: 1, className: "is-stable" };
+  }
+  if (report.assessmentId === "osteoporosis") {
+    if (Number(report.yesCount || 0) >= 5) {
+      return { label: "高风险", rank: 3, className: "is-high-risk" };
+    }
+    if (Number(report.yesCount || 0) >= 1) {
+      return { label: "需关注", rank: 2, className: "is-attention" };
+    }
+    return { label: "状态稳定", rank: 1, className: "is-stable" };
+  }
+  if (report.assessmentId === "vitaminD") {
+    if (Number(report.yesCount || 0) >= 8) {
+      return { label: "高风险", rank: 3, className: "is-high-risk" };
+    }
+    if (Number(report.yesCount || 0) >= 4) {
+      return { label: "需关注", rank: 2, className: "is-attention" };
+    }
+    return { label: "状态稳定", rank: 1, className: "is-stable" };
+  }
+  if (report.resultClass === "is-high") {
+    return { label: "高风险", rank: 3, className: "is-high-risk" };
+  }
+  if (report.resultClass === "is-medium") {
+    return { label: "需关注", rank: 2, className: "is-attention" };
+  }
+  return { label: "状态稳定", rank: 1, className: "is-stable" };
+}
+
+function getHistorySeverityScore(report) {
+  if (getReportType(report) === "full") {
+    return 100 - Number(report.healthIndex || 100);
+  }
+  if (report.assessmentId === "depression") {
+    return getHistoryDepressionLevel(report);
+  }
+  if (report.assessmentId === "osteoporosis") {
+    return getOsteoporosisRiskLevel(Number(report.yesCount || 0)).level;
+  }
+  if (report.assessmentId === "vitaminD") {
+    return getVitaminDRiskLevel(Number(report.yesCount || 0)).level;
+  }
+  return report.resultClass === "is-high" ? 3 : report.resultClass === "is-medium" ? 2 : 1;
+}
+
+function getHistoryTrend(latest, previous) {
+  if (!previous) {
+    return { label: "首次测评", icon: "·", className: "is-first" };
+  }
+  const currentScore = getHistorySeverityScore(latest);
+  const previousScore = getHistorySeverityScore(previous);
+  if (currentScore < previousScore) {
+    return { label: "状态改善", icon: "↓", className: "is-improved" };
+  }
+  if (currentScore > previousScore) {
+    return { label: "风险上升", icon: "↑", className: "is-worse" };
+  }
+  return { label: "保持稳定", icon: "—", className: "is-unchanged" };
+}
+
+function getHistoryDepressionLevel(report) {
+  if (report.severityLevel) return Number(report.severityLevel);
+  if (report.scoreTotal != null) {
+    return getDepressionScoreBand(Number(report.scoreTotal || 0)).level;
+  }
+  if ((report.answers || []).length) {
+    const historicalScore = report.answers.reduce(
+      (total, item) => total + getHistoricalDepressionScore(item.answer),
+      0
+    );
+    return getDepressionScoreBand(historicalScore).level;
+  }
+  return report.resultClass === "is-high" ? 4 : report.resultClass === "is-medium" ? 2 : 1;
+}
+
+function getHistoryRetestStatus(report) {
+  const targetDate = addDays(report.completedAt, 30);
+  const targetTime = targetDate.getTime();
+  if (Number.isNaN(targetTime)) {
+    return { label: "复测时间待确认", ready: false };
+  }
+  const days = Math.ceil((targetTime - Date.now()) / (24 * 60 * 60 * 1000));
+  if (days <= 0) return { label: "可复测", ready: true };
+  return { label: `距离可复测还有 ${days} 天`, ready: false };
+}
+
+function renderHistoryFilterTabs(entries) {
+  const filters = [
+    { id: "all", label: "全部", count: entries.length },
+    {
+      id: "attention",
+      label: "需关注",
+      count: entries.filter((entry) => entry.risk.rank >= 2).length
+    },
+    {
+      id: "retest",
+      label: "可复测",
+      count: entries.filter((entry) => entry.retest.ready).length
+    }
+  ];
+  return `
+    <div class="history-filter-tabs" role="tablist" aria-label="我的测评筛选">
+      ${filters
+        .map(
+          (filter) => `
+            <button class="${activeHistoryFilter === filter.id ? "is-active" : ""}" type="button"
+              data-action="set-history-filter" data-filter="${filter.id}"
+              role="tab" aria-selected="${activeHistoryFilter === filter.id}">
+              ${filter.label}<span>${filter.count}</span>
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderHistoryItem(entry) {
+  const report = entry.latest;
   const isDeepReport = getReportType(report) === "deep";
   const title = isDeepReport ? report.title : "围绝经期综合评测";
   const visualId = isDeepReport ? report.assessmentId || "default" : "full";
+  const catalogItem = assessmentCatalog.find((item) => item.id === report.assessmentId);
+  const icon = getHistoryCardIcon(visualId);
+  const category = catalogItem?.category || (isDeepReport ? "专项测评" : "综合健康");
   const resultText = escapeHtml(
     isDeepReport
       ? report.level || report.resultBadge || "查看测评详情"
       : report.healthLevel || report.stage?.label || "查看测评详情"
   );
+  const summary = escapeHtml(
+    report.summary ||
+      report.stage?.detail ||
+      report.resultBadge ||
+      "查看完整报告，了解本次测评结果与健康管理建议。"
+  );
+  const retestAction = isDeepReport
+    ? `data-action="start-deep" data-id="${report.assessmentId}"`
+    : `data-action="start-full"`;
   return `
-    <article class="history-item history-assessment-card" role="button" tabindex="0" data-action="open-report" data-id="${report.id}" aria-label="${title}，测评结果 ${resultText}，测评时间 ${formatDateTime(report.completedAt)}">
-      <div class="history-assessment-main">
-        <h3>${title}</h3>
-        <p class="history-assessment-result"><span>测评结果：</span>${resultText}</p>
-        <p>测评时间：${formatDateTime(report.completedAt)}</p>
+    <article class="history-item history-assessment-card ${entry.risk.className}" aria-label="${title}，${entry.risk.label}，${resultText}">
+      <header class="history-card-head">
+        <div class="history-card-identity">
+          <div class="history-card-icon history-card-icon-${visualId}" aria-hidden="true">${icon}</div>
+          <div>
+            <h3>${title}</h3>
+            <p>${category} · 已测评 ${entry.count} 次</p>
+          </div>
+        </div>
+        <span class="history-risk-tag">${entry.risk.label}</span>
+      </header>
+      <div class="history-result-block">
+        <strong>${resultText}</strong>
+        <p>${summary}</p>
       </div>
-      <div class="assessment-visual assessment-visual-${visualId}" aria-hidden="true"><span></span><i></i><b></b></div>
+      <div class="history-status-row">
+        <span class="history-trend ${entry.trend.className}"><i>${entry.trend.icon}</i>${entry.trend.label}</span>
+        <span class="history-retest ${entry.retest.ready ? "is-ready" : ""}">${entry.retest.label}</span>
+      </div>
+      <p class="history-completed-at">最近测评：${formatDateTime(report.completedAt)}</p>
+      <footer class="history-card-actions">
+        <button type="button" data-action="open-report" data-id="${report.id}">查看报告</button>
+        <button type="button" class="is-primary" ${retestAction}>重新测评</button>
+      </footer>
     </article>
   `;
+}
+
+function getHistoryCardIcon(assessmentId) {
+  const icons = {
+    osteoporosis: '<svg viewBox="0 0 24 24"><path d="M7.2 7.6a2.5 2.5 0 1 1-2.8-3.9 2.5 2.5 0 0 1 3.7 2.1l7.8 6.4a2.5 2.5 0 1 1 2.8 3.9 2.5 2.5 0 0 1-3.7-2.1L7.2 7.6Z"></path><path d="M6.6 6.3 4.8 8.5M19.2 15.5l-1.8 2.2"></path></svg>',
+    vitaminD: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"></path></svg>',
+    memory: '<svg viewBox="0 0 24 24"><path d="M9.4 4.2a3.2 3.2 0 0 0-3 4.2A3.6 3.6 0 0 0 5 15.1a3 3 0 0 0 4.4 3.3V4.2ZM14.6 4.2a3.2 3.2 0 0 1 3 4.2 3.6 3.6 0 0 1 1.4 6.7 3 3 0 0 1-4.4 3.3V4.2Z"></path><path d="M9.4 8H7.2M14.6 11h2.3M9.4 14H7"></path></svg>',
+    depression: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M8.5 9.5h.1M15.4 9.5h.1M8.6 16c1-1 2.1-1.5 3.4-1.5s2.4.5 3.4 1.5"></path></svg>',
+    anxiety: '<svg viewBox="0 0 24 24"><path d="M3 13h3l1.8-5 3 10 2.5-7 1.8 4H21"></path><path d="M19 5.5a8.5 8.5 0 1 0 1.7 11.2"></path></svg>',
+    sleep: '<svg viewBox="0 0 24 24"><path d="M18.8 15.7A8 8 0 0 1 8.3 5.2 8 8 0 1 0 18.8 15.7Z"></path><path d="m16.2 5.2.5 1.2 1.3.5-1.3.5-.5 1.2-.5-1.2-1.3-.5 1.3-.5z"></path></svg>',
+    exercise: '<svg viewBox="0 0 24 24"><path d="M4 9v6M7 7.5v9M17 7.5v9M20 9v6M7 12h10M2.5 10.5v3M21.5 10.5v3"></path></svg>',
+    incontinence: '<svg viewBox="0 0 24 24"><path d="M12 3.2s5.8 6.4 5.8 10.7A5.8 5.8 0 0 1 6.2 14C6.2 9.6 12 3.2 12 3.2Z"></path><path d="M9.3 15.2c.5 1 1.4 1.6 2.7 1.6"></path></svg>',
+    abdominalFat: '<svg viewBox="0 0 24 24"><path d="M8 4.2c.7 2.5.6 4.3-.4 6.2-1.1 2.1-1.1 5.4.1 9.4M16 4.2c-.7 2.5-.6 4.3.4 6.2 1.1 2.1 1.1 5.4-.1 9.4"></path><path d="M7.4 12h9.2M9.2 9.3c1.8.7 3.8.7 5.6 0M9.2 14.7c1.8-.7 3.8-.7 5.6 0"></path></svg>',
+    full: '<svg viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16" rx="2"></rect><path d="M9 4.5V3h6v1.5M8.5 9h7M8.5 13h7M8.5 17h4"></path></svg>',
+    default: '<svg viewBox="0 0 24 24"><path d="M12 20c-4.8-2.4-7.2-5.3-7.2-9A3.7 3.7 0 0 1 8.5 7.3c1.5 0 2.7.8 3.5 2 0 0 1.2-2 3.5-2a3.7 3.7 0 0 1 3.7 3.7c0 3.7-2.4 6.6-7.2 9Z"></path></svg>'
+  };
+  return icons[assessmentId] || icons.default;
 }
 
 function startWizard() {
@@ -817,6 +1677,10 @@ function renderWizard() {
 function renderDeepAssessment() {
   const config = getDeepAssessmentConfig(activeDeepAssessmentId);
   const step = config.steps[deepStep];
+  const showBiometrics = step.questions.some(([id]) =>
+    ["lowBmi", "vdBmiOver28"].includes(id)
+  );
+  syncBmiDerivedAnswer();
   $("#wizardTitle").textContent = config.title;
   $("#stepKicker").textContent = "评估进度";
   $("#stepCounter").textContent = `步骤 ${deepStep + 1} / ${config.steps.length}`;
@@ -834,15 +1698,22 @@ function renderDeepAssessment() {
       <h1>${config.title}</h1>
       <p>${config.description}</p>
       ${config.note ? `<p>${config.note}</p>` : ""}
-      ${deepStep === 0 ? renderDeepBiometrics() : ""}
     </article>
-    <section class="deep-section-head">
-      <h2>${step.title}</h2>
-      <p>${step.subtitle}</p>
+    <section class="deep-step-module">
+      <div class="deep-question-module">
+        <header class="deep-section-head">
+          <div class="deep-section-title-row">
+            <h2>${step.title}</h2>
+            <span>${step.questions.length} 题</span>
+          </div>
+          <p>${step.subtitle}</p>
+        </header>
+        ${showBiometrics ? renderDeepBiometrics() : ""}
+        <div class="deep-question-list">
+          ${step.questions.map(([id, question]) => renderDeepQuestion(id, question)).join("")}
+        </div>
+      </div>
     </section>
-    <div class="deep-question-list">
-      ${step.questions.map(([id, question]) => renderDeepQuestion(id, question)).join("")}
-    </div>
   `;
   bindFormInputs();
 }
@@ -851,12 +1722,20 @@ function renderDeepBiometrics() {
   const height = state.draft.height || state.biometrics?.height || "";
   const weight = state.draft.weight || state.biometrics?.weight || "";
   const bmi = getBmi({ height, weight });
+  const note =
+    activeDeepAssessmentId === "vitaminD"
+      ? "复用骨骼测评中的身体数据，用于判断 BMI 是否超过28；修改后会同步更新本组 BMI 题目的答案。"
+      : "用于判断体质量是否过轻，修改后会同步更新本组 BMI 题目的答案。";
   return `
     <section class="deep-biometrics" aria-labelledby="deepBiometricsTitle">
       <div class="deep-biometrics-heading">
-        <h2 id="deepBiometricsTitle">身体数据</h2>
-        <span>用于 BMI 计算</span>
+        <div>
+          <span class="deep-module-label">身体数据</span>
+          <h2 id="deepBiometricsTitle">填写身高与体重</h2>
+        </div>
+        <span>自动计算 BMI</span>
       </div>
+      <p class="deep-biometrics-note">${note}</p>
       <div class="deep-biometrics-grid">
         <button class="deep-biometric-field" type="button" data-action="open-biometric-picker" data-field="height" aria-label="选择身高">
           <span>身高</span>
@@ -939,10 +1818,12 @@ function confirmBiometricPicker() {
   const formattedValue = formatPickerValue(Number(value));
   state.draft[field] = formattedValue;
   updateBiometricsFromDraft();
+  syncBmiDerivedAnswer();
   saveState();
   const display = field === "height" ? $("#deepHeightValue") : $("#deepWeightValue");
   if (display) display.textContent = formattedValue;
   updateDeepBmiPreview();
+  if (activeDeepAssessmentId) renderDeepAssessment();
   closeBiometricPicker();
 }
 
@@ -1000,9 +1881,37 @@ function renderTemplateDeepResult(config, result) {
   $("#prevStep").textContent = "重新评估";
   $("#nextStep").textContent = "返回";
   $("#assessmentForm").innerHTML = getTemplateDeepResultHtml(config, result, "", activeDeepAssessmentId);
+  bindDynamicActions($("#assessmentForm"));
 }
 
 function getTemplateDeepResultHtml(config, result, completedAt = "", assessmentId = "") {
+  if (assessmentId === "osteoporosis") {
+    return getOsteoporosisDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "vitaminD") {
+    return getVitaminDDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "depression") {
+    return getDepressionDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "anxiety") {
+    return getAnxietyDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "memory") {
+    return getMemoryDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "sleep") {
+    return getSleepDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "exercise") {
+    return getExerciseDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "incontinence") {
+    return getIncontinenceDetailedResultHtml(result, completedAt);
+  }
+  if (assessmentId === "abdominalFat") {
+    return getAbdominalFatDetailedResultHtml(result, completedAt);
+  }
   return `
     <article class="deep-final-card osteoporosis-report deep-template-report ${result.className}">
       <header class="osteoporosis-report-head">
@@ -1017,7 +1926,7 @@ function getTemplateDeepResultHtml(config, result, completedAt = "", assessmentI
           </div>
           <p class="osteoporosis-result-title">${result.level}</p>
         </div>
-        <p>${result.summary}</p>
+        <p>${highlightReportKeywords(result.summary, assessmentId)}</p>
         ${renderTemplatePriorityAlert(result, assessmentId)}
       </section>
 
@@ -1031,6 +1940,1923 @@ function getTemplateDeepResultHtml(config, result, completedAt = "", assessmentI
       <p class="osteoporosis-disclaimer">${getTemplateDisclaimer(config, assessmentId)}</p>
     </article>
   `;
+}
+
+function getDepressionDetailedResultHtml(result, completedAt = "") {
+  const level = result.severityLevel || getDepressionScoreBand(result.scoreTotal || 0).level;
+  const actionItems = getDepressionActionItems(result, level);
+  return `
+    <article class="deep-final-card bone-report depression-report ${result.className}">
+      <header class="bone-report-hero depression-report-hero">
+        <span class="bone-report-kicker">情绪心理测评</span>
+        <h1>你的<strong>抑郁自评</strong>报告已生成</h1>
+        <p>结合最近两周的情绪、睡眠与日常状态，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-level depression-risk-level is-level-${level}">
+          <div class="bone-risk-level-heading">
+            <span>抑郁严重程度</span>
+            <strong>${result.level}</strong>
+          </div>
+          <div class="bone-risk-level-track depression-risk-level-track" aria-label="抑郁严重程度 ${result.level}，共 5 级">
+            ${[1, 2, 3, 4, 5]
+              .map((item) => `<i class="${item <= level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(result.summary, "depression")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "行动建议")}
+        <div class="bone-action-intro depression-action-intro">
+          <strong>${result.actionIntro || result.management}</strong>
+          <p>请从现在能做到的一小步开始；如果情绪持续加重、影响日常生活或出现伤害自己的想法，请及时寻求专业支持。</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionItems
+            .map(
+              (item, index) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getDepressionActionIcon(item, index, level)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    ${item.kicker ? `<strong>${item.kicker}</strong>` : ""}
+                    <p>${highlightAdviceKeywords(item.body, ["立即", "尽快", "不要独处", "绝不独处", "专业帮助", "心理咨询", "精神科", "心理科", "遵医嘱", "不要自行停药、减药或加量", "24小时"])}</p>
+                    ${renderDepressionActionHotline(item, level)}
+                    ${renderDepressionDoctorCard(item)}
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本测评用于情绪健康筛查和自我观察，不能替代精神科或心理科医生的诊断。</p>
+    </article>
+  `;
+}
+
+function getDepressionScoreBand(score) {
+  return (
+    deepAssessments.depression.scoreBands.find(
+      (band) => score >= band.min && (band.max == null || score <= band.max)
+    ) || deepAssessments.depression.scoreBands[deepAssessments.depression.scoreBands.length - 1]
+  );
+}
+
+function getDepressionActionItems(result, level) {
+  return (result.recommendations || []).map((item, index) => {
+    if (typeof item !== "string") return item;
+    return {
+      title: getDepressionActionTitle(index, level),
+      kicker: "",
+      body: item,
+      iconKey: ""
+    };
+  });
+}
+
+function renderDepressionDoctorCard(item) {
+  if (item.title !== "寻求医生帮助") return "";
+  return `
+    <aside class="depression-doctor-card" aria-label="推荐咨询医生">
+      <img src="assets/doctor-lin-avatar.png" alt="林悦医生头像" />
+      <div class="depression-doctor-info">
+        <div class="depression-doctor-name">
+          <h4>林悦医生</h4>
+          <span>副主任医师</span>
+        </div>
+        <p><strong>擅长领域</strong>围绝经期情绪管理、妇科内分泌、睡眠与激素相关症状评估</p>
+      </div>
+      <button type="button" data-action="consult-doctor" aria-label="立即咨询林悦医生">立即咨询</button>
+    </aside>
+  `;
+}
+
+function renderDepressionActionHotline(item, level) {
+  if (level !== 5 || item.title !== "紧急就医") return "";
+  return `
+    <a class="depression-hotline-link is-action-link" href="tel:12356" aria-label="拨打全国心理援助热线12356">
+      拨打全国心理援助热线 12356
+    </a>
+  `;
+}
+
+function getDepressionActionTitle(index, level) {
+  const titles =
+    level >= 4
+      ? ["先确保安全", "尽快专业评估", "建立持续支持"]
+      : level >= 3
+        ? ["预约专业评估", "使用心理支持", "关注风险变化"]
+        : level >= 2
+          ? ["记录情绪变化", "练习放松调节", "必要时咨询"]
+          : ["维持规律生活", "持续自我观察", "适时重新评估"];
+  return titles[index] || "行动建议";
+}
+
+function getDepressionActionIcon(item, index, level) {
+  if (item.iconKey) return getOsteoporosisActionIcon(item.iconKey);
+  const iconKeys = level >= 4 ? ["shield", "hospital", "care"] : ["monitor", "care", "calendar"];
+  return getOsteoporosisActionIcon(iconKeys[index] || "care");
+}
+
+function getVitaminDDetailedResultHtml(result, completedAt = "") {
+  const riskLevel = getVitaminDRiskLevel(result.yesCount);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getVitaminDInterpretation(result.yesCount, focusTopics);
+  const actionPlan = getVitaminDActionPlan(result.yesCount);
+  return `
+    <article class="deep-final-card bone-report vitamin-d-report ${result.className}">
+      <header class="bone-report-hero vitamin-d-report-hero">
+        <span class="bone-report-kicker">营养与骨骼健康测评</span>
+        <h1>你的<strong>维生素D</strong>报告已生成</h1>
+        <p>结合日照、饮食、体重与身体表现，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>风险项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level vitamin-d-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track vitamin-d-risk-level-track" aria-label="维生素D缺乏风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "vitaminD")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点风险项")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的维生素D缺乏风险项。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="vitamin-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, ["1-3个月后重新评估一次", "血清25(OH)D3检测", "优先就医"])}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于维生素D缺乏风险筛查，不能替代血液检测或医生诊断。</p>
+    </article>
+  `;
+}
+
+function getVitaminDRiskLevel(yesCount) {
+  if (yesCount >= 8) {
+    return { level: 3, label: "高风险", result: "维生素D缺乏可能性较高" };
+  }
+  if (yesCount >= 4) {
+    return { level: 2, label: "中风险", result: "存在一定的维生素D不足倾向" };
+  }
+  return { level: 1, label: "低风险", result: "当前维生素D缺乏可能性较低" };
+}
+
+function getVitaminDRiskTopicGroups(items) {
+  const topicMap = new Map();
+  items.map(normalizePromptItem).filter(Boolean).forEach((item) => {
+    const title = item.title || "其他风险";
+    const current = topicMap.get(title) || { title, count: 0 };
+    current.count += 1;
+    topicMap.set(title, current);
+  });
+  return Array.from(topicMap.values()).sort((a, b) => b.count - a.count);
+}
+
+function getVitaminDInterpretation(yesCount, focusTopics) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "日照、饮食与生活方式";
+  if (yesCount >= 8) {
+    return `抱抱你，这次的结果确实需要认真重视起来。你本次维生素D缺乏风险筛查中，共有「${yesCount}」项回答“是”，目前属于高风险，提示你存在较高的维生素D缺乏可能，尤其在<strong class="vitamin-risk-inline">${focusText}</strong>方面风险较为突出。别怕，这不是终点，而是身体在提醒你该主动干预了，尽早重视，很多影响是可以被改善和纠正的。`;
+  }
+  if (yesCount >= 4) {
+    return `看到这个结果，不用太紧张，但也值得认真对待一下。你本次维生素D缺乏风险筛查中，共有「${yesCount}」项回答“是”，目前属于中风险，说明你确实存在一定的维生素D不足倾向，主要风险因素集中在<strong class="vitamin-risk-inline">${focusText}</strong>方面。这些因素叠加在一起，比单一因素更容易让维生素D水平悄悄往下走，是时候花点心思调整一下了。`;
+  }
+  return `先别担心，这次的结果整体不错。你本次维生素D缺乏风险筛查中，共有「${yesCount}」项回答“是”，目前属于低风险。这提示你当前维生素D缺乏的可能性相对较低，日照、饮食、生活习惯这些方面整体做得还可以。不过维生素D的水平会受季节、生活方式变化的影响，即使现在风险不高，也值得持续留心。`;
+}
+
+function getVitaminDActionPlan(yesCount) {
+  return (
+    vitaminDActionPlans.find(
+      (plan) => yesCount >= plan.min && (plan.max == null || yesCount <= plan.max)
+    ) || vitaminDActionPlans[vitaminDActionPlans.length - 1]
+  );
+}
+
+function getAnxietyDetailedResultHtml(result, completedAt = "") {
+  const riskLevel = getAnxietyRiskLevel(result.yesCount);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getAnxietyInterpretation(result.yesCount, focusTopics);
+  const actionPlan = getAnxietyActionPlan(result.yesCount);
+  return `
+    <article class="deep-final-card bone-report anxiety-report ${result.className}">
+      <header class="bone-report-hero anxiety-report-hero">
+        <span class="bone-report-kicker">情绪心理测评</span>
+        <h1>你的<strong>焦虑状态</strong>报告已生成</h1>
+        <p>结合近期的担忧、紧张、身体反应与回避行为，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>焦虑风险项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level anxiety-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>焦虑风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track anxiety-risk-level-track" aria-label="焦虑风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "anxiety")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点焦虑表现")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid anxiety-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic anxiety-risk-topic">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的焦虑表现。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="anxiety-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights)}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于焦虑风险筛查和自我观察，不能替代精神科、心理科或其他专业医生的诊断。</p>
+    </article>
+  `;
+}
+
+function getAnxietyRiskLevel(yesCount) {
+  if (yesCount >= 5) return { level: 3, label: "高风险", result: "焦虑困扰较明显，需要重点关注" };
+  if (yesCount >= 2) return { level: 2, label: "中风险", result: "焦虑状态需要关注" };
+  return { level: 1, label: "低风险", result: "当前未见明显焦虑风险" };
+}
+
+function getAnxietyInterpretation(yesCount, focusTopics) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "担忧、紧张与身体反应";
+  if (yesCount >= 5) {
+    return `看到这个结果，先别责怪自己。你本次焦虑评估中共有「${yesCount}」项风险表现，目前属于高风险，主要集中在<strong class="anxiety-risk-inline">${focusText}</strong>方面。持续担忧、身体不适和回避行为可能已经相互强化，让你越来越难放松。建议尽快寻求专业支持；若胸痛、呼吸困难等症状突然出现或明显加重，请先排除身体急症。`;
+  }
+  if (yesCount >= 2) {
+    return `你本次焦虑评估中共有「${yesCount}」项风险表现，目前属于中风险，主要集中在<strong class="anxiety-risk-inline">${focusText}</strong>方面。这说明紧张和担忧已经开始影响情绪、睡眠或日常节奏，但仍有较大的调整空间。先记录触发因素，再用规律呼吸、运动和睡眠管理逐步降低身体的警觉状态。`;
+  }
+  return `这次结果整体不错。你本次焦虑评估中共有「${yesCount}」项风险表现，目前属于低风险，当前未见明显焦虑风险。围绝经期的激素波动和睡眠变化仍可能带来阶段性的紧张或心烦，继续保持规律作息、运动和情绪觉察，有助于维持稳定状态。`;
+}
+
+function getAnxietyActionPlan(yesCount) {
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "当担忧、身体反应和回避行为同时出现时，专业评估和日常稳定练习需要同步进行。",
+      noteHighlights: ["同时出现", "专业评估", "日常稳定练习"],
+      items: [
+        {
+          title: "尽快寻求专业评估",
+          kicker: "不要继续一个人硬扛",
+          iconKey: "hospital",
+          body: "建议尽快预约精神科、心理科或心理咨询进行专业评估，并把近期的担忧、睡眠、惊恐表现和生活影响完整告诉专业人员。",
+          highlights: ["尽快预约", "专业评估", "完整告诉专业人员"]
+        },
+        {
+          title: "优先排除急症",
+          kicker: "突发胸痛或呼吸困难先处理安全",
+          iconKey: "shield",
+          body: "如果胸痛、呼吸困难、晕厥感等症状突然出现、持续不缓解或与以往明显不同，请及时就医，不要自行判断全部由焦虑引起。",
+          highlights: ["突然出现", "持续不缓解", "及时就医"]
+        },
+        {
+          title: "练习缓慢呼吸",
+          kicker: "把身体从高度警觉中带回来",
+          iconKey: "care",
+          body: "选择安静位置，用舒适节奏缓慢吸气和呼气，每次练习3至5分钟。若练习时头晕或不适，不必强求深呼吸，恢复自然呼吸即可。",
+          highlights: ["缓慢吸气和呼气", "每次练习3至5分钟", "恢复自然呼吸"]
+        },
+        {
+          title: "减少回避并建立支持",
+          kicker: "从一件可完成的小事开始",
+          iconKey: "calendar",
+          body: "把当前最担心的事情拆成小步骤，邀请信任的人陪同完成。暂时减少非必要压力，但不要让回避范围不断扩大。",
+          highlights: ["拆成小步骤", "信任的人陪同", "不要让回避范围不断扩大"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始改善：",
+      note: "先连续观察2周，找出最常见的触发因素，再选择一两种稳定练习坚持执行。",
+      noteHighlights: ["连续观察2周", "触发因素", "坚持执行"],
+      items: [
+        {
+          title: "记录焦虑触发因素",
+          kicker: "分清发生了什么，而不是只记住难受",
+          iconKey: "monitor",
+          body: "记录焦虑出现的时间、场景、担忧内容、身体反应和持续时长，同时标记睡眠、咖啡因和潮热情况，连续观察2周。",
+          highlights: ["时间、场景、担忧内容", "睡眠、咖啡因和潮热", "连续观察2周"]
+        },
+        {
+          title: "安排放松练习",
+          kicker: "短而规律，比偶尔做很久更有效",
+          iconKey: "care",
+          body: "每天安排1至2次缓慢呼吸、渐进式肌肉放松或正念练习，每次5至10分钟，选择最容易坚持的一种即可。",
+          highlights: ["每天安排1至2次", "每次5至10分钟", "最容易坚持"]
+        },
+        {
+          title: "稳定睡眠与运动",
+          kicker: "先稳住身体，情绪更容易降下来",
+          iconKey: "sleep",
+          body: "保持固定起床时间和规律的轻中度运动，下午后减少咖啡、浓茶和能量饮料，避免通过酒精缓解焦虑或帮助入睡。",
+          highlights: ["固定起床时间", "规律的轻中度运动", "避免通过酒精缓解焦虑"]
+        },
+        {
+          title: "及时寻求帮助",
+          kicker: "影响生活时不必继续等待",
+          iconKey: "hospital",
+          body: "如果焦虑持续加重、明显影响工作生活，或反复出现惊恐感和回避行为，建议咨询心理或精神专科。",
+          highlights: ["持续加重", "明显影响工作生活", "咨询心理或精神专科"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前未见明显焦虑风险，继续保持稳定作息、规律活动和适度的情绪觉察。",
+    noteHighlights: ["未见明显焦虑风险", "稳定作息", "情绪觉察"],
+    items: [
+      {
+        title: "保持规律生活",
+        kicker: "稳定的节奏能减少不必要的警觉",
+        iconKey: "calendar",
+        body: "继续保持相对固定的作息、三餐和运动安排，避免长期睡眠不足或连续高压工作。",
+        highlights: ["固定的作息", "运动安排", "避免长期睡眠不足"]
+      },
+      {
+        title: "保留放松时间",
+        kicker: "每天给大脑一点真正停下来的时间",
+        iconKey: "care",
+        body: "每天安排一小段不处理工作和家务的时间，用散步、呼吸练习或喜欢的活动帮助身心恢复。",
+        highlights: ["每天安排一小段", "散步、呼吸练习", "身心恢复"]
+      },
+      {
+        title: "留意新的变化",
+        kicker: "睡眠或压力变化时提前复评",
+        iconKey: "monitor",
+        body: "如果连续出现控制不住的担忧、明显身体不适或回避行为，可以记录诱因并提前重新评估。",
+        highlights: ["连续出现", "记录诱因", "提前重新评估"]
+      }
+    ]
+  };
+}
+
+function getMemoryDetailedResultHtml(result, completedAt = "") {
+  const hasFunctionalImpact = (result.keyPrompts || []).some(
+    (item) => getPromptId(item) === "memAffect"
+  );
+  const riskLevel = getMemoryRiskLevel(result.yesCount, hasFunctionalImpact);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getMemoryInterpretation(
+    result.yesCount,
+    focusTopics,
+    hasFunctionalImpact
+  );
+  const actionPlan = getMemoryActionPlan(result.yesCount, hasFunctionalImpact);
+  return `
+    <article class="deep-final-card bone-report memory-report ${result.className}">
+      <header class="bone-report-hero memory-report-hero">
+        <span class="bone-report-kicker">认知功能测评</span>
+        <h1>你的<strong>记忆力</strong>报告已生成</h1>
+        <p>结合日常遗忘、注意专注和计划执行表现，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>记忆困扰项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level memory-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>认知功能风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track memory-risk-level-track" aria-label="认知功能风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "memory")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点认知问题")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid memory-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic memory-risk-topic ${item.title === "生活与安全影响" ? "is-priority" : ""}">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的记忆或认知问题。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="memory-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights)}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于记忆与认知状态的自我观察，不能替代神经内科、记忆门诊或其他专业医生的诊断。</p>
+    </article>
+  `;
+}
+
+function getMemoryRiskLevel(yesCount, hasFunctionalImpact) {
+  if (hasFunctionalImpact) {
+    return { level: 3, label: "建议专业评估", result: "记忆问题已经影响生活或安全" };
+  }
+  if (yesCount >= 5) return { level: 3, label: "高风险", result: "记忆与认知困扰较明显" };
+  if (yesCount >= 2) return { level: 2, label: "中风险", result: "记忆状态需要关注" };
+  return { level: 1, label: "低风险", result: "当前未见明显记忆困扰" };
+}
+
+function getMemoryInterpretation(yesCount, focusTopics, hasFunctionalImpact) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "日常遗忘与注意专注";
+  if (hasFunctionalImpact) {
+    return `这次结果提示，记忆问题已经影响工作、家庭或日常安全。无论本次共出现多少项困扰，都建议你把这类变化认真记录下来，并尽快与家人沟通，预约神经内科、记忆门诊或相关专业医生进行评估。睡眠、情绪、药物和身体疾病都可能影响记忆，专业评估能帮助你更清楚地找到原因。`;
+  }
+  if (yesCount >= 5) {
+    return `看到这个结果，先不要急着给自己贴上“记忆变差”的标签。你本次记忆力评估中共有「${yesCount}」项认知困扰，目前属于高风险，主要集中在<strong class="memory-risk-inline">${focusText}</strong>方面。多个问题同时出现，说明记忆、注意和执行能力值得认真关注。建议结合睡眠、情绪和近期用药情况进行专业评估，尽早确认原因。`;
+  }
+  if (yesCount >= 2) {
+    return `你本次记忆力评估中共有「${yesCount}」项认知困扰，目前属于中风险，主要集中在<strong class="memory-risk-inline">${focusText}</strong>方面。围绝经期的睡眠不足、焦虑、压力和多任务负荷都可能让记忆暂时变差。先减少信息干扰、使用外部提醒，并连续观察一段时间，更容易判断变化是否持续。`;
+  }
+  return `这次结果整体不错。你本次记忆力评估中共有「${yesCount}」项认知困扰，目前属于低风险，当前未见明显记忆困扰。继续保持规律睡眠、运动和社交活动，并适度使用清单与提醒工具，有助于维持稳定的注意和记忆状态。`;
+}
+
+function getMemoryActionPlan(yesCount, hasFunctionalImpact) {
+  if (hasFunctionalImpact) {
+    return {
+      lead: "请优先做好安全保护并安排专业评估：",
+      note: "当记忆问题已经影响生活或安全时，不建议只靠自我训练继续观察，应让家人和专业人员共同参与。",
+      noteHighlights: ["影响生活或安全", "不建议只靠自我训练", "家人和专业人员共同参与"],
+      items: [
+        {
+          title: "尽快预约专业评估",
+          kicker: "把变化和时间线完整告诉医生",
+          iconKey: "hospital",
+          body: "建议预约神经内科、记忆门诊或相关专业医生，并准备症状开始时间、变化速度、近期用药、睡眠与情绪情况，便于医生综合判断。",
+          highlights: ["尽快预约", "症状开始时间、变化速度", "综合判断"]
+        },
+        {
+          title: "先降低安全风险",
+          kicker: "重要事项不要只靠记忆",
+          iconKey: "shield",
+          body: "请家人协助管理药物、燃气、电器、重要付款和外出安排；需要驾驶或独自处理高风险任务时，先与家人讨论是否需要陪同。",
+          highlights: ["家人协助", "药物、燃气、电器", "是否需要陪同"]
+        },
+        {
+          title: "建立外部提醒系统",
+          kicker: "把需要记住的事放到看得见的地方",
+          iconKey: "monitor",
+          body: "统一使用一个日历或清单记录任务，常用物品固定位置，重要事项设置重复提醒，避免同时使用太多零散工具。",
+          highlights: ["一个日历或清单", "固定位置", "重复提醒"]
+        },
+        {
+          title: "同步记录睡眠与情绪",
+          kicker: "帮助判断哪些因素正在影响记忆",
+          iconKey: "sleep",
+          body: "连续2周记录睡眠、情绪、潮热和记忆失误场景，就诊时一并提供，帮助医生识别可能的可改善因素。",
+          highlights: ["连续2周记录", "记忆失误场景", "可改善因素"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "多个认知困扰同时出现时，建议把专业评估、外部提醒和睡眠情绪管理结合起来。",
+      noteHighlights: ["多个认知困扰", "专业评估", "睡眠情绪管理"],
+      items: [
+        {
+          title: "安排专业评估",
+          kicker: "先确认原因，再决定训练重点",
+          iconKey: "hospital",
+          body: "建议咨询神经内科、记忆门诊或相关专业医生，尤其是症状持续加重、家人也明显察觉变化时。",
+          highlights: ["咨询神经内科、记忆门诊", "持续加重", "家人也明显察觉"]
+        },
+        {
+          title: "记录高发场景",
+          kicker: "区分遗忘、注意和执行问题",
+          iconKey: "monitor",
+          body: "连续2周记录发生了什么、当时的睡眠和情绪状态，以及是否影响任务完成，用具体场景替代笼统的“记性不好”。",
+          highlights: ["连续2周记录", "睡眠和情绪状态", "具体场景"]
+        },
+        {
+          title: "减少多任务切换",
+          kicker: "一次只处理一件重要事情",
+          iconKey: "care",
+          body: "把复杂任务拆成步骤，完成一项再进入下一项；减少同时看手机、聊天和处理工作的情况，为注意力留出空间。",
+          highlights: ["拆成步骤", "完成一项再进入下一项", "为注意力留出空间"]
+        },
+        {
+          title: "使用固定提醒",
+          kicker: "让工具替你承担记忆压力",
+          iconKey: "calendar",
+          body: "用统一日历、待办清单和固定收纳位置管理重要事项，设置明确的时间提醒，并定期与家人核对。",
+          highlights: ["统一日历、待办清单", "固定收纳位置", "与家人核对"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始改善：",
+      note: "先减少注意力负荷并建立外部提醒，坚持2至4周后观察记忆困扰是否减少。",
+      noteHighlights: ["减少注意力负荷", "外部提醒", "2至4周后观察"],
+      items: [
+        {
+          title: "记录遗忘场景",
+          kicker: "找到最容易出错的时间和任务",
+          iconKey: "monitor",
+          body: "记录遗忘发生的时间、场景和当时是否疲劳、焦虑或睡眠不足，连续观察2周。",
+          highlights: ["时间、场景", "疲劳、焦虑或睡眠不足", "连续观察2周"]
+        },
+        {
+          title: "统一清单与提醒",
+          kicker: "重要事项不要分散在多个地方",
+          iconKey: "calendar",
+          body: "选择一个常用的日历或待办工具，重要任务立即记录并设置提醒，钥匙、眼镜等常用物品固定位置。",
+          highlights: ["一个常用的日历或待办工具", "立即记录", "固定位置"]
+        },
+        {
+          title: "优先改善睡眠",
+          kicker: "睡眠稳定后再判断记忆变化",
+          iconKey: "sleep",
+          body: "保持固定起床时间，减少睡前刷屏，并同步关注焦虑、低落和潮热情况。睡眠和情绪波动常会放大记忆困扰。",
+          highlights: ["固定起床时间", "减少睡前刷屏", "睡眠和情绪波动"]
+        },
+        {
+          title: "按期重新评估",
+          kicker: "持续或加重时及时咨询",
+          iconKey: "hospital",
+          body: "建议2至4周后重新评估。如果困扰持续加重、出现重复行为或影响日常生活，请咨询专业医生。",
+          highlights: ["2至4周后重新评估", "持续加重", "咨询专业医生"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前未见明显记忆困扰，继续保持规律生活、适度用脑和稳定的睡眠状态。",
+    noteHighlights: ["未见明显记忆困扰", "规律生活", "稳定的睡眠状态"],
+    items: [
+      {
+        title: "保持规律睡眠",
+        kicker: "让大脑有稳定的整理时间",
+        iconKey: "sleep",
+        body: "继续保持相对固定的作息和充足休息，避免长期睡眠不足或频繁熬夜。",
+        highlights: ["固定的作息", "充足休息", "避免长期睡眠不足"]
+      },
+      {
+        title: "维持运动与社交",
+        kicker: "身体和大脑都需要持续活动",
+        iconKey: "strength",
+        body: "保持规律运动、阅读学习和适度社交，让认知活动自然融入日常，不必追求复杂的训练。",
+        highlights: ["规律运动", "阅读学习", "适度社交"]
+      },
+      {
+        title: "善用提醒工具",
+        kicker: "使用工具不是记忆变差",
+        iconKey: "calendar",
+        body: "重要事项及时写进清单或日历，常用物品固定位置，可以减少不必要的记忆负担。",
+        highlights: ["清单或日历", "固定位置", "减少不必要的记忆负担"]
+      }
+    ]
+  };
+}
+
+function getSleepDetailedResultHtml(result, completedAt = "") {
+  const riskLevel = getSleepRiskLevel(result.yesCount);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getSleepInterpretation(result.yesCount, focusTopics);
+  const actionPlan = getSleepActionPlan(result.yesCount);
+  return `
+    <article class="deep-final-card bone-report sleep-report ${result.className}">
+      <header class="bone-report-hero sleep-report-hero">
+        <span class="bone-report-kicker">睡眠健康测评</span>
+        <h1>你的<strong>睡眠质量</strong>报告已生成</h1>
+        <p>结合近1个月的入睡、夜醒、睡眠时长和日间状态，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>睡眠问题项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level sleep-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>睡眠风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track sleep-risk-level-track" aria-label="睡眠质量风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "sleep")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点睡眠问题")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid sleep-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic sleep-risk-topic">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的睡眠问题。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="sleep-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights.slice(0, 1))}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights.slice(0, 1))}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于睡眠健康筛查和自我观察，不能替代睡眠医学检查或医生诊断。</p>
+    </article>
+  `;
+}
+
+function getSleepRiskLevel(yesCount) {
+  if (yesCount >= 5) {
+    return { level: 3, label: "高风险", result: "睡眠问题较明显，建议尽快干预" };
+  }
+  if (yesCount >= 2) {
+    return { level: 2, label: "中风险", result: "睡眠质量需要关注" };
+  }
+  return { level: 1, label: "低风险", result: "当前睡眠状态相对稳定" };
+}
+
+function getSleepInterpretation(yesCount, focusTopics) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "入睡、夜醒与日间状态";
+  if (yesCount >= 5) {
+    return `看到这次结果，先别责怪自己。你本次睡眠评估中共有「${yesCount}」项睡眠问题，目前属于高风险，主要集中在<strong class="sleep-risk-inline">${focusText}</strong>方面。睡眠问题已经可能形成相互影响：夜间休息不足会拖累白天精力和情绪，而焦虑、潮热或作息紊乱又会让夜晚更难入睡。建议尽快开始系统干预；若伴随明显打鼾、憋醒、呼吸暂停或严重日间嗜睡，请优先咨询睡眠门诊。`;
+  }
+  if (yesCount >= 2) {
+    return `先不用太紧张，你本次睡眠评估中共有「${yesCount}」项睡眠问题，目前属于中风险，主要集中在<strong class="sleep-risk-inline">${focusText}</strong>方面。这说明睡眠已经出现一些值得管理的变化，但通常仍有较大的调整空间。先固定作息、减少睡前刺激，并连续记录一段时间，往往更容易找到真正影响睡眠的原因。`;
+  }
+  return `这次结果整体不错。你本次睡眠评估中共有「${yesCount}」项睡眠问题，目前属于低风险，当前睡眠状态相对稳定。围绝经期的潮热、情绪和生活节奏仍可能阶段性影响睡眠，继续保持规律作息、适度运动和舒适的睡眠环境，有助于把这份稳定延续下去。`;
+}
+
+function getSleepActionPlan(yesCount) {
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "当多个睡眠问题叠加并影响白天状态时，建议把专业评估、睡眠记录和日常调整结合起来。",
+      noteHighlights: ["多个睡眠问题叠加", "专业评估", "睡眠记录和日常调整"],
+      items: [
+        {
+          title: "优先排查睡眠呼吸",
+          kicker: "明显打鼾或憋醒，不要只当作睡得沉",
+          iconKey: "hospital",
+          body: "如果存在明显打鼾、憋醒、呼吸暂停，或白天难以控制地犯困，建议尽快咨询睡眠门诊，由医生判断是否需要进行睡眠监测。",
+          highlights: ["明显打鼾、憋醒、呼吸暂停", "尽快咨询睡眠门诊", "睡眠监测"]
+        },
+        {
+          title: "建立两周睡眠记录",
+          kicker: "先找出真正打断睡眠的因素",
+          iconKey: "monitor",
+          body: "连续2周记录上床时间、入睡时长、夜醒次数、实际睡眠时长、起床时间和白天困倦程度，并同步标记潮热、情绪与咖啡因摄入。",
+          highlights: ["连续2周记录", "实际睡眠时长", "潮热、情绪与咖啡因摄入"]
+        },
+        {
+          title: "固定起床时间",
+          kicker: "先稳住生物钟，再追求睡得更久",
+          iconKey: "calendar",
+          body: "每天尽量在相近时间起床，周末也不要相差太多。白天避免长时间补觉，午睡尽量控制在30分钟内，为晚间睡意积累留出空间。",
+          highlights: ["相近时间起床", "午睡尽量控制在30分钟内", "晚间睡意"]
+        },
+        {
+          title: "谨慎使用助眠产品",
+          kicker: "不要自行长期加量或混用",
+          iconKey: "care",
+          body: "若经常依赖助眠药物或保健品，请带上具体名称和用量咨询医生。不要自行长期加量、停药或混用酒精，以免掩盖真正的睡眠问题或增加风险。",
+          highlights: ["咨询医生", "不要自行长期加量、停药", "不要混用酒精"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始改善：",
+      note: "先处理最明显的睡眠问题，坚持2至4周，再根据记录判断是否需要进一步咨询。",
+      noteHighlights: ["最明显的睡眠问题", "坚持2至4周", "进一步咨询"],
+      items: [
+        {
+          title: "固定作息锚点",
+          kicker: "起床时间比强迫早睡更重要",
+          iconKey: "calendar",
+          body: "每天保持相对固定的起床时间，困了再上床，避免在床上长时间刷手机或硬熬睡意。午睡不宜过晚或过长。",
+          highlights: ["固定的起床时间", "困了再上床", "避免在床上长时间刷手机"]
+        },
+        {
+          title: "减少睡前刺激",
+          kicker: "给大脑留出逐渐安静的时间",
+          iconKey: "sleep",
+          body: "睡前1小时逐步调暗灯光、放下手机，减少工作和激烈讨论。下午后尽量减少咖啡、浓茶和能量饮料，睡前不要借酒助眠。",
+          highlights: ["睡前1小时", "放下手机", "不要借酒助眠"]
+        },
+        {
+          title: "管理潮热与夜醒",
+          kicker: "把卧室和身体都调到舒适状态",
+          iconKey: "care",
+          body: "保持卧室凉爽、通风，选择透气寝具。夜醒后若长时间没有睡意，可暂时离床做安静、低刺激的活动，困倦后再回床。",
+          highlights: ["凉爽、通风", "暂时离床", "困倦后再回床"]
+        },
+        {
+          title: "按期复评",
+          kicker: "用记录判断改善是否有效",
+          iconKey: "monitor",
+          body: "建议记录2至4周后重新评估。如果睡眠问题持续影响工作生活，或出现打鼾憋醒、严重白天嗜睡，请及时咨询医生。",
+          highlights: ["2至4周后重新评估", "持续影响工作生活", "及时咨询医生"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前睡眠状态相对稳定，继续守住规律作息和舒适的睡眠环境即可。",
+    noteHighlights: ["睡眠状态相对稳定", "规律作息", "舒适的睡眠环境"],
+    items: [
+      {
+        title: "保持规律作息",
+        kicker: "让身体知道什么时候该休息",
+        iconKey: "calendar",
+        body: "尽量保持固定的起床时间和相对稳定的入睡节奏，周末也避免大幅度补觉，让生物钟持续稳定。",
+        highlights: ["固定的起床时间", "稳定的入睡节奏", "生物钟持续稳定"]
+      },
+      {
+        title: "安排日间活动",
+        kicker: "白天动得合适，晚上更容易入睡",
+        iconKey: "strength",
+        body: "保持规律运动和白天自然光照，尽量避免临睡前进行高强度运动。适度活动有助于维持睡眠动力和日间精力。",
+        highlights: ["规律运动", "白天自然光照", "避免临睡前进行高强度运动"]
+      },
+      {
+        title: "留意睡眠变化",
+        kicker: "潮热、情绪波动时及时调整",
+        iconKey: "monitor",
+        body: "如果连续出现入睡困难、频繁夜醒或白天困倦，可以记录诱因并提前复评，不必等到明显影响生活后再处理。",
+        highlights: ["连续出现", "记录诱因", "提前复评"]
+      }
+    ]
+  };
+}
+
+function getExerciseDetailedResultHtml(result, completedAt = "") {
+  const riskLevel = getExerciseRiskLevel(result.yesCount);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getExerciseInterpretation(result.yesCount, focusTopics);
+  const actionPlan = getExerciseActionPlan(result.yesCount);
+  return `
+    <article class="deep-final-card bone-report exercise-report ${result.className}">
+      <header class="bone-report-hero exercise-report-hero">
+        <span class="bone-report-kicker">身体机能测评</span>
+        <h1>你的<strong>运动能力</strong>报告已生成</h1>
+        <p>结合日常耐力、肌肉力量、平衡能力和运动习惯，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>能力受限项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level exercise-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>运动能力风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track exercise-risk-level-track" aria-label="运动能力风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "exercise")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点能力问题")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid exercise-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic exercise-risk-topic">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的运动能力受限问题。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="exercise-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights)}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于运动能力筛查和健康管理参考，不能替代体能测试、康复评估或医生诊断。</p>
+    </article>
+  `;
+}
+
+function getExerciseRiskLevel(yesCount) {
+  if (yesCount >= 5) {
+    return { level: 3, label: "高风险", result: "运动能力受限较明显，需要重点关注" };
+  }
+  if (yesCount >= 2) {
+    return { level: 2, label: "中风险", result: "运动能力存在部分短板" };
+  }
+  return { level: 1, label: "低风险", result: "当前运动能力状态较稳定" };
+}
+
+function getExerciseInterpretation(yesCount, focusTopics) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "耐力、力量与平衡";
+  if (yesCount >= 5) {
+    return `看到这次结果，先不要急着勉强自己加大运动量。你本次运动能力评估中共有「${yesCount}」项能力受限信号，目前属于高风险，主要集中在<strong class="exercise-risk-inline">${focusText}</strong>方面。多个能力短板叠加时，盲目追求强度更容易造成疼痛、疲劳或跌倒。建议先确认运动安全，再从低强度、可完成的活动开始，在专业指导下逐步恢复耐力、力量和平衡。`;
+  }
+  if (yesCount >= 2) {
+    return `你本次运动能力评估中共有「${yesCount}」项能力受限信号，目前属于中风险，主要集中在<strong class="exercise-risk-inline">${focusText}</strong>方面。这并不代表你不适合运动，而是提示当前训练需要更有针对性。先从最明显的短板开始，循序增加活动量，比突然进行高强度锻炼更安全，也更容易坚持。`;
+  }
+  return `这次结果整体不错。你本次运动能力评估中共有「${yesCount}」项能力受限信号，目前属于低风险，当前运动能力状态较稳定。继续保持规律有氧活动，并适当加入肌力和平衡训练，有助于维持围绝经期的肌肉量、骨骼健康和日常行动能力。`;
+}
+
+function getExerciseActionPlan(yesCount) {
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你稳妥地行动起来：",
+      note: "能力受限较多时，安全比强度更重要。建议先排查不适和跌倒风险，再制定循序渐进的运动方案。",
+      noteHighlights: ["安全比强度更重要", "排查不适和跌倒风险", "循序渐进"],
+      items: [
+        {
+          title: "先确认运动安全",
+          kicker: "出现胸痛、明显气促或头晕时先停下来",
+          iconKey: "hospital",
+          body: "如果活动中出现胸痛、明显气促、心悸、头晕或近6个月反复跌倒，请先暂停自行加量，并咨询医生或康复专业人员评估是否适合运动。",
+          highlights: ["胸痛、明显气促、心悸、头晕", "先暂停自行加量", "咨询医生或康复专业人员"]
+        },
+        {
+          title: "从低强度活动开始",
+          kicker: "先做到能完成，再逐步增加",
+          iconKey: "strength",
+          body: "可以从每次5至10分钟的慢走、坐姿抬腿和温和伸展开始，每周小幅增加时长。运动时以能够正常说话、不过度气喘为宜。",
+          highlights: ["每次5至10分钟", "每周小幅增加时长", "能够正常说话"]
+        },
+        {
+          title: "强化下肢与平衡",
+          kicker: "最好有人保护或在专业指导下练习",
+          iconKey: "shield",
+          body: "可在稳固桌椅旁练习坐站、提踵和扶物单脚站立。若曾跌倒或转身不稳，建议由康复师制定训练方案，避免独自挑战高难度动作。",
+          highlights: ["稳固桌椅旁", "由康复师制定训练方案", "避免独自挑战高难度动作"]
+        },
+        {
+          title: "记录运动后反应",
+          kicker: "疼痛和疲劳是调整依据",
+          iconKey: "monitor",
+          body: "记录每次运动的类型、时长和不适。如果关节或肌肉疼痛持续超过2天，下一次应降低强度或缩短时长；持续不缓解时请咨询专业人员。",
+          highlights: ["记录每次运动", "疼痛持续超过2天", "降低强度或缩短时长"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始提升：",
+      note: "先针对已经出现的耐力、力量或平衡短板建立规律训练，让身体逐步适应，而不是一次练得太猛。",
+      noteHighlights: ["针对已经出现的短板", "规律训练", "逐步适应"],
+      items: [
+        {
+          title: "建立有氧节奏",
+          kicker: "把运动拆成更容易完成的小段",
+          iconKey: "strength",
+          body: "从快走、骑行或游泳等中等强度活动开始，可分成每次10至20分钟，逐步累积到每周150分钟，不必一次完成。",
+          highlights: ["每次10至20分钟", "逐步累积到每周150分钟", "不必一次完成"]
+        },
+        {
+          title: "每周安排抗阻训练",
+          kicker: "肌肉有力，日常活动会更轻松",
+          iconKey: "strength",
+          body: "每周安排2次下肢、背部和核心肌群训练，可使用弹力带、小哑铃或自重动作。先保证动作稳定，再增加次数和阻力。",
+          highlights: ["每周安排2次", "弹力带、小哑铃或自重动作", "先保证动作稳定"]
+        },
+        {
+          title: "加入平衡练习",
+          kicker: "每天几分钟，也能形成积累",
+          iconKey: "shield",
+          body: "在安全支撑物旁练习脚跟对脚尖站立、单脚站立或缓慢转身，每次5至10分钟。若明显不稳，应有人陪同或寻求专业指导。",
+          highlights: ["安全支撑物旁", "每次5至10分钟", "有人陪同或寻求专业指导"]
+        },
+        {
+          title: "四周后复盘",
+          kicker: "用日常能力变化判断效果",
+          iconKey: "calendar",
+          body: "坚持4周后重新观察快走、爬楼和起身是否更轻松。如果能力继续下降、出现跌倒或疼痛持续加重，请及时咨询医生或康复师。",
+          highlights: ["坚持4周后", "重新观察", "及时咨询医生或康复师"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前运动能力较稳定，继续保持有氧、抗阻和平衡训练的组合，避免只做单一运动。",
+    noteHighlights: ["运动能力较稳定", "有氧、抗阻和平衡训练", "避免只做单一运动"],
+    items: [
+      {
+        title: "保持规律有氧运动",
+        kicker: "稳定频率比偶尔猛练更重要",
+        iconKey: "strength",
+        body: "继续保持快走、骑行、游泳等有氧活动，把运动均匀安排在每周多天，避免久坐后突然进行高强度锻炼。",
+        highlights: ["均匀安排在每周多天", "避免久坐", "高强度锻炼"]
+      },
+      {
+        title: "补充肌力训练",
+        kicker: "帮助维持肌肉量与骨骼支撑",
+        iconKey: "strength",
+        body: "每周安排至少2次抗阻训练，重点照顾下肢、背部和核心肌群。选择能够稳定完成的阻力，动作质量优先于次数。",
+        highlights: ["每周安排至少2次", "下肢、背部和核心肌群", "动作质量优先"]
+      },
+      {
+        title: "持续练习平衡",
+        kicker: "把防跌倒能力练在平时",
+        iconKey: "shield",
+        body: "每周多次加入简单平衡练习，并留意转身、上下楼和夜间行走时的稳定性。若出现新的不稳或跌倒，可提前重新评估。",
+        highlights: ["简单平衡练习", "新的不稳或跌倒", "提前重新评估"]
+      }
+    ]
+  };
+}
+
+function getIncontinenceDetailedResultHtml(result, completedAt = "") {
+  const hasPrioritySignal = (result.keyPrompts || []).some(
+    (item) => getPromptId(item) === "uiBloodPainRetention"
+  );
+  const riskLevel = getIncontinenceRiskLevel(result.yesCount, hasPrioritySignal);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getIncontinenceInterpretation(
+    result.yesCount,
+    focusTopics,
+    hasPrioritySignal
+  );
+  const actionPlan = getIncontinenceActionPlan(result.yesCount, hasPrioritySignal);
+  return `
+    <article class="deep-final-card bone-report incontinence-report ${result.className}">
+      <header class="bone-report-hero incontinence-report-hero">
+        <span class="bone-report-kicker">膀胱与盆底健康测评</span>
+        <h1>你的<strong>尿失禁评估</strong>报告已生成</h1>
+        <p>结合漏尿场景、排尿频率和生活影响，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>膀胱控制问题项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level incontinence-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>膀胱健康风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track incontinence-risk-level-track" aria-label="膀胱健康风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "incontinence")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点膀胱问题")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid incontinence-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic incontinence-risk-topic ${item.title === "优先就医信号" ? "is-priority" : ""}">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的膀胱控制问题。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="incontinence-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights)}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于膀胱控制与尿失禁风险筛查，不能替代妇科、泌尿外科或盆底专科医生的诊断。</p>
+    </article>
+  `;
+}
+
+function getIncontinenceRiskLevel(yesCount, hasPrioritySignal) {
+  if (hasPrioritySignal) {
+    return { level: 3, label: "需优先就医", result: "存在需要先排查的泌尿系统信号" };
+  }
+  if (yesCount >= 5) return { level: 3, label: "高风险", result: "尿失禁相关困扰需要重点关注" };
+  if (yesCount >= 2) return { level: 2, label: "中风险", result: "膀胱控制情况需要关注" };
+  return { level: 1, label: "低风险", result: "当前未见明显尿失禁信号" };
+}
+
+function getIncontinenceInterpretation(yesCount, focusTopics, hasPrioritySignal) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "漏尿场景与排尿习惯";
+  if (hasPrioritySignal) {
+    return `这次结果中出现了需要优先处理的信号。你反馈有血尿、排尿疼痛或膀胱无法排空的情况，这类表现不能仅按普通尿失禁自行管理。请优先就医排查感染、尿潴留或其他泌尿系统问题，再由医生判断后续的盆底与膀胱管理方案。`;
+  }
+  if (yesCount >= 5) {
+    return `看到这个结果，先别觉得尴尬或自责。你本次尿失禁评估中共有「${yesCount}」项膀胱控制问题，目前属于高风险，主要集中在<strong class="incontinence-risk-inline">${focusText}</strong>方面。漏尿和尿急已经可能影响外出、运动或睡眠，建议尽快接受妇科、泌尿外科或盆底专科评估。多数问题可以通过规范训练和针对性治疗得到改善。`;
+  }
+  if (yesCount >= 2) {
+    return `你本次尿失禁评估中共有「${yesCount}」项膀胱控制问题，目前属于中风险，主要集中在<strong class="incontinence-risk-inline">${focusText}</strong>方面。这说明膀胱和盆底已经出现一些值得管理的变化。现在开始记录漏尿场景、调整排尿习惯，并在专业指导下训练盆底肌，有助于避免困扰继续加重。`;
+  }
+  return `这次结果整体不错。你本次尿失禁评估中共有「${yesCount}」项膀胱控制问题，目前属于低风险，当前未见明显尿失禁信号。继续保持规律饮水和排尿习惯，并留意咳嗽、运动或突然尿急时是否出现漏尿变化。`;
+}
+
+function getIncontinenceActionPlan(yesCount, hasPrioritySignal) {
+  if (hasPrioritySignal) {
+    return {
+      lead: "请先处理需要优先就医的情况：",
+      note: "血尿、排尿疼痛或无法排空膀胱不能只靠自我训练处理，应先由医生明确原因。",
+      noteHighlights: ["血尿、排尿疼痛或无法排空膀胱", "不能只靠自我训练处理", "先由医生明确原因"],
+      items: [
+        {
+          title: "及时就医排查",
+          kicker: "优先前往泌尿外科、妇科或急诊",
+          iconKey: "hospital",
+          body: "请尽快就医，并记录症状开始时间、尿液颜色、疼痛位置、排尿量及伴随发热情况。如果完全无法排尿、疼痛剧烈或伴明显不适，请及时寻求紧急医疗帮助。",
+          highlights: ["尽快就医", "记录症状开始时间", "紧急医疗帮助"]
+        },
+        {
+          title: "暂停自行强化训练",
+          kicker: "先明确原因，再开始盆底方案",
+          iconKey: "shield",
+          body: "在感染、尿潴留或其他泌尿系统问题尚未排除前，不要自行进行高强度盆底肌训练，也不要随意使用药物或保健品。",
+          highlights: ["尚未排除前", "不要自行进行高强度盆底肌训练", "不要随意使用药物"]
+        },
+        {
+          title: "带上排尿记录",
+          kicker: "帮助医生更快了解情况",
+          iconKey: "monitor",
+          body: "如条件允许，记录饮水、排尿时间、排尿量、尿急、漏尿和疼痛情况，就诊时一并提供给医生。",
+          highlights: ["记录饮水、排尿时间、排尿量", "尿急、漏尿和疼痛", "提供给医生"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "当多种漏尿表现已经影响生活时，专业评估、排尿记录和个体化盆底训练需要结合进行。",
+      noteHighlights: ["影响生活", "专业评估", "个体化盆底训练"],
+      items: [
+        {
+          title: "预约专科评估",
+          kicker: "先分清漏尿类型，再决定怎么练",
+          iconKey: "hospital",
+          body: "建议尽快咨询妇科、泌尿外科或盆底康复专科，由专业人员判断是压力性、尿急性还是混合性漏尿，并制定针对性方案。",
+          highlights: ["尽快咨询", "判断漏尿类型", "针对性方案"]
+        },
+        {
+          title: "完成三天排尿日记",
+          kicker: "把频率、场景和影响记录清楚",
+          iconKey: "monitor",
+          body: "连续3天记录饮水量、排尿时间、尿急程度、漏尿场景、用垫情况和夜尿次数，就诊时带给医生参考。",
+          highlights: ["连续3天记录", "漏尿场景、用垫情况", "带给医生参考"]
+        },
+        {
+          title: "专业指导盆底训练",
+          kicker: "先确认发力正确，避免越练越紧",
+          iconKey: "strength",
+          body: "建议在盆底康复专业人员指导下学习正确收缩与放松，不要只追求用力或长时间憋住。训练方案需要根据漏尿类型和盆底状态调整。",
+          highlights: ["专业人员指导", "正确收缩与放松", "根据漏尿类型和盆底状态调整"]
+        },
+        {
+          title: "降低生活限制",
+          kicker: "不要因为漏尿完全停止活动",
+          iconKey: "care",
+          body: "在做好防护和训练的同时，逐步恢复安全的外出和运动。不要通过过度少喝水来避免漏尿，以免增加尿液浓缩和膀胱刺激。",
+          highlights: ["逐步恢复", "不要通过过度少喝水", "膀胱刺激"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始改善：",
+      note: "先记录症状并确认盆底肌发力方式，坚持一段时间后观察漏尿频率和生活影响是否下降。",
+      noteHighlights: ["记录症状", "确认盆底肌发力方式", "观察漏尿频率"],
+      items: [
+        {
+          title: "记录漏尿场景",
+          kicker: "找到咳嗽、运动或尿急中的规律",
+          iconKey: "monitor",
+          body: "连续3天记录饮水、排尿和漏尿情况，重点标记咳嗽、跑跳、突然尿急或夜间发生的次数。",
+          highlights: ["连续3天记录", "咳嗽、跑跳、突然尿急", "发生的次数"]
+        },
+        {
+          title: "学习正确盆底训练",
+          kicker: "收缩和放松同样重要",
+          iconKey: "strength",
+          body: "可先咨询盆底康复专业人员确认发力是否正确，再安排规律训练。若训练后出现疼痛或排尿更困难，应暂停并咨询。",
+          highlights: ["专业人员确认", "规律训练", "暂停并咨询"]
+        },
+        {
+          title: "保持合理饮水",
+          kicker: "不要因为担心漏尿就不喝水",
+          iconKey: "care",
+          body: "保持分次、规律饮水，减少一次大量饮水。咖啡、浓茶或酒精若会加重尿急，可记录后适度减少。",
+          highlights: ["分次、规律饮水", "减少一次大量饮水", "适度减少"]
+        },
+        {
+          title: "按期复评",
+          kicker: "症状影响生活时尽早咨询",
+          iconKey: "calendar",
+          body: "建议坚持记录与训练4至8周后重新评估。如果漏尿加重或已经限制外出、运动、睡眠和性生活，请尽早就医。",
+          highlights: ["4至8周后重新评估", "已经限制", "尽早就医"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前未见明显膀胱控制问题，继续保持规律饮水、排尿习惯和盆底健康意识。",
+    noteHighlights: ["未见明显膀胱控制问题", "规律饮水", "盆底健康意识"],
+    items: [
+      {
+        title: "保持规律饮水",
+        kicker: "不过量，也不要过度限制",
+        iconKey: "care",
+        body: "根据日常活动分次饮水，不要因为担心漏尿而刻意少喝水，也避免短时间内大量饮水。",
+        highlights: ["分次饮水", "不要刻意少喝水", "避免短时间内大量饮水"]
+      },
+      {
+        title: "留意早期变化",
+        kicker: "咳嗽、跑跳和尿急时多观察",
+        iconKey: "monitor",
+        body: "如果出现新的漏尿、尿急或夜尿增多，可记录发生场景和频率，并提前重新评估。",
+        highlights: ["新的漏尿、尿急", "记录发生场景和频率", "提前重新评估"]
+      },
+      {
+        title: "关注盆底健康",
+        kicker: "有症状时先确认，再开始训练",
+        iconKey: "strength",
+        body: "日常保持适度活动。若未来出现漏尿，不要盲目反复用力收缩，建议先由专业人员评估盆底肌状态。",
+        highlights: ["适度活动", "不要盲目反复用力收缩", "专业人员评估"]
+      }
+    ]
+  };
+}
+
+function getAbdominalFatDetailedResultHtml(result, completedAt = "") {
+  const riskLevel = getAbdominalFatRiskLevel(result.yesCount);
+  const topicGroups = getVitaminDRiskTopicGroups(result.keyPrompts || []);
+  const focusTopics = topicGroups.slice(0, 3).map((item) => item.title);
+  const interpretation = getAbdominalFatInterpretation(result.yesCount, focusTopics);
+  const actionPlan = getAbdominalFatActionPlan(result.yesCount);
+  return `
+    <article class="deep-final-card bone-report abdominal-fat-report ${result.className}">
+      <header class="bone-report-hero abdominal-fat-report-hero">
+        <span class="bone-report-kicker">身体机能与代谢测评</span>
+        <h1>你的<strong>腹部脂肪堆积</strong>报告已生成</h1>
+        <p>结合腰围、体重变化、饮食运动与代谢指标，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>风险项</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level abdominal-fat-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>风险等级</span>
+            <strong>${riskLevel.label}</strong>
+          </div>
+          <div class="bone-risk-level-track abdominal-fat-risk-level-track" aria-label="腹部脂肪堆积风险等级 ${riskLevel.label}">
+            ${[1, 2, 3]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.result}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "abdominalFat")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点风险项")}
+        ${
+          topicGroups.length
+            ? `<div class="vitamin-risk-topic-grid abdominal-risk-topic-grid">${topicGroups
+                .map(
+                  (item) => `
+                    <div class="vitamin-risk-topic abdominal-risk-topic">
+                      <span>${item.title}</span>
+                      <strong>${item.count}项</strong>
+                    </div>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未发现需要重点提示的腹部脂肪与代谢风险项。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="abdominal-action-intro">
+          <strong>${actionPlan.lead}</strong>
+          <p>${highlightAdviceKeywords(actionPlan.note, actionPlan.noteHighlights)}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionPlan.items
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.iconKey)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightAdviceKeywords(item.body, item.highlights)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于腹部脂肪与代谢风险筛查，不能替代腰围测量、医学检查或医生诊断。</p>
+    </article>
+  `;
+}
+
+function getAbdominalFatRiskLevel(yesCount) {
+  if (yesCount >= 5) {
+    return { level: 3, label: "高风险", result: "腹部脂肪与代谢风险需重点关注" };
+  }
+  if (yesCount >= 2) {
+    return { level: 2, label: "中风险", result: "腹部脂肪管理需要关注" };
+  }
+  return { level: 1, label: "低风险", result: "当前未见明显腹部脂肪风险信号" };
+}
+
+function getAbdominalFatInterpretation(yesCount, focusTopics) {
+  const focusText = focusTopics.length ? focusTopics.join("、") : "腰围、饮食与运动";
+  if (yesCount >= 5) {
+    return `这次结果需要你认真重视起来。你本次腹部脂肪堆积评估中共有「${yesCount}」项风险信号，目前属于高风险，尤其在<strong class="abdominal-risk-inline">${focusText}</strong>方面更为突出。多项因素叠加时，腹部脂肪更容易与血糖、血脂和血压变化相互影响。先别焦虑，从确认腰围和代谢指标开始，再把饮食与运动调整拆成能长期坚持的小步骤。`;
+  }
+  if (yesCount >= 2) {
+    return `先不用紧张，你本次腹部脂肪堆积评估中共有「${yesCount}」项风险信号，目前属于中风险，主要集中在<strong class="abdominal-risk-inline">${focusText}</strong>方面。这并不等于已经出现代谢疾病，但提示腰腹脂肪正在成为值得管理的重点。现在开始调整久坐、饮食和运动习惯，通常比等体重明显上升后再处理更从容。`;
+  }
+  return `这次结果整体不错。你本次腹部脂肪堆积评估中共有「${yesCount}」项风险信号，目前属于低风险，当前未见明显的腹部脂肪与代谢风险信号。围绝经期后脂肪分布仍可能逐渐向腹部转移，建议继续保持规律活动和均衡饮食，并定期记录腰围与体重变化。`;
+}
+
+function getAbdominalFatActionPlan(yesCount) {
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "风险因素较多时，建议先确认腰围和代谢指标，再在专业指导下制定可持续的体重管理计划。",
+      noteHighlights: ["确认腰围和代谢指标", "专业指导", "可持续的体重管理计划"],
+      items: [
+        {
+          title: "完善代谢检查",
+          kicker: "先把关键数据弄清楚",
+          iconKey: "hospital",
+          body: "建议尽快测量腰围、血压，并结合医生建议检查空腹血糖、血脂等指标；如果已有脂肪肝、血糖或血压异常，请把检查结果带给医生综合评估。",
+          highlights: ["尽快测量腰围、血压", "空腹血糖、血脂", "综合评估"]
+        },
+        {
+          title: "调整饮食结构",
+          kicker: "先减糖和夜宵，不靠极端节食",
+          iconKey: "nutrition",
+          body: "优先减少含糖饮料、甜食、夜宵和过量精制主食，保证蔬菜、优质蛋白和全谷物摄入。不要用不吃饭或单一食物减重，稳定执行比短期掉秤更重要。",
+          highlights: ["减少含糖饮料、甜食、夜宵", "不要用不吃饭或单一食物减重", "稳定执行"]
+        },
+        {
+          title: "循序增加运动",
+          kicker: "有氧与抗阻训练一起安排",
+          iconKey: "strength",
+          body: "从每次10至20分钟的快走开始，逐步达到每周至少150分钟中等强度活动，并安排每周2次抗阻训练。若运动时出现胸痛、明显气促或头晕，请停止并及时就医。",
+          highlights: ["每周至少150分钟", "每周2次抗阻训练", "停止并及时就医"]
+        },
+        {
+          title: "持续记录变化",
+          kicker: "关注腰围趋势，不只盯体重",
+          iconKey: "monitor",
+          body: "每周在相近时间记录一次体重，每月测量一次腰围，同时记录饮食和运动完成情况。连续观察8至12周后复盘趋势，再与医生或营养师讨论下一步。",
+          highlights: ["每月测量一次腰围", "连续观察8至12周", "复盘趋势"]
+        }
+      ]
+    };
+  }
+  if (yesCount >= 2) {
+    return {
+      lead: "你可以从以下几步开始改善：",
+      note: "先优先处理已经出现的风险项，用小幅、稳定的生活方式调整，减少腰腹脂肪继续堆积。",
+      noteHighlights: ["优先处理已经出现的风险项", "小幅、稳定", "减少腰腹脂肪继续堆积"],
+      items: [
+        {
+          title: "建立腰围记录",
+          kicker: "让变化看得见",
+          iconKey: "monitor",
+          body: "每月固定时间测量腰围，每周记录体重，并在同一条件下对比。比起每天反复称重，观察4至8周的趋势更有参考价值。",
+          highlights: ["每月固定时间测量腰围", "每周记录体重", "观察4至8周的趋势"]
+        },
+        {
+          title: "减少高糖与夜宵",
+          kicker: "先改最常出现的一项",
+          iconKey: "nutrition",
+          body: "把含糖饮料逐步换成白水或无糖饮品，减少甜食和夜宵频率，主食适量加入全谷物。一次只改一两个习惯，更容易长期坚持。",
+          highlights: ["换成白水或无糖饮品", "减少甜食和夜宵频率", "长期坚持"]
+        },
+        {
+          title: "打断久坐",
+          kicker: "每小时起来活动几分钟",
+          iconKey: "strength",
+          body: "久坐每满一小时就起身活动3至5分钟，并逐步把快走、骑行等中等强度运动累积到每周150分钟，同时加入简单抗阻训练。",
+          highlights: ["每满一小时", "活动3至5分钟", "每周150分钟"]
+        },
+        {
+          title: "按期复评",
+          kicker: "给调整留出验证时间",
+          iconKey: "calendar",
+          body: "建议坚持生活方式调整8至12周后重新评估。如果腰围或体重仍持续上升，或血糖、血脂、血压出现异常，请及时咨询医生。",
+          highlights: ["8至12周后重新评估", "持续上升", "及时咨询医生"]
+        }
+      ]
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "目前没有明显风险，继续用规律饮食、日常活动和定期记录守住稳定状态。",
+    noteHighlights: ["没有明显风险", "规律饮食", "定期记录"],
+    items: [
+      {
+        title: "定期测量腰围",
+        kicker: "体重稳定，也要看脂肪分布",
+        iconKey: "monitor",
+        body: "建议每月固定时间测量一次腰围，并同步记录体重。若裤腰持续变紧或腰围明显增加，可以提前开始生活方式调整。",
+        highlights: ["每月固定时间测量一次腰围", "同步记录体重", "提前开始生活方式调整"]
+      },
+      {
+        title: "保持均衡饮食",
+        kicker: "日常吃对，比临时节食更可靠",
+        iconKey: "nutrition",
+        body: "三餐中保持蔬菜、优质蛋白和适量主食，少喝含糖饮料，减少高油高糖夜宵。无需刻意挨饿，把健康选择变成日常习惯更重要。",
+        highlights: ["少喝含糖饮料", "减少高油高糖夜宵", "日常习惯"]
+      },
+      {
+        title: "维持规律活动",
+        kicker: "少坐一点，多动一点",
+        iconKey: "strength",
+        body: "尽量减少连续久坐，保持每周规律快走、骑行或游泳，并搭配适量抗阻训练，帮助维持肌肉量和健康的体脂分布。",
+        highlights: ["减少连续久坐", "适量抗阻训练", "维持肌肉量"]
+      }
+    ]
+  };
+}
+
+function getOsteoporosisDetailedResultHtml(result, completedAt = "") {
+  const interpretation = getOsteoporosisInterpretation(result.yesCount);
+  const riskLevel = getOsteoporosisRiskLevel(result.yesCount);
+  const actionItems = getOsteoporosisActionItems(result.yesCount);
+  const actionIntro = getOsteoporosisActionIntro(result.yesCount);
+  const signalItems = getOsteoporosisSignalItems(result.keyPrompts || []);
+  return `
+    <article class="deep-final-card bone-report ${result.className}">
+      <header class="bone-report-hero">
+        <span class="bone-report-kicker">骨骼健康测评</span>
+        <h1>你的<strong>骨质疏松</strong>报告已生成</h1>
+        <p>结合围绝经期骨量变化特征，为你解读本次测评结果</p>
+        ${renderReportCompletedAt(completedAt)}
+      </header>
+
+      <section class="bone-report-section bone-result-section">
+        ${renderBoneReportSectionHead("01", "结果解读")}
+        <div class="bone-risk-count">
+          <span>骨质疏松风险因素</span>
+          <strong>「${result.yesCount}」项</strong>
+        </div>
+        <div class="bone-risk-level is-level-${riskLevel.level}">
+          <div class="bone-risk-level-heading">
+            <span>风险等级</span>
+            <strong>${riskLevel.level}级</strong>
+          </div>
+          <div class="bone-risk-level-track" aria-label="骨质疏松风险等级 ${riskLevel.level} 级，共 4 级">
+            ${[1, 2, 3, 4]
+              .map((level) => `<i class="${level <= riskLevel.level ? "is-active" : ""}"></i>`)
+              .join("")}
+          </div>
+          <p>${riskLevel.label}</p>
+        </div>
+        <p class="bone-result-copy">${highlightReportKeywords(interpretation, "osteoporosis")}</p>
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("02", "重点信号")}
+        ${
+          signalItems.length
+            ? `<div class="bone-signal-list">${signalItems
+                .map(
+                  (item) => `
+                    <article class="bone-signal-card">
+                      <span aria-hidden="true">!</span>
+                      <div>
+                        <h3>${item.title}</h3>
+                        <p>${item.text}</p>
+                      </div>
+                    </article>
+                  `
+                )
+                .join("")}</div>`
+            : `<div class="bone-signal-empty"><span aria-hidden="true">✓</span><p>本次未触发需要强化提示的重点信号。</p></div>`
+        }
+      </section>
+
+      <section class="bone-report-section">
+        ${renderBoneReportSectionHead("03", "行动建议")}
+        <div class="bone-action-intro">
+          <strong>${actionIntro.lead}</strong>
+          <p>${actionIntro.note}</p>
+        </div>
+        <div class="bone-action-list">
+          ${actionItems
+            .map(
+              (item) => `
+                <article class="bone-action-card">
+                  <span class="bone-action-icon" aria-hidden="true">${getOsteoporosisActionIcon(item.title)}</span>
+                  <div>
+                    <h3>${item.title}</h3>
+                    <strong>${item.kicker}</strong>
+                    <p>${highlightOsteoporosisAdvice(item.body, item.title)}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <p class="bone-report-disclaimer">本问卷用于风险筛查，不能替代骨密度检查或医生诊断。</p>
+    </article>
+  `;
+}
+
+function getOsteoporosisActionIcon(title) {
+  const iconType = {
+    晒太阳: "sun",
+    负重运动: "strength",
+    负重训练: "strength",
+    科学运动: "strength",
+    均衡饮食: "nutrition",
+    钙与维生素D: "nutrition",
+    自我监测: "monitor",
+    定期复评: "calendar",
+    长期规律管理: "calendar",
+    防跌倒: "shield",
+    排查跌倒风险: "shield",
+    严防跌倒: "shield",
+    骨密度检查: "hospital",
+    优先就医: "hospital",
+    特殊情况就医: "hospital",
+    骨折立即就医: "hospital",
+    基础疾病管理: "care",
+    遵医嘱治疗: "care",
+    sun: "sun",
+    strength: "strength",
+    nutrition: "nutrition",
+    monitor: "monitor",
+    calendar: "calendar",
+    sleep: "sleep",
+    shield: "shield",
+    hospital: "hospital",
+    care: "care"
+  }[title] || "care";
+  const icons = {
+    sun: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"></path></svg>',
+    strength: '<svg viewBox="0 0 24 24"><path d="M4 9v6M7 7.5v9M17 7.5v9M20 9v6M7 12h10M2.5 10.5v3M21.5 10.5v3"></path></svg>',
+    nutrition: '<svg viewBox="0 0 24 24"><path d="M12 20c-4.7-2.1-7-5.3-7-9.2A3.8 3.8 0 0 1 8.8 7c1.4 0 2.5.7 3.2 1.7A3.8 3.8 0 0 1 19 10.8c0 3.9-2.3 7.1-7 9.2Z"></path><path d="M12 8.7c0-2.5 1.2-4.1 3.6-4.7M12 8.7c-1.6-1.8-3.4-2.3-5.3-1.5"></path></svg>',
+    monitor: '<svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 20h8M12 16.5V20"></path><path d="m7 12 2-2 2 1.8 3-4 3 2"></path></svg>',
+    calendar: '<svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="2"></rect><path d="M8 3.5v4M16 3.5v4M4 9.5h16M8 13h3M8 16h6"></path></svg>',
+    sleep: '<svg viewBox="0 0 24 24"><path d="M18.8 15.7A8 8 0 0 1 8.3 5.2 8 8 0 1 0 18.8 15.7Z"></path><path d="m16.2 5.2.5 1.2 1.3.5-1.3.5-.5 1.2-.5-1.2-1.3-.5 1.3-.5z"></path></svg>',
+    shield: '<svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.2c0 4.3-2.4 7.4-7 9.3-4.6-1.9-7-5-7-9.3V6z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>',
+    hospital: '<svg viewBox="0 0 24 24"><path d="M5 20V6h14v14M3 20h18M9 6V3.5h6V6"></path><path d="M12 9v6M9 12h6M8 17h2M14 17h2"></path></svg>',
+    care: '<svg viewBox="0 0 24 24"><path d="M12 20c-4.8-2.4-7.2-5.3-7.2-9A3.7 3.7 0 0 1 8.5 7.3c1.5 0 2.7.8 3.5 2 0 0 1.2-2 3.5-2a3.7 3.7 0 0 1 3.7 3.7c0 3.7-2.4 6.6-7.2 9Z"></path><path d="M8 13h2l1.1-2.1 1.8 4.2 1.1-2.1h2"></path></svg>'
+  };
+  return icons[iconType];
+}
+
+function highlightOsteoporosisAdvice(text, title) {
+  const keywords = osteoporosisAdviceHighlights[title] || [];
+  return highlightAdviceKeywords(text, keywords);
+}
+
+function highlightReportKeywords(text, assessmentId) {
+  const keywordMap = {
+    osteoporosis: [
+      "目前没有发现明显的骨质疏松风险信号",
+      "1-2项风险因素并不代表你已经患病",
+      "3-4项骨质疏松相关风险因素",
+      "5项及以上的骨质疏松相关风险因素",
+      "越早调整，效果越明显",
+      "该找专业医生聊聊了",
+      "及时止损的机会",
+      "围绝经期"
+    ],
+    vitaminD: [
+      "维生素D缺乏的可能性相对较低",
+      "存在一定的维生素D不足倾向",
+      "存在较高的维生素D缺乏可能",
+      "低风险",
+      "中风险",
+      "高风险",
+      "主动干预",
+      "尽早重视"
+    ],
+    depression: [
+      "测评显示你的心理很健康",
+      "轻度抑郁情绪",
+      "中度抑郁状态",
+      "中重度抑郁的结果",
+      "重度抑郁",
+      "并非抑郁症",
+      "需要重视了",
+      "不要硬抗了",
+      "必须求助"
+    ],
+    abdominalFat: [
+      "当前未见明显的腹部脂肪与代谢风险信号",
+      "腹部脂肪正在成为值得管理的重点",
+      "腹部脂肪与代谢风险需重点关注",
+      "低风险",
+      "中风险",
+      "高风险",
+      "规律活动和均衡饮食",
+      "确认腰围和代谢指标"
+    ],
+    sleep: [
+      "当前睡眠状态相对稳定",
+      "睡眠已经出现一些值得管理的变化",
+      "睡眠问题已经可能形成相互影响"
+    ],
+    exercise: [
+      "当前运动能力状态较稳定",
+      "当前训练需要更有针对性",
+      "能力受限较明显",
+      "低风险",
+      "中风险",
+      "高风险",
+      "安全比强度更重要",
+      "循序增加活动量"
+    ],
+    anxiety: [
+      "当前未见明显焦虑风险",
+      "紧张和担忧已经开始影响",
+      "焦虑困扰较明显",
+      "低风险",
+      "中风险",
+      "高风险",
+      "尽快寻求专业支持",
+      "优先排除身体急症"
+    ],
+    incontinence: [
+      "当前未见明显尿失禁信号",
+      "膀胱和盆底已经出现一些值得管理的变化",
+      "尿失禁相关困扰需要重点关注",
+      "需要优先处理的信号",
+      "低风险",
+      "中风险",
+      "高风险",
+      "优先就医"
+    ],
+    memory: [
+      "当前未见明显记忆困扰",
+      "记忆状态需要关注",
+      "记忆与认知困扰较明显",
+      "记忆问题已经影响工作、家庭或日常安全",
+      "低风险",
+      "中风险",
+      "高风险",
+      "尽快与家人沟通",
+      "专业评估"
+    ]
+  };
+  const keywords = keywordMap[assessmentId] || [
+    "暂未发现明显风险",
+    "需关注",
+    "风险偏高",
+    "专业评估"
+  ];
+  if (!text || !keywords.length) return text;
+  const pattern = keywords
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .map((keyword) => keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+  return text.replace(
+    new RegExp(pattern, "g"),
+    (keyword) => `<mark class="report-keyword-highlight">${keyword}</mark>`
+  );
+}
+
+function highlightAdviceKeywords(text, keywords = []) {
+  if (!keywords.length) return text;
+  const pattern = keywords
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .map((keyword) => keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+  return text.replace(
+    new RegExp(pattern, "g"),
+    (keyword) => `<mark class="bone-advice-highlight">${keyword}</mark>`
+  );
+}
+
+function renderBoneReportSectionHead(index, title) {
+  return `
+    <header class="bone-section-head">
+      <span>${index}</span>
+      <h2>${title}</h2>
+    </header>
+  `;
+}
+
+function getOsteoporosisInterpretation(yesCount) {
+  return (
+    osteoporosisInterpretations.find(
+      (item) => yesCount >= item.min && (item.max == null || yesCount <= item.max)
+    ) || osteoporosisInterpretations[osteoporosisInterpretations.length - 1]
+  ).body;
+}
+
+function getOsteoporosisRiskLevel(yesCount) {
+  if (yesCount >= 5) {
+    return { level: 4, label: "你属于骨质疏松高关注人群" };
+  }
+  if (yesCount >= 3) {
+    return { level: 3, label: "你存在较多骨健康风险信号" };
+  }
+  if (yesCount >= 1) {
+    return { level: 2, label: "你已有部分骨质疏松风险因素" };
+  }
+  return { level: 1, label: "当前未见明显骨健康风险信号" };
+}
+
+function getOsteoporosisActionItems(yesCount) {
+  return (
+    osteoporosisActionPlans.find(
+      (plan) => yesCount >= plan.min && (plan.max == null || yesCount <= plan.max)
+    ) || osteoporosisActionPlans[osteoporosisActionPlans.length - 1]
+  ).items;
+}
+
+function getOsteoporosisActionIntro(yesCount) {
+  if (yesCount >= 5) {
+    return {
+      lead: "接下来这几步，建议你尽快行动起来：",
+      note: "风险因素较多、又叠加在一起时，靠自己摸索往往不够，建议优先寻求专业帮助，同时做好日常防护："
+    };
+  }
+  if (yesCount >= 3) {
+    return {
+      lead: "你可以从以下几步开始行动：",
+      note: "风险因素较多时，光靠自我调理已经不够，建议把专业医疗评估和日常管理结合起来，一步步来："
+    };
+  }
+  if (yesCount >= 1) {
+    return {
+      lead: "你可以试试下面的方法来降低风险：",
+      note: "为了不让这些风险因素继续累积，你可以尝试以下几个实用的调理方法，从生活细节里帮骨骼“扳回一局”："
+    };
+  }
+  return {
+    lead: "你可以试试下面的方法来保持这份好状态：",
+    note: "虽然目前没有明显风险，但骨骼健康值得长期用心经营。你可以从以下几个简单易行的日常习惯做起："
+  };
+}
+
+function getOsteoporosisSignalItems(items) {
+  const promptConfig = deepAssessments.osteoporosis.keyPrompts;
+  return items
+    .map(normalizePromptItem)
+    .filter(Boolean)
+    .map((item) => {
+      const configured = promptConfig.find((prompt) => prompt.id === getPromptId(item));
+      if (configured) return configured;
+      const text = getReminderText(item);
+      const separatorIndex = text.indexOf("：");
+      return {
+        id: getPromptId(item),
+        title: item.title || (separatorIndex > -1 ? text.slice(0, separatorIndex) : "重点风险信号"),
+        text: separatorIndex > -1 ? text.slice(separatorIndex + 1) : text
+      };
+    });
 }
 
 function renderReportCompletedAt(completedAt) {
@@ -1162,13 +3988,48 @@ function getDeepReminderItems(result) {
 
 function getDeepResult(config) {
   const questionIds = config.steps.flatMap((step) => step.questions.map(([id]) => id));
-  const yesCount = questionIds.filter((id) => state.deepAnswers?.[id] === "yes").length;
+  const isScoreAssessment = config.answerType === "score4";
+  const scoreTotal = isScoreAssessment
+    ? questionIds.reduce((total, id) => total + Number(state.deepAnswers?.[id] || 0), 0)
+    : null;
+  const scoreMax = isScoreAssessment ? questionIds.length * 3 : null;
+  const yesCount = isScoreAssessment
+    ? questionIds.filter((id) => Number(state.deepAnswers?.[id] || 0) > 0).length
+    : questionIds.filter((id) => state.deepAnswers?.[id] === "yes").length;
   const highAt = Math.max(5, Math.ceil(questionIds.length * 0.6));
   const mediumAt = Math.max(2, Math.ceil(questionIds.length * 0.25));
   const kicker = config.resultKicker || "健康风险提示";
   const keyPrompts = (config.keyPrompts || [])
-    .filter((item) => state.deepAnswers?.[item.id] === "yes")
-    .map((item) => ({ id: item.id, text: item.text }));
+    .filter((item) =>
+      isScoreAssessment
+        ? Number(state.deepAnswers?.[item.id] || 0) > 0
+        : state.deepAnswers?.[item.id] === "yes"
+    )
+    .map((item) => ({ id: item.id, title: item.title || "", text: item.text }));
+  if (config.scoreBands) {
+    const band =
+      config.scoreBands.find(
+        (item) => scoreTotal >= item.min && (item.max == null || scoreTotal <= item.max)
+      ) || config.scoreBands[config.scoreBands.length - 1];
+    return {
+      yesCount,
+      scoreTotal,
+      scoreMax,
+      selfHarmScore: Number(state.deepAnswers?.dpSelfHarm || 0),
+      kicker,
+      keyPrompts,
+      countLabel: config.countLabel || "分",
+      className: band.className,
+      level: band.label,
+      severityLevel: band.level,
+      management: band.management,
+      actionIntro: band.actionIntro,
+      summary: band.summary,
+      cta: band.level >= 4 ? "尽快寻求专业帮助" : "查看支持建议",
+      tip: config.note,
+      recommendations: band.recommendations
+    };
+  }
   if (config.resultBands) {
     const band = config.resultBands.find((item) => yesCount >= item.min && (item.max == null || yesCount <= item.max)) || config.resultBands[config.resultBands.length - 1];
     return {
@@ -1239,6 +4100,12 @@ function getDeepAssessmentConfig(assessmentId) {
 }
 
 function renderDeepQuestion(id, question) {
+  if (["lowBmi", "vdBmiOver28"].includes(id)) {
+    return renderBmiDerivedQuestion(id, question);
+  }
+  if (activeDeepAssessmentId === "depression") {
+    return renderDeepScoreQuestion(id, question);
+  }
   const value = state.deepAnswers?.[id] || "";
   return `
     <article class="deep-question-card">
@@ -1255,6 +4122,110 @@ function renderDeepQuestion(id, question) {
       </div>
     </article>
   `;
+}
+
+function renderDeepScoreQuestion(id, question) {
+  const value = state.deepAnswers?.[id] ?? "";
+  const options = [
+    ["0", "没有或极少"],
+    ["1", "好几天"],
+    ["2", "一半以上的日子"],
+    ["3", "几乎每天"]
+  ];
+  return `
+    <article class="deep-question-card deep-score-question">
+      <h3>${question}</h3>
+      <div class="deep-score-options" role="radiogroup" aria-label="${question}">
+        ${options
+          .map(
+            ([score, label]) => `
+              <label class="deep-score-option ${value === score ? "is-selected" : ""}">
+                <input type="radio" name="deep_${id}" value="${score}" ${value === score ? "checked" : ""} />
+                <span class="deep-score-label">${label}</span>
+              </label>
+            `
+          )
+          .join("")}
+      </div>
+    </article>
+  `;
+}
+
+function renderBmiDerivedQuestion(id, question) {
+  const bmi = getBmi({
+    height: state.draft.height || state.biometrics?.height,
+    weight: state.draft.weight || state.biometrics?.weight
+  });
+  const isHighBmiQuestion = id === "vdBmiOver28";
+  if (!bmi) {
+    return `
+      <article class="deep-question-card deep-derived-question">
+        <h3>${question}</h3>
+        <div class="deep-derived-empty">
+          <strong>等待生成 BMI</strong>
+          <p>请在上方选择身高和体重，系统将自动判断该项。</p>
+        </div>
+      </article>
+    `;
+  }
+  const matchesRisk = isHighBmiQuestion ? bmi > 28 : bmi < 19;
+  const value = matchesRisk ? "yes" : "no";
+  const resultText = isHighBmiQuestion
+    ? value === "yes"
+      ? "是，BMI超过28"
+      : "否，BMI未超过28"
+    : value === "yes"
+      ? "是，体质量过轻"
+      : "否，未达到体质量过轻标准";
+  const ruleText = isHighBmiQuestion
+    ? "BMI＞28 时判定为“是”"
+    : "BMI＜19 时判定为“是”";
+  return `
+    <article class="deep-question-card deep-derived-question">
+      <h3>${question}</h3>
+      <div class="deep-derived-bmi">
+        <span>自动带入 BMI</span>
+        <strong>${bmi.toFixed(1)}</strong>
+        <p>${resultText}</p>
+      </div>
+      <div class="deep-options is-derived" aria-label="根据 BMI 自动判断">
+        <span class="${value === "yes" ? "is-selected" : ""}">是</span>
+        <span class="${value === "no" ? "is-selected" : ""}">否</span>
+      </div>
+      <p class="deep-derived-note">由已填写的身高、体重自动计算；${ruleText}。</p>
+    </article>
+  `;
+}
+
+function syncBmiDerivedAnswer() {
+  const bmi = getBmi({
+    height: state.draft.height || state.biometrics?.height,
+    weight: state.draft.weight || state.biometrics?.weight
+  });
+  if (!bmi) {
+    let changed = false;
+    ["lowBmi", "vdBmiOver28"].forEach((id) => {
+      if (!(id in state.deepAnswers)) return;
+      delete state.deepAnswers[id];
+      changed = true;
+    });
+    if (changed) {
+      saveState();
+    }
+    return;
+  }
+  const nextValues = {
+    lowBmi: bmi < 19 ? "yes" : "no",
+    vdBmiOver28: bmi > 28 ? "yes" : "no"
+  };
+  const changed = Object.entries(nextValues).some(([id, value]) => {
+    if (state.deepAnswers[id] === value) return false;
+    state.deepAnswers[id] = value;
+    return true;
+  });
+  if (changed) {
+    saveState();
+  }
 }
 
 function renderConsentStep() {
@@ -1502,6 +4473,7 @@ function updateDraftFromInput(event) {
   }
   if (["height", "weight"].includes(input.name)) {
     updateBiometricsFromDraft();
+    syncBmiDerivedAnswer();
     updateDeepBmiPreview();
   }
   saveState();
@@ -1520,7 +4492,10 @@ function updateDeepBmiPreview() {
   const value = $("#deepBmiValue");
   const level = $("#deepBmiLevel");
   if (!value || !level) return;
-  const bmi = getBmi(state.draft);
+  const bmi = getBmi({
+    height: state.draft.height || state.biometrics?.height,
+    weight: state.draft.weight || state.biometrics?.weight
+  });
   value.textContent = bmi ? bmi.toFixed(1) : "--";
   level.textContent = bmi ? getBmiLevel(bmi) : "填写后自动计算";
 }
@@ -1618,6 +4593,7 @@ function completeDeepAssessment(config) {
   state.lastReportId = report.id;
   saveState();
   deepStep = config.steps.length;
+  updateAppNav();
   renderDeepResult(result);
   showToast("深度报告已保存至我的测评。");
 }
@@ -1640,6 +4616,12 @@ function buildDeepReport(config, result) {
     cta: result.cta,
     tip: result.tip,
     yesCount: result.yesCount,
+    scoreTotal: result.scoreTotal ?? null,
+    scoreMax: result.scoreMax ?? null,
+    severityLevel: result.severityLevel ?? null,
+    selfHarmScore: result.selfHarmScore ?? null,
+    management: result.management || "",
+    actionIntro: result.actionIntro || "",
     countLabel: result.countLabel,
     recommendations: result.recommendations,
     keyPrompts: result.keyPrompts,
@@ -1827,13 +4809,43 @@ function renderDeepReportDetail(report, container) {
     report.completedAt || "2026-07-27",
     report.assessmentId
   );
+  bindDynamicActions(container);
 }
 
 function buildDeepResultFromReport(report) {
+  if (report.assessmentId === "depression") {
+    return buildDepressionResultFromReport(report);
+  }
+  const storedPrompts = report.keyPrompts || [];
+  const promptConfig = deepAssessments[report.assessmentId]?.keyPrompts || [];
+  const canReconstructPrompts = [
+    "abdominalFat",
+    "sleep",
+    "exercise",
+    "anxiety",
+    "incontinence",
+    "memory"
+  ].includes(report.assessmentId);
+  const reconstructedPrompts =
+    canReconstructPrompts
+      ? promptConfig
+          .filter((prompt) =>
+            (report.answers || []).some(
+              (answer) => answer.id === prompt.id && answer.answer === "yes"
+            )
+          )
+          .map((prompt) => ({ ...prompt }))
+      : [];
   return {
     yesCount: report.yesCount || 0,
+    scoreTotal: report.scoreTotal ?? null,
+    scoreMax: report.scoreMax ?? null,
+    severityLevel: report.severityLevel ?? null,
+    selfHarmScore: report.selfHarmScore ?? null,
+    management: report.management || "",
+    actionIntro: report.actionIntro || "",
     kicker: report.category || "健康风险提示",
-    keyPrompts: report.keyPrompts || [],
+    keyPrompts: reconstructedPrompts.length ? reconstructedPrompts : storedPrompts,
     countLabel: report.countLabel || "项风险信号",
     className: report.resultClass || "is-low",
     level: report.level || "暂未发现明显风险",
@@ -1844,11 +4856,62 @@ function buildDeepResultFromReport(report) {
   };
 }
 
+function buildDepressionResultFromReport(report) {
+  const answers = report.answers || [];
+  const scoreTotal =
+    report.scoreTotal ??
+    answers.reduce((total, item) => total + getHistoricalDepressionScore(item.answer), 0);
+  const selfHarmScore =
+    report.selfHarmScore ??
+    getHistoricalDepressionScore(
+      answers.find((item) => item.id === "dpSelfHarm")?.answer
+    );
+  const band = getDepressionScoreBand(scoreTotal);
+  const keyPrompts =
+    selfHarmScore > 0
+      ? deepAssessments.depression.keyPrompts.map((item) => ({
+          id: item.id,
+          title: item.title,
+          text: item.text
+        }))
+      : [];
+  return {
+    yesCount:
+      report.yesCount ??
+      answers.filter((item) => getHistoricalDepressionScore(item.answer) > 0).length,
+    scoreTotal,
+    scoreMax: 27,
+    severityLevel: band.level,
+    selfHarmScore,
+    management: band.management,
+    actionIntro: band.actionIntro,
+    kicker: report.category || deepAssessments.depression.resultKicker,
+    keyPrompts,
+    countLabel: deepAssessments.depression.countLabel,
+    className: band.className,
+    level: band.label,
+    summary: band.summary,
+    cta: band.level >= 4 ? "尽快寻求专业帮助" : "查看支持建议",
+    tip: deepAssessments.depression.note,
+    recommendations: band.recommendations
+  };
+}
+
+function getHistoricalDepressionScore(answer) {
+  if (answer === "yes") return 1;
+  if (answer === "no" || answer == null || answer === "") return 0;
+  const score = Number(answer);
+  return Number.isFinite(score) ? score : 0;
+}
+
 function getReminderText(item) {
   return typeof item === "string" ? item : item?.text || "";
 }
 
 function getDeepReportMeterWidth(report) {
+  if (Number.isFinite(report.scoreTotal) && Number.isFinite(report.scoreMax) && report.scoreMax > 0) {
+    return Math.min(100, Math.round((report.scoreTotal / report.scoreMax) * 100));
+  }
   const total = Math.max(report.answers?.length || 1, report.yesCount || 1);
   return Math.min(100, Math.round((report.yesCount / total) * 100));
 }
@@ -1962,10 +5025,15 @@ function bindDynamicActions(root = document) {
         renderAssessmentCards($("#assessmentPreview"), getFilteredAssessments(getSortedAssessments()));
         renderAssessmentCards($("#assessmentLibrary"), getFilteredAssessments(getSortedAssessments()));
       }
+      if (action === "set-history-filter") {
+        activeHistoryFilter = element.dataset.filter || "all";
+        renderHistory();
+      }
       if (action === "import-cycle") importCycleData();
       if (action === "open-biometric-picker") openBiometricPicker(element.dataset.field, element);
       if (action === "close-biometric-picker") closeBiometricPicker();
       if (action === "confirm-biometric-picker") confirmBiometricPicker();
+      if (action === "consult-doctor") showToast("正在为你连接林悦医生，请稍候。");
       if (action === "open-report") {
         state.lastReportId = element.dataset.id;
         reportReturnRoute = route === "history" ? "history" : "dashboard";
@@ -2044,8 +5112,18 @@ $("#nextStep").addEventListener("click", () => {
   if (activeDeepAssessmentId) {
     const config = getDeepAssessmentConfig(activeDeepAssessmentId);
     if (deepStep >= config.steps.length) {
+      deepStep = 0;
       activeDeepAssessmentId = null;
-      navigate("assessments");
+      navigate("dashboard");
+      return;
+    }
+    if (
+      config.answerType === "score4" &&
+      !config.steps[deepStep].questions.every(([id]) =>
+        Object.prototype.hasOwnProperty.call(state.deepAnswers, id)
+      )
+    ) {
+      showToast("请完成本组全部题目后继续。");
       return;
     }
     if (deepStep < config.steps.length - 1) {
