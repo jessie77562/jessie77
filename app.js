@@ -482,6 +482,8 @@ function defaultState() {
     deepAnswers: {},
     biometrics: {},
     reports: [],
+    demoRetestSeeded: false,
+    demoRetestSeedVersion: 0,
     periodHistory: [
       { date: "2026-02-08", cycleLength: 30, periodDays: 5 },
       { date: "2026-03-12", cycleLength: 32, periodDays: 5 },
@@ -496,10 +498,52 @@ function loadState() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
     const defaults = defaultState();
-    return { ...defaults, ...stored, biometrics: { ...defaults.biometrics, ...(stored?.biometrics || {}) } };
+    const merged = { ...defaults, ...stored, biometrics: { ...defaults.biometrics, ...(stored?.biometrics || {}) } };
+    if (Number(merged.demoRetestSeedVersion || 0) < 2) {
+      const assessedIds = new Set(
+        merged.reports
+          .filter((report) => getReportType(report) === "deep")
+          .map((report) => report.assessmentId)
+      );
+      const demoAssessment = assessmentCatalog.find((item) => !assessedIds.has(item.id)) || assessmentCatalog[1];
+      merged.reports = [...merged.reports, createRetestDemoReport(demoAssessment, 2)];
+      merged.demoRetestSeeded = true;
+      merged.demoRetestSeedVersion = 2;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    }
+    return merged;
   } catch {
-    return defaultState();
+    const fallback = defaultState();
+    fallback.reports.push(createRetestDemoReport(assessmentCatalog[1], 2));
+    fallback.demoRetestSeeded = true;
+    fallback.demoRetestSeedVersion = 2;
+    return fallback;
   }
+}
+
+function createRetestDemoReport(assessment, seedVersion = 1) {
+  const completedAt = new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString();
+  return {
+    id: `demo_retest_v${seedVersion}_${assessment.id}`,
+    type: "deep",
+    assessmentId: assessment.id,
+    title: assessment.title,
+    category: assessment.category,
+    completedAt,
+    retestAt: addDays(completedAt, 30).toISOString(),
+    dataSource: "专项测评问卷",
+    resultBadge: "状态较稳",
+    resultClass: "is-low",
+    level: "上次测评状态较稳",
+    summary: "上次测评暂未提示明显风险，可通过复测持续关注身体变化。",
+    cta: "建议再次测评",
+    tip: "该记录为“可复测”状态演示数据。",
+    yesCount: 0,
+    countLabel: "项风险",
+    recommendations: ["保持规律生活方式。", "继续记录相关变化。", "建议再次测评。"],
+    keyPrompts: [],
+    answers: []
+  };
 }
 
 function saveState() {
@@ -541,12 +585,23 @@ function navigate(nextRoute) {
 
 function updateAppNav() {
   const backButton = $(".app-nav .nav-icon");
+  const title = $(".app-nav strong");
+  const historyButton = $(".app-nav .nav-link");
   if (!backButton) return;
   const backRoute = route === "report" ? reportReturnRoute : "dashboard";
   const label = backRoute === "history" ? "返回我的测评" : "返回测评首页";
   backButton.dataset.route = backRoute;
   backButton.setAttribute("aria-label", label);
   backButton.setAttribute("title", label);
+  if (historyButton) historyButton.hidden = route === "history";
+  if (title) {
+    title.textContent = {
+      report: "详情",
+      history: "我的测评",
+      assessments: "更多测评",
+      wizard: "测评中心"
+    }[route] || "测评中心";
+  }
 }
 
 function render() {
@@ -566,64 +621,19 @@ function getLatestFullReport() {
   return state.reports.find((report) => getReportType(report) === "full") || null;
 }
 
+function getLatestDeepReport(assessmentId) {
+  return state.reports.find(
+    (report) => getReportType(report) === "deep" && report.assessmentId === assessmentId
+  ) || null;
+}
+
 function getReportType(report) {
   return report?.type || "full";
 }
 
 function renderDashboard() {
-  renderBmiSummary();
   renderAssessmentTabs($("#assessmentTabs"));
   renderAssessmentCards($("#assessmentPreview"), getFilteredAssessments(getSortedAssessments()));
-}
-
-function renderBmiSummary() {
-  const container = $("#bmiSummary");
-  if (!container) return;
-  const profile = getRecentBmiProfile();
-  if (!profile) {
-    container.hidden = true;
-    container.innerHTML = "";
-    return;
-  }
-  container.hidden = false;
-  container.innerHTML = `
-    <div>
-      <span class="label">BMI 参考值</span>
-      <strong>${profile.bmi.toFixed(1)}</strong>
-      <p>${profile.level} · 身高 ${profile.height}cm，体重 ${profile.weight}kg</p>
-    </div>
-    <span>${formatDate(profile.updatedAt)}</span>
-  `;
-}
-
-function getRecentBmiProfile() {
-  const fromDraft = normalizeBmiProfile({ ...state.draft, updatedAt: state.biometrics?.updatedAt || new Date().toISOString() });
-  if (fromDraft && isWithinDays(fromDraft.updatedAt, 90)) return fromDraft;
-  const fromBiometrics = normalizeBmiProfile(state.biometrics);
-  if (fromBiometrics && isWithinDays(fromBiometrics.updatedAt, 90)) return fromBiometrics;
-  const reportProfile = getLatestFullReport()?.healthProfile;
-  const fromReport = normalizeBmiProfile(reportProfile);
-  if (fromReport && isWithinDays(fromReport.updatedAt, 90)) return fromReport;
-  return null;
-}
-
-function normalizeBmiProfile(profile) {
-  if (!profile?.height || !profile?.weight || !profile?.updatedAt) return null;
-  const bmi = getBmi(profile);
-  if (!bmi) return null;
-  return {
-    height: Number(profile.height),
-    weight: Number(profile.weight),
-    updatedAt: profile.updatedAt,
-    bmi,
-    level: getBmiLevel(bmi)
-  };
-}
-
-function isWithinDays(dateLike, days) {
-  const date = new Date(dateLike);
-  if (Number.isNaN(date.getTime())) return false;
-  return Date.now() - date.getTime() <= days * 24 * 60 * 60 * 1000;
 }
 
 function renderAssessmentLists() {
@@ -636,7 +646,7 @@ function renderAssessmentTabs(container) {
   container.innerHTML = assessmentGroups
     .map(
       (group) => `
-        <button class="assessment-tab ${activeAssessmentGroup === group.id ? "is-active" : ""}" type="button" data-action="set-assessment-tab" data-group="${group.id}">
+        <button class="assessment-tab ${activeAssessmentGroup === group.id ? "is-active" : ""}" type="button" data-action="set-assessment-tab" data-group="${group.id}" aria-selected="${activeAssessmentGroup === group.id}">
           ${group.label}
         </button>
       `
@@ -650,11 +660,24 @@ function getFilteredAssessments(items) {
   return items.filter((item) => item.group === activeAssessmentGroup);
 }
 
-function getAssessmentStatus(item, report) {
-  if (item.id === "osteoporosis") return { text: "需关注", className: "status-risk", cardClass: "is-risk", buttonClass: "btn-danger" };
-  if (!report) return { text: "未测评", className: "status-pending" };
-  if (getFocusScore(item, report) > 0) return { text: "需关注", className: "status-risk", cardClass: "is-risk", buttonClass: "btn-danger" };
-  return { text: "已完成", className: "status-complete", cardClass: "is-complete", buttonClass: "btn-tertiary" };
+function getAssessmentStatus(item, entryReport, deepReport) {
+  if (deepReport && isReadyForRetest(deepReport.completedAt)) {
+    return { text: "可复测", icon: "↻", className: "status-retest", cardClass: "is-retest" };
+  }
+  if (entryReport && getFocusScore(item, entryReport) > 0) {
+    return { text: "需关注", icon: "!", className: "status-risk", cardClass: "is-risk" };
+  }
+  if (!deepReport) {
+    return { text: "未测评", icon: "○", className: "status-pending", cardClass: "is-pending" };
+  }
+  return { text: "", icon: "", className: "", cardClass: "is-complete", ariaText: "近期已测评" };
+}
+
+function isReadyForRetest(completedAt) {
+  const completedTime = new Date(completedAt).getTime();
+  if (Number.isNaN(completedTime)) return false;
+  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+  return Date.now() - completedTime > thirtyDays;
 }
 
 function getSortedAssessments() {
@@ -667,7 +690,6 @@ function getSortedAssessments() {
 }
 
 function getFocusScore(item, report) {
-  if (item.id === "osteoporosis") return 100;
   if (!report) return 0;
   const context = [report.primaryConcern, report.stage?.label, report.stage?.detail, ...(report.redFlags || []), ...(report.riskTags || [])].join(" ");
   const keywordScore = item.focus.filter((keyword) => context.includes(keyword)).length;
@@ -689,17 +711,24 @@ function renderAssessmentCards(container, items) {
   const report = getLatestFullReport();
   container.innerHTML = items
     .map((item) => {
-      const status = getAssessmentStatus(item, report);
+      const deepReport = getLatestDeepReport(item.id);
+      const status = getAssessmentStatus(item, report, deepReport);
       const cardClass = status.cardClass || "is-pending";
       return `
-        <article class="assessment-card ${cardClass}" role="button" tabindex="0" data-action="start-deep" data-id="${item.id}" aria-label="${item.title}，${status.text}">
+        <article class="assessment-card ${cardClass}" role="button" tabindex="0" data-action="start-deep" data-id="${item.id}" aria-label="${item.title}，${status.text || status.ariaText}">
           <div class="assessment-card-main">
             <h3>${item.title}</h3>
             <p class="muted">${item.category} · ${item.minutes}</p>
             <p class="assessment-effect">${item.effect}</p>
-            <div class="card-meta">
-              <span class="tag status-pill ${status.className}">${status.text}</span>
-            </div>
+            ${
+              status.text
+                ? `<div class="card-meta">
+                    <span class="tag status-pill ${status.className}">
+                      <i aria-hidden="true">${status.icon}</i>${status.text}
+                    </span>
+                  </div>`
+                : ""
+            }
           </div>
           <div class="assessment-visual assessment-visual-${item.id}" aria-hidden="true"><span></span><i></i><b></b></div>
         </article>
@@ -736,11 +765,17 @@ function renderHistoryItem(report) {
   const isDeepReport = getReportType(report) === "deep";
   const title = isDeepReport ? report.title : "围绝经期综合评测";
   const visualId = isDeepReport ? report.assessmentId || "default" : "full";
+  const resultText = escapeHtml(
+    isDeepReport
+      ? report.level || report.resultBadge || "查看测评详情"
+      : report.healthLevel || report.stage?.label || "查看测评详情"
+  );
   return `
-    <article class="history-item history-assessment-card" role="button" tabindex="0" data-action="open-report" data-id="${report.id}" aria-label="${title}，测评时间 ${formatDate(report.completedAt)}">
+    <article class="history-item history-assessment-card" role="button" tabindex="0" data-action="open-report" data-id="${report.id}" aria-label="${title}，测评结果 ${resultText}，测评时间 ${formatDateTime(report.completedAt)}">
       <div class="history-assessment-main">
         <h3>${title}</h3>
-        <p>测评时间：${formatDate(report.completedAt)}</p>
+        <p class="history-assessment-result"><span>测评结果：</span>${resultText}</p>
+        <p>测评时间：${formatDateTime(report.completedAt)}</p>
       </div>
       <div class="assessment-visual assessment-visual-${visualId}" aria-hidden="true"><span></span><i></i><b></b></div>
     </article>
@@ -798,7 +833,7 @@ function renderDeepAssessment() {
       <h1>${config.title}</h1>
       <p>${config.description}</p>
       ${config.note ? `<p>${config.note}</p>` : ""}
-      ${config.chips?.length ? `<div class="deep-chips">${config.chips.map((chip) => `<span>${chip}</span>`).join("")}</div>` : ""}
+      ${deepStep === 0 ? renderDeepBiometrics() : ""}
     </article>
     <section class="deep-section-head">
       <h2>${step.title}</h2>
@@ -811,21 +846,45 @@ function renderDeepAssessment() {
   bindFormInputs();
 }
 
+function renderDeepBiometrics() {
+  const height = state.draft.height || state.biometrics?.height || "";
+  const weight = state.draft.weight || state.biometrics?.weight || "";
+  const bmi = getBmi({ height, weight });
+  return `
+    <section class="deep-biometrics" aria-labelledby="deepBiometricsTitle">
+      <div class="deep-biometrics-heading">
+        <h2 id="deepBiometricsTitle">身体数据</h2>
+        <span>用于 BMI 计算</span>
+      </div>
+      <div class="deep-biometrics-grid">
+        <label class="deep-biometric-field">
+          <span>身高</span>
+          <span class="deep-biometric-input">
+            <input name="height" type="number" min="120" max="210" step="0.1" inputmode="decimal" value="${height}" placeholder="请输入" aria-label="身高，单位厘米" />
+            <b>cm</b>
+          </span>
+        </label>
+        <label class="deep-biometric-field">
+          <span>体重</span>
+          <span class="deep-biometric-input">
+            <input name="weight" type="number" min="35" max="140" step="0.1" inputmode="decimal" value="${weight}" placeholder="请输入" aria-label="体重，单位千克" />
+            <b>kg</b>
+          </span>
+        </label>
+        <div class="deep-bmi-card" aria-live="polite">
+          <span>BMI</span>
+          <strong id="deepBmiValue">${bmi ? bmi.toFixed(1) : "--"}</strong>
+          <small id="deepBmiLevel">${bmi ? getBmiLevel(bmi) : "填写后自动计算"}</small>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderDeepResult(savedResult) {
   const config = getDeepAssessmentConfig(activeDeepAssessmentId);
   const result = savedResult || getDeepResult(config);
-  if (activeDeepAssessmentId === "osteoporosis") {
-    renderOsteoporosisResult(config, result);
-    return;
-  }
-  $("#wizardTitle").textContent = `${config.title}结果`;
-  $("#stepKicker").textContent = "评估完成";
-  $("#stepCounter").textContent = "结果";
-  $("#stepProgress").style.width = "100%";
-  $("#prevStep").disabled = false;
-  $("#prevStep").textContent = "重新评估";
-  $("#nextStep").textContent = "返回";
-  $("#assessmentForm").innerHTML = getGenericDeepResultHtml(config, result);
+  renderTemplateDeepResult(config, result);
 }
 
 function getGenericDeepResultHtml(config, result, completedAt = "") {
@@ -851,7 +910,7 @@ function getGenericDeepResultHtml(config, result, completedAt = "") {
   `;
 }
 
-function renderOsteoporosisResult(config, result) {
+function renderTemplateDeepResult(config, result) {
   $("#wizardTitle").textContent = `${config.title}结果`;
   $("#stepKicker").textContent = "评估完成";
   $("#stepCounter").textContent = "结果";
@@ -859,12 +918,12 @@ function renderOsteoporosisResult(config, result) {
   $("#prevStep").disabled = false;
   $("#prevStep").textContent = "重新评估";
   $("#nextStep").textContent = "返回";
-  $("#assessmentForm").innerHTML = getOsteoporosisResultHtml(config, result);
+  $("#assessmentForm").innerHTML = getTemplateDeepResultHtml(config, result, "", activeDeepAssessmentId);
 }
 
-function getOsteoporosisResultHtml(config, result, completedAt = "") {
+function getTemplateDeepResultHtml(config, result, completedAt = "", assessmentId = "") {
   return `
-    <article class="deep-final-card osteoporosis-report ${result.className}">
+    <article class="deep-final-card osteoporosis-report deep-template-report ${result.className}">
       <header class="osteoporosis-report-head">
         <h1>${config.title}</h1>
         ${renderReportCompletedAt(completedAt)}
@@ -872,13 +931,13 @@ function getOsteoporosisResultHtml(config, result, completedAt = "") {
 
       <section class="osteoporosis-section osteoporosis-conclusion-card">
         <div class="osteoporosis-conclusion-head">
-          <div class="osteoporosis-risk-mark risk-level-${getOsteoporosisRiskLevel(result)}">
-            <span>${getOsteoporosisRiskIcon(result)}</span>
+          <div class="osteoporosis-risk-mark risk-level-${getTemplateRiskLevel(result, assessmentId)}">
+            <span>${getTemplateRiskIcon(result, assessmentId)}</span>
           </div>
           <p class="osteoporosis-result-title">${result.level}</p>
         </div>
         <p>${result.summary}</p>
-        ${renderOsteoporosisPriorityAlert(result)}
+        ${renderTemplatePriorityAlert(result, assessmentId)}
       </section>
 
       <section class="osteoporosis-section osteoporosis-plain-section">
@@ -888,37 +947,61 @@ function getOsteoporosisResultHtml(config, result, completedAt = "") {
         </ul>
       </section>
 
-      <p class="osteoporosis-disclaimer">本问卷用于风险筛查，不能替代骨密度检查或医生诊断。</p>
+      <p class="osteoporosis-disclaimer">${getTemplateDisclaimer(config, assessmentId)}</p>
     </article>
   `;
 }
 
 function renderReportCompletedAt(completedAt) {
   if (!completedAt) return "";
-  return `<p class="report-completed-at">测评时间：${formatDate(completedAt)}</p>`;
+  return `<p class="report-completed-at">测评时间：${formatDateTime(completedAt)}</p>`;
 }
 
-function getOsteoporosisRiskLevel(result) {
-  if (result.yesCount >= 5) return 4;
-  if (result.yesCount >= 3) return 3;
-  if (result.yesCount >= 1) return 2;
+function getTemplateRiskLevel(result, assessmentId) {
+  if (assessmentId === "osteoporosis") {
+    if (result.yesCount >= 5) return 4;
+    if (result.yesCount >= 3) return 3;
+    if (result.yesCount >= 1) return 2;
+    return 1;
+  }
+  if (result.className === "is-high") return 4;
+  if (result.className === "is-medium") return 2;
   return 1;
 }
 
-function getOsteoporosisRiskIcon(result) {
-  const level = getOsteoporosisRiskLevel(result);
+function getTemplateRiskIcon(result, assessmentId) {
+  const level = getTemplateRiskLevel(result, assessmentId);
   return ["低", "中", "较高", "高"][level - 1];
 }
 
-function renderOsteoporosisPriorityAlert(result) {
-  const prompt = normalizePromptItem(result.keyPrompts.find((item) => getPromptId(item) === "adultFragilityFracture"));
+function renderTemplatePriorityAlert(result, assessmentId) {
+  const prompts = (result.keyPrompts || []).map(normalizePromptItem).filter(Boolean);
+  const prompt =
+    assessmentId === "osteoporosis"
+      ? prompts.find((item) => getPromptId(item) === "adultFragilityFracture")
+      : prompts[0];
   if (!prompt) return "";
+  if (assessmentId !== "osteoporosis") {
+    return `
+      <div class="osteoporosis-priority-alert">
+        <strong>重点风险提示</strong>
+        <p>${getReminderText(prompt)}</p>
+      </div>
+    `;
+  }
   return `
     <div class="osteoporosis-priority-alert">
       <strong>成年后轻微跌倒/碰撞就骨折</strong>
       <p>这是一项需要优先重视的骨折风险信号，建议尽快就医评估骨密度和骨折风险。骨质疏松常表现为轻微跌倒或碰撞后骨折。</p>
     </div>
   `;
+}
+
+function getTemplateDisclaimer(config, assessmentId) {
+  if (assessmentId === "osteoporosis") {
+    return "本问卷用于风险筛查，不能替代骨密度检查或医生诊断。";
+  }
+  return config.note || "本问卷用于健康风险筛查和健康管理参考，不能替代医生诊断、检查或治疗建议。";
 }
 
 function getPromptId(item) {
@@ -1338,6 +1421,7 @@ function updateDraftFromInput(event) {
   }
   if (["height", "weight"].includes(input.name)) {
     updateBiometricsFromDraft();
+    updateDeepBmiPreview();
   }
   saveState();
 }
@@ -1349,6 +1433,15 @@ function updateBiometricsFromDraft() {
     weight: state.draft.weight || state.biometrics?.weight,
     updatedAt: new Date().toISOString()
   };
+}
+
+function updateDeepBmiPreview() {
+  const value = $("#deepBmiValue");
+  const level = $("#deepBmiLevel");
+  if (!value || !level) return;
+  const bmi = getBmi(state.draft);
+  value.textContent = bmi ? bmi.toFixed(1) : "--";
+  level.textContent = bmi ? getBmiLevel(bmi) : "填写后自动计算";
 }
 
 function validateStep() {
@@ -1606,7 +1699,7 @@ function renderReport() {
         <article class="report-panel">
           <div class="report-heading">
             <div>
-              <p class="eyebrow">${formatDate(report.completedAt)} · ${report.dataSource}</p>
+              <p class="eyebrow">${formatDateTime(report.completedAt)} · ${report.dataSource}</p>
               <h2>${report.stage.label}</h2>
             </div>
             <span class="big-score">${report.healthIndex}</span>
@@ -1646,13 +1739,13 @@ function renderReport() {
 
 function renderDeepReportDetail(report, container) {
   $("#reportTitle").textContent = "深度评测报告";
-  if (report.assessmentId === "osteoporosis") {
-    const config = getDeepAssessmentConfig(report.assessmentId);
-    container.innerHTML = getOsteoporosisResultHtml(config, buildDeepResultFromReport(report), report.completedAt || "2026-07-27");
-    return;
-  }
   const config = getDeepAssessmentConfig(report.assessmentId);
-  container.innerHTML = getGenericDeepResultHtml(config, buildDeepResultFromReport(report), report.completedAt || "2026-07-27");
+  container.innerHTML = getTemplateDeepResultHtml(
+    config,
+    buildDeepResultFromReport(report),
+    report.completedAt || "2026-07-27",
+    report.assessmentId
+  );
 }
 
 function buildDeepResultFromReport(report) {
@@ -1758,6 +1851,13 @@ function formatDate(dateLike) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
+function formatDateTime(dateLike) {
+  if (!dateLike) return "--";
+  const date = new Date(dateLike);
+  if (Number.isNaN(date.getTime())) return dateLike;
+  return `${formatDate(date)} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
+}
+
 function escapeHtml(text) {
   return String(text).replace(/[&<>"']/g, (char) => {
     const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
@@ -1773,8 +1873,13 @@ function bindDynamicActions(root = document) {
       if (action === "start-deep") startDeepAssessment(element.dataset.id || "osteoporosis");
       if (action === "set-assessment-tab") {
         activeAssessmentGroup = element.dataset.group || "all";
-        renderDashboard();
-        renderAssessmentLists();
+        $all('[data-action="set-assessment-tab"]').forEach((tab) => {
+          const isActive = tab.dataset.group === activeAssessmentGroup;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+        });
+        renderAssessmentCards($("#assessmentPreview"), getFilteredAssessments(getSortedAssessments()));
+        renderAssessmentCards($("#assessmentLibrary"), getFilteredAssessments(getSortedAssessments()));
       }
       if (action === "import-cycle") importCycleData();
       if (action === "open-report") {

@@ -170,15 +170,17 @@ p { line-height: 1.43; }
 .home-banner-copy {
   position: relative;
   z-index: 1;
-  max-width: 286px;
+  max-width: 100%;
 }
 
 .home-banner h1 {
-  max-width: 260px;
+  max-width: 100%;
   margin: 0 0 8px;
-  font-size: 22px;
+  font-size: clamp(17px, 5.1vw, 22px);
   line-height: 1.22;
   font-weight: 600;
+  letter-spacing: -.02em;
+  white-space: nowrap;
 }
 
 .home-banner p {
@@ -200,62 +202,62 @@ p { line-height: 1.43; }
   line-height: 1.42 !important;
 }
 
-.bmi-summary {
+.assessment-tabs {
+  position: sticky;
+  top: calc(44px + env(safe-area-inset-top));
+  z-index: 50;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gap12);
-  margin-bottom: var(--gap12);
-  padding: var(--gap12);
-  border-radius: var(--r12);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  gap: 8px;
+  margin: 0 calc(-1 * var(--gap12)) var(--gap12);
+  padding: 8px var(--gap12);
+  overflow-x: auto;
+  background: rgba(242, 242, 245, .94);
+  border-bottom: .5px solid transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  scrollbar-width: none;
 }
-
-.bmi-summary[hidden] { display: none; }
-
-.bmi-summary div { min-width: 0; }
-
-.bmi-summary strong {
-  display: block;
-  margin: 4px 0;
-  color: var(--brand);
-  font-size: 28px;
-  line-height: 1;
-  font-weight: 500;
-}
-
-.bmi-summary p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.33;
-}
-
-.bmi-summary > span {
-  flex: 0 0 auto;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.33;
-}
-
-.assessment-tabs { display: flex; gap: 8px; margin: 0 0 var(--gap12); overflow-x: auto; scrollbar-width: none; }
 .assessment-tabs::-webkit-scrollbar { display: none; }
 .assessment-tab { flex: 0 0 auto; min-height: 32px; padding: 6px 12px; border: 0; border-radius: 999px; background: rgba(0, 0, 0, .04); color: var(--muted); font-size: 14px; line-height: 1.43; }
 .assessment-tab.is-active { background: rgba(255, 77, 136, .1); color: var(--brand); font-weight: 500; }
-.assessment-grid, .assessment-grid.wide { display: grid; grid-template-columns: 1fr; gap: var(--gap12); }
+.assessment-grid, .assessment-grid.wide {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  min-height: calc(100dvh - 104px - env(safe-area-inset-top));
+  gap: var(--gap12);
+}
 .assessment-card { display: grid; grid-template-columns: minmax(0, 1fr) 86px; align-items: center; min-height: 128px; padding: 14px 12px 14px 14px; column-gap: var(--gap12); row-gap: 4px; cursor: pointer; }
 .assessment-card:focus-visible { outline: 2px solid rgba(255, 77, 136, .45); outline-offset: 2px; }
 .assessment-card:active { transform: scale(.99); }
 .assessment-card-main { min-width: 0; }
-.assessment-card h3 { margin: 0 0 2px; }
+.assessment-card h3 {
+  margin: 0 0 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .assessment-card p { margin: 0; font-size: 13px; line-height: 1.33; }
 .assessment-card .muted { margin-bottom: 6px; }
 .assessment-effect { color: var(--muted); }
 .card-meta { margin-top: 10px; font-size: 12px; }
+.status-pill { gap: 4px; }
+.status-pill i {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 10px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 600;
+}
 .status-pending { background: rgba(255, 149, 0, .1); color: var(--warning); }
 .status-complete { background: rgba(0, 204, 153, .1); color: var(--success); }
 .status-risk { background: rgba(255, 77, 77, .1); color: var(--danger); }
+.status-retest { background: rgba(49, 113, 203, .1); color: var(--link-blue); }
 .status-progress { background: rgba(49, 113, 203, .1); color: var(--link-blue); }
 
 .assessment-visual {
@@ -689,22 +691,116 @@ body[data-route="wizard"] .wizard-actions {
   line-height: 1.55;
 }
 
-.deep-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+.deep-biometrics {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(40, 34, 49, .08);
 }
 
-.deep-chips span {
-  min-height: 36px;
-  padding: 8px 14px;
-  border: 1px solid #ff6c9f;
-  border-radius: 999px;
+.deep-biometrics-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.deep-biometrics-heading h2 {
+  margin: 0;
+  color: #282231;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.deep-biometrics-heading span {
+  color: #a38c9b;
+  font-size: 12px;
+}
+
+.deep-biometrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.deep-biometric-field,
+.deep-bmi-card {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #f4d8e3;
+  border-radius: 14px;
+  background: #fff8fb;
+}
+
+.deep-biometric-field > span:first-child,
+.deep-bmi-card > span {
+  display: block;
+  margin-bottom: 5px;
+  color: #8f7b89;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.deep-biometric-input {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.deep-biometric-input input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #282231;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.deep-biometric-input input::placeholder {
+  color: #c8b8c2;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.deep-biometric-input b {
+  color: #8f7b89;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.deep-biometric-field:focus-within {
+  border-color: #ff6c9f;
+  box-shadow: 0 0 0 3px rgba(255, 77, 136, .08);
+}
+
+.deep-bmi-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 8px;
+  background: linear-gradient(135deg, #fff2f7, #fff9fb);
+}
+
+.deep-bmi-card > span {
+  margin: 0;
+}
+
+.deep-bmi-card strong {
   color: #ff4d88;
-  background: #fff;
-  font-size: 13px;
+  font-size: 22px;
   line-height: 1;
+}
+
+.deep-bmi-card small {
+  justify-self: end;
+  color: #746877;
+  font-size: 12px;
 }
 
 .deep-section-head {
@@ -859,7 +955,7 @@ body[data-route="wizard"] .wizard-actions {
 
 .deep-final-card {
   min-height: calc(100dvh - 92px);
-  padding: 16px 18px 22px;
+  padding: 10px 18px 22px;
   border-radius: 22px 22px 0 0;
   background: rgba(255, 255, 255, .96);
   box-shadow: 0 8px 28px rgba(255, 77, 136, .08);
@@ -914,14 +1010,14 @@ body[data-route="wizard"] .wizard-actions {
 .osteoporosis-report-head h1 {
   margin: 0;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .report-completed-at {
-  margin: 2px 0 0 !important;
+  margin: 1px 0 0 !important;
   color: #9a6a7d !important;
   font-size: 12px !important;
-  line-height: 1.45 !important;
+  line-height: 1.25 !important;
 }
 
 .osteoporosis-risk-mark {
@@ -1003,12 +1099,12 @@ body[data-route="wizard"] .wizard-actions {
   margin: 0;
   color: #746877;
   font-size: 14px;
-  line-height: 1.72;
+  line-height: 1.5;
 }
 
 .osteoporosis-conclusion-card {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   padding: 0 0 12px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .06);
@@ -1260,6 +1356,15 @@ body[data-route="wizard"] .wizard-actions {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.33;
+}
+.history-assessment-main .history-assessment-result {
+  margin-bottom: 6px;
+  color: #d9366e;
+  font-weight: 500;
+}
+.history-assessment-result span {
+  color: #8f7b89;
+  font-weight: 400;
 }
 .history-meta { display: flex; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
 .check-row { align-items: flex-start; margin: 16px 0; }
