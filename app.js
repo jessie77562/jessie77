@@ -40,6 +40,7 @@ let wizardStep = 0;
 let activeDeepAssessmentId = null;
 let deepStep = 0;
 let activeAssessmentGroup = "all";
+let biometricPickerState = { field: "", value: "", trigger: null };
 
 const deepAssessments = {
   osteoporosis: {
@@ -857,20 +858,22 @@ function renderDeepBiometrics() {
         <span>用于 BMI 计算</span>
       </div>
       <div class="deep-biometrics-grid">
-        <label class="deep-biometric-field">
+        <button class="deep-biometric-field" type="button" data-action="open-biometric-picker" data-field="height" aria-label="选择身高">
           <span>身高</span>
           <span class="deep-biometric-input">
-            <input name="height" type="number" min="120" max="210" step="0.1" inputmode="decimal" value="${height}" placeholder="请输入" aria-label="身高，单位厘米" />
+            <strong id="deepHeightValue">${height || "请选择"}</strong>
             <b>cm</b>
+            <i aria-hidden="true">›</i>
           </span>
-        </label>
-        <label class="deep-biometric-field">
+        </button>
+        <button class="deep-biometric-field" type="button" data-action="open-biometric-picker" data-field="weight" aria-label="选择体重">
           <span>体重</span>
           <span class="deep-biometric-input">
-            <input name="weight" type="number" min="35" max="140" step="0.1" inputmode="decimal" value="${weight}" placeholder="请输入" aria-label="体重，单位千克" />
+            <strong id="deepWeightValue">${weight || "请选择"}</strong>
             <b>kg</b>
+            <i aria-hidden="true">›</i>
           </span>
-        </label>
+        </button>
         <div class="deep-bmi-card" aria-live="polite">
           <span>BMI</span>
           <strong id="deepBmiValue">${bmi ? bmi.toFixed(1) : "--"}</strong>
@@ -879,6 +882,84 @@ function renderDeepBiometrics() {
       </div>
     </section>
   `;
+}
+
+function openBiometricPicker(field, trigger) {
+  const configs = {
+    height: { title: "选择身高", unit: "cm", min: 120, max: 210, step: 1, fallback: 160 },
+    weight: { title: "选择体重", unit: "kg", min: 35, max: 140, step: 0.5, fallback: 55 }
+  };
+  const config = configs[field];
+  if (!config) return;
+  const storedValue = state.draft[field] || state.biometrics?.[field] || config.fallback;
+  biometricPickerState = { field, value: Number(storedValue), trigger };
+  $("#biometricPickerTitle").textContent = config.title;
+  $("#biometricPickerUnit").textContent = config.unit;
+  const values = [];
+  for (let value = config.min; value <= config.max + 0.001; value += config.step) {
+    values.push(Number(value.toFixed(1)));
+  }
+  const options = $("#biometricPickerOptions");
+  options.innerHTML = values
+    .map(
+      (value) => `
+        <button class="biometric-picker-option ${value === biometricPickerState.value ? "is-selected" : ""}" type="button"
+          role="option" aria-selected="${value === biometricPickerState.value}" data-picker-value="${value}">
+          ${formatPickerValue(value)}
+        </button>
+      `
+    )
+    .join("");
+  const picker = $("#biometricPicker");
+  picker.hidden = false;
+  document.body.classList.add("picker-open");
+  requestAnimationFrame(() => {
+    picker.classList.add("is-visible");
+    const selected = options.querySelector(`[data-picker-value="${biometricPickerState.value}"]`);
+    selected?.scrollIntoView({ block: "center" });
+    selected?.focus({ preventScroll: true });
+  });
+}
+
+function selectBiometricPickerValue(option) {
+  const value = Number(option.dataset.pickerValue);
+  if (!Number.isFinite(value)) return;
+  biometricPickerState.value = value;
+  $("#biometricPickerOptions").querySelectorAll(".biometric-picker-option").forEach((item) => {
+    const isSelected = item === option;
+    item.classList.toggle("is-selected", isSelected);
+    item.setAttribute("aria-selected", String(isSelected));
+  });
+  option.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+function confirmBiometricPicker() {
+  const { field, value } = biometricPickerState;
+  if (!field || !Number.isFinite(Number(value))) return;
+  const formattedValue = formatPickerValue(Number(value));
+  state.draft[field] = formattedValue;
+  updateBiometricsFromDraft();
+  saveState();
+  const display = field === "height" ? $("#deepHeightValue") : $("#deepWeightValue");
+  if (display) display.textContent = formattedValue;
+  updateDeepBmiPreview();
+  closeBiometricPicker();
+}
+
+function closeBiometricPicker() {
+  const picker = $("#biometricPicker");
+  if (!picker || picker.hidden) return;
+  picker.classList.remove("is-visible");
+  document.body.classList.remove("picker-open");
+  window.setTimeout(() => {
+    picker.hidden = true;
+    biometricPickerState.trigger?.focus();
+    biometricPickerState = { field: "", value: "", trigger: null };
+  }, 220);
+}
+
+function formatPickerValue(value) {
+  return Number.isInteger(value) ? String(value) : value.toFixed(1);
 }
 
 function renderDeepResult(savedResult) {
@@ -1882,6 +1963,9 @@ function bindDynamicActions(root = document) {
         renderAssessmentCards($("#assessmentLibrary"), getFilteredAssessments(getSortedAssessments()));
       }
       if (action === "import-cycle") importCycleData();
+      if (action === "open-biometric-picker") openBiometricPicker(element.dataset.field, element);
+      if (action === "close-biometric-picker") closeBiometricPicker();
+      if (action === "confirm-biometric-picker") confirmBiometricPicker();
       if (action === "open-report") {
         state.lastReportId = element.dataset.id;
         reportReturnRoute = route === "history" ? "history" : "dashboard";
@@ -1907,6 +1991,11 @@ function bindDynamicActions(root = document) {
 }
 
 document.addEventListener("click", (event) => {
+  const pickerOption = event.target.closest("[data-picker-value]");
+  if (pickerOption) {
+    selectBiometricPickerValue(pickerOption);
+    return;
+  }
   const placeholderTab = event.target.closest("[data-tab-placeholder]");
   if (placeholderTab) {
     showToast(`${placeholderTab.textContent.trim()}为 App 主导航入口`);
@@ -1914,6 +2003,10 @@ document.addEventListener("click", (event) => {
   }
   const routeButton = event.target.closest("[data-route]");
   if (routeButton) navigate(routeButton.dataset.route);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !$("#biometricPicker")?.hidden) closeBiometricPicker();
 });
 
 $("#prevStep").addEventListener("click", () => {

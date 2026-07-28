@@ -117,6 +117,21 @@
       </nav>
     </div>
 
+    <div id="biometricPicker" class="biometric-picker" hidden>
+      <button class="biometric-picker-backdrop" type="button" data-action="close-biometric-picker" aria-label="关闭选择器"></button>
+      <section class="biometric-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="biometricPickerTitle">
+        <header class="biometric-picker-header">
+          <button class="biometric-picker-action" type="button" data-action="close-biometric-picker">取消</button>
+          <h2 id="biometricPickerTitle">选择身高</h2>
+          <button class="biometric-picker-action is-confirm" type="button" data-action="confirm-biometric-picker">确定</button>
+        </header>
+        <div class="biometric-picker-wheel-wrap">
+          <div id="biometricPickerOptions" class="biometric-picker-wheel" role="listbox" aria-label="可选数值"></div>
+          <span id="biometricPickerUnit" class="biometric-picker-unit">cm</span>
+        </div>
+      </section>
+    </div>
+
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="./app.js"></script>
   </body>

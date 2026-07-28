@@ -733,6 +733,12 @@ body[data-route="wizard"] .wizard-actions {
   background: #fff8fb;
 }
 
+.deep-biometric-field {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
 .deep-biometric-field > span:first-child,
 .deep-bmi-card > span {
   display: block;
@@ -748,23 +754,12 @@ body[data-route="wizard"] .wizard-actions {
   gap: 4px;
 }
 
-.deep-biometric-input input {
-  width: 100%;
+.deep-biometric-input strong {
   min-width: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
   color: #282231;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
-}
-
-.deep-biometric-input input::placeholder {
-  color: #c8b8c2;
-  font-size: 14px;
-  font-weight: 400;
 }
 
 .deep-biometric-input b {
@@ -773,7 +768,15 @@ body[data-route="wizard"] .wizard-actions {
   font-weight: 400;
 }
 
-.deep-biometric-field:focus-within {
+.deep-biometric-input i {
+  margin-left: auto;
+  color: #b7a1af;
+  font-size: 20px;
+  line-height: 1;
+  font-style: normal;
+}
+
+.deep-biometric-field:focus-visible {
   border-color: #ff6c9f;
   box-shadow: 0 0 0 3px rgba(255, 77, 136, .08);
 }
@@ -801,6 +804,128 @@ body[data-route="wizard"] .wizard-actions {
   justify-self: end;
   color: #746877;
   font-size: 12px;
+}
+
+body.picker-open {
+  overflow: hidden;
+}
+
+.biometric-picker[hidden] {
+  display: none;
+}
+
+.biometric-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  justify-items: center;
+  align-items: end;
+}
+
+.biometric-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgba(31, 24, 29, .38);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+
+.biometric-picker-sheet {
+  position: relative;
+  width: min(100%, 430px);
+  padding-bottom: env(safe-area-inset-bottom);
+  border-radius: 22px 22px 0 0;
+  background: #fff;
+  box-shadow: 0 -12px 40px rgba(50, 35, 44, .16);
+  transform: translateY(100%);
+  transition: transform .22s ease;
+}
+
+.biometric-picker.is-visible .biometric-picker-backdrop {
+  opacity: 1;
+}
+
+.biometric-picker.is-visible .biometric-picker-sheet {
+  transform: translateY(0);
+}
+
+.biometric-picker-header {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+
+.biometric-picker-header h2 {
+  margin: 0;
+  text-align: center;
+  color: #282231;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.biometric-picker-action {
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #746877;
+  font-size: 15px;
+}
+
+.biometric-picker-action.is-confirm {
+  color: #ff4d88;
+  font-weight: 600;
+}
+
+.biometric-picker-wheel-wrap {
+  position: relative;
+  background: linear-gradient(#fff, #fff8fb 42%, #fff8fb 58%, #fff);
+}
+
+.biometric-picker-wheel {
+  height: 252px;
+  padding: 102px 72px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.biometric-picker-wheel::-webkit-scrollbar {
+  display: none;
+}
+
+.biometric-picker-option {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #9f8d99;
+  font-size: 18px;
+  scroll-snap-align: center;
+}
+
+.biometric-picker-option.is-selected {
+  background: #fff0f6;
+  color: #ff4d88;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.biometric-picker-unit {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 48px);
+  transform: translateY(-50%);
+  color: #8f7b89;
+  font-size: 13px;
+  pointer-events: none;
 }
 
 .deep-section-head {
