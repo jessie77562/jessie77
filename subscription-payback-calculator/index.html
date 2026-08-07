@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="输入订阅价格、套餐占比、付费转化率与分阶段续费率，计算现金回本周期与收入上限。"
+    />
+    <title>订阅回本周期计算器 | Payback Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="订阅回本计算器首页">
+          <span class="brand-mark">P</span>
+          <span>Payback Lab</span>
+        </a>
+        <span class="cash-badge">现金收入口径</span>
+      </header>
+
+      <section class="hero" id="top">
+        <div>
+          <p class="eyebrow">SUBSCRIPTION UNIT ECONOMICS</p>
+          <h1>订阅回本周期计算器</h1>
+          <p class="hero-copy">
+            输入获客、定价、套餐占比与分阶段续费率，自动判断何时回本，或为什么永远无法回本。
+          </p>
+        </div>
+        <button class="reset-button" id="resetButton" type="button">恢复示例参数</button>
+      </section>
+
+      <div class="workspace">
+        <section class="input-panel" aria-label="计算参数">
+          <div class="section-heading">
+            <div>
+              <p class="section-index">01</p>
+              <h2>基础参数</h2>
+            </div>
+            <p>百分比请输入数值，例如 1.5 表示 1.5%</p>
+          </div>
+
+          <div class="base-grid">
+            <label class="field">
+              <span>付费转化率 c</span>
+              <span class="input-shell"><input id="c" type="number" min="0" max="100" step="0.01" /><b>%</b></span>
+            </label>
+            <label class="field">
+              <span>净收入率 n</span>
+              <span class="input-shell"><input id="n" type="number" min="0" max="100" step="0.01" /><b>%</b></span>
+            </label>
+            <label class="field">
+              <span>CPI / CAC</span>
+              <span class="input-shell"><input id="cpi" type="number" min="0" step="0.01" /><b>$</b></span>
+            </label>
+            <label class="field">
+              <span>月订阅价格 Pm</span>
+              <span class="input-shell"><input id="monthlyPrice" type="number" min="0" step="0.01" /><b>$</b></span>
+            </label>
+            <label class="field">
+              <span>年订阅价格 Py</span>
+              <span class="input-shell"><input id="yearlyPrice" type="number" min="0" step="0.01" /><b>$</b></span>
+            </label>
+            <label class="field">
+              <span>月订阅用户占比 q</span>
+              <span class="input-shell"><input id="q" type="number" min="0" max="100" step="1" /><b>%</b></span>
+              <small id="yearlyShareHint"></small>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="section-heading compact">
+            <div>
+              <p class="section-index">02</p>
+              <h2>分阶段续费率</h2>
+            </div>
+            <p>每次续费率按存活用户逐期相乘</p>
+          </div>
+
+          <section class="plan-card monthly-plan">
+            <div class="plan-title-row">
+              <div><span class="plan-dot"></span><h3>月订阅</h3></div>
+              <span id="monthlyShareLabel"></span>
+            </div>
+            <div class="renewal-grid">
+              <label class="field"><span>首次续费</span><span class="input-shell"><input id="mFirst" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>第 2 次续费</span><span class="input-shell"><input id="mSecond" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>第 3 次续费</span><span class="input-shell"><input id="mThird" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>后续每次</span><span class="input-shell"><input id="mLater" type="number" min="0" max="100" /><b>%</b></span></label>
+            </div>
+          </section>
+
+          <section class="plan-card yearly-plan">
+            <div class="plan-title-row">
+              <div><span class="plan-dot"></span><h3>年订阅</h3></div>
+              <span id="yearlyShareLabel"></span>
+            </div>
+            <div class="renewal-grid">
+              <label class="field"><span>首次续费</span><span class="input-shell"><input id="yFirst" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>第 2 次续费</span><span class="input-shell"><input id="ySecond" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>第 3 次续费</span><span class="input-shell"><input id="yThird" type="number" min="0" max="100" /><b>%</b></span></label>
+              <label class="field"><span>后续每次</span><span class="input-shell"><input id="yLater" type="number" min="0" max="100" /><b>%</b></span></label>
+            </div>
+          </section>
+        </section>
+
+        <aside class="result-panel" id="resultPanel">
+          <p class="result-kicker">预计回本周期</p>
+          <div class="result-value" id="paybackValue">—</div>
+          <p class="result-note" id="resultNote"></p>
+
+          <div class="metric-grid">
+            <div><span>24个月净收入</span><strong id="revenue24">—</strong></div>
+            <div><span>最终收入上限</span><strong id="lifetimeRevenue">—</strong></div>
+            <div><span>最高回收率</span><strong id="recoveryRate">—</strong></div>
+            <div><span>待回收差额</span><strong id="recoveryGap">—</strong></div>
+          </div>
+
+          <section class="timeline-card">
+            <div class="timeline-heading"><h3>累计回收进度</h3><span>每个新增用户</span></div>
+            <div class="timeline-list" id="timeline"></div>
+          </section>
+
+          <section class="formula-card">
+            <p>计算模型</p>
+            <code>R(t) = c × n × [qPmΣSm(k) + (1−q)PyΣSy(k)]</code>
+            <small>月订阅每月计费；年订阅在第 1、13、25…个月计费。年费按一次性现金收入计算。</small>
+          </section>
+        </aside>
+      </div>
+
+      <footer>
+        <span>Payback Lab · 订阅产品单位经济模型</span>
+        <span>结果为期望值，请用实际分期续费数据持续校准</span>
+      </footer>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
