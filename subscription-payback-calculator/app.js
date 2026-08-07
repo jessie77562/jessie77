@@ -6,7 +6,7 @@ const defaults = {
   yearlyPrice: 12.99,
   cpi: 0.24,
   mFirst: 55,
-  mSecond: 69,
+  mSecond: 68,
   mThird: 75,
   mLater: 75,
   yFirst: 25,
