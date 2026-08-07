@@ -5,14 +5,14 @@ const defaults = {
   monthlyPrice: 3.99,
   yearlyPrice: 12.99,
   cpi: 0.24,
-  mFirst: 35,
-  mSecond: 50,
-  mThird: 65,
-  mLater: 70,
+  mFirst: 55,
+  mSecond: 69,
+  mThird: 75,
+  mLater: 75,
   yFirst: 25,
-  ySecond: 30,
-  yThird: 40,
-  yLater: 40
+  ySecond: 50,
+  yThird: 60,
+  yLater: 60
 };
 
 const ids = Object.keys(defaults);
