@@ -1,138 +1,3501 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>围绝经期健康评测中心</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body data-route="dashboard">
-    <div class="app-shell">
-      <header class="app-nav">
-        <button class="icon-button nav-icon" type="button" data-route="dashboard" aria-label="返回测评首页" title="返回测评首页">‹</button>
-        <div>
-          <span>女性健康</span>
-          <strong>测评中心</strong>
-        </div>
-        <button class="text-button nav-link" type="button" data-route="history">我的测评</button>
-      </header>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>meiyou-close-youth-mode.html</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="meiyou-close-youth-mode.html" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
+&lt;title&gt;meiyou-close-youth-mode.html&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const parentWindow = globalThis.parent;
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
 
-      <main class="main-panel">
-        <section id="dashboardView" class="view is-visible" aria-labelledby="dashboardTitle">
-          <section class="home-banner" aria-label="围绝经期评测介绍">
-            <div class="home-banner-copy">
-              <h1 id="dashboardTitle">懂身体，也更从容地照顾自己</h1>
-              <p>围绝经期的每一次变化，都值得被认真看见。</p>
-              <p>用几分钟了解骨骼、认知、情绪、睡眠与身体机能，找到当下更值得关注的健康重点。</p>
-              <p class="home-banner-tip">建议每 1～3 个月复测，持续关注身体变化趋势。</p>
-            </div>
-          </section>
-          <div id="assessmentTabs" class="assessment-tabs" role="tablist" aria-label="测评分类"></div>
-          <div id="assessmentPreview" class="assessment-grid"></div>
-        </section>
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data == null ||
+        data.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
 
-        <section id="assessmentsView" class="view" aria-labelledby="assessmentsTitle">
-          <header class="topbar">
-            <div>
-              <p class="eyebrow">深度测评</p>
-              <h1 id="assessmentsTitle">更多测评</h1>
-            </div>
-          </header>
-          <div id="assessmentLibraryTabs" class="assessment-tabs" role="tablist" aria-label="测评分类"></div>
-          <div id="assessmentLibrary" class="assessment-grid wide"></div>
-        </section>
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
 
-        <section id="wizardView" class="view" aria-labelledby="wizardTitle">
-          <header class="wizard-header">
-            <button class="icon-button icon-btn" data-route="dashboard" aria-label="返回测评首页" title="返回测评首页">‹</button>
-            <div>
-              <p class="eyebrow" id="stepKicker">全量健康评测</p>
-              <h1 id="wizardTitle">基础信息</h1>
-            </div>
-            <span id="stepCounter" class="step-counter">1/6</span>
-          </header>
-          <div class="step-track" aria-hidden="true"><span id="stepProgress"></span></div>
-          <form id="assessmentForm" class="form-surface"></form>
-          <footer class="wizard-actions">
-            <button class="btn btn-tertiary" id="prevStep" type="button">上一步</button>
-            <button class="btn btn-primary" id="nextStep" type="button">下一步</button>
-          </footer>
-        </section>
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
 
-        <section id="reportView" class="view" aria-labelledby="reportTitle">
-          <h1 id="reportTitle" hidden>本次评测报告</h1>
-          <div id="reportContent"></div>
-        </section>
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
 
-        <section id="historyView" class="view" aria-labelledby="historyTitle">
-          <h1 id="historyTitle" hidden>我的测评</h1>
-          <div id="historyList" class="history-list"></div>
-        </section>
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
 
-        <section id="privacyView" class="view" aria-labelledby="privacyTitle">
-          <header class="topbar">
-            <div>
-              <p class="eyebrow">个人健康信息</p>
-              <h1 id="privacyTitle">隐私授权与医学边界</h1>
-            </div>
-          </header>
-          <article class="notice-panel">
-            <h2>数据用途</h2>
-            <p>系统会保存基础健康信息、经期记录、评测答案和报告，用于生成健康档案、历史趋势和复测提醒。</p>
-            <h2>医学边界</h2>
-            <p>结果仅用于健康管理参考，不构成疾病诊断、治疗方案或用药建议。出现异常出血、绝经后出血、胸痛、严重情绪风险等情况时，请及时就医。</p>
-            <h2>用户控制</h2>
-            <p>你可以跳过敏感题目，也可以删除测评报告。跳过关键问题时，报告会标记信息不足。</p>
-            <label class="check check-row">
-              <input id="consentInput" type="checkbox" />
-              <span></span>
-              我已了解并同意用于围绝经期健康评测与档案管理
-            </label>
-            <button class="btn btn-primary" id="saveConsent" type="button">保存授权</button>
-          </article>
-        </section>
-      </main>
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
 
-      <nav class="bottom-tabs tabbar-preview" aria-label="底部导航">
-        <button class="tab-btn is-active" data-route="dashboard" title="首页" aria-label="首页">
-          <span class="tab-icon">⌂</span>
-          <span>首页</span>
-        </button>
-        <button class="tab-btn" data-tab-placeholder="record" title="记录" aria-label="记录">
-          <span class="tab-icon">◷</span>
-          <span>记录</span>
-        </button>
-        <button class="tab-btn" data-tab-placeholder="cashback" title="返现" aria-label="返现">
-          <span class="tab-icon">¥</span>
-          <span>返现</span>
-        </button>
-        <button class="tab-btn" data-tab-placeholder="messages" title="消息" aria-label="消息">
-          <span class="tab-icon">✉</span>
-          <span>消息</span>
-        </button>
-        <button class="tab-btn" data-tab-placeholder="me" title="我的" aria-label="我的">
-          <span class="tab-icon">○</span>
-          <span>我的</span>
-        </button>
-      </nav>
-    </div>
+* {
+  box-sizing: border-box;
+}
 
-    <div id="biometricPicker" class="biometric-picker" hidden>
-      <button class="biometric-picker-backdrop" type="button" data-action="close-biometric-picker" aria-label="关闭选择器"></button>
-      <section class="biometric-picker-sheet" role="dialog" aria-modal="true" aria-labelledby="biometricPickerTitle">
-        <header class="biometric-picker-header">
-          <button class="biometric-picker-action" type="button" data-action="close-biometric-picker">取消</button>
-          <h2 id="biometricPickerTitle">选择身高</h2>
-          <button class="biometric-picker-action is-confirm" type="button" data-action="confirm-biometric-picker">确定</button>
-        </header>
-        <div class="biometric-picker-wheel-wrap">
-          <div id="biometricPickerOptions" class="biometric-picker-wheel" role="listbox" aria-label="可选数值"></div>
-          <span id="biometricPickerUnit" class="biometric-picker-unit">cm</span>
-        </div>
-      </section>
-    </div>
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
 
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script src="./app.js"></script>
-  </body>
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.documentElement;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  let appliedProperties = [];
+
+  const applyHostStyleVariables = (styleVariables) =&gt; {
+    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
+      return;
+    }
+    for (const property of appliedProperties) {
+      root.style.removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
+        root.style.setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) =&gt; {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+&lt;/script&gt;
+
+&lt;div id=&quot;meiyou-youth-close&quot;&gt;
+  &lt;style&gt;
+    #meiyou-youth-close {
+      --my-brand-red: #ff4d88;
+      --my-brand-soft: rgba(255, 77, 136, 0.08);
+      --my-bg: light-dark(#f2f2f5, #232327);
+      --my-surface: light-dark(#ffffff, #323232);
+      --my-surface-elevated: light-dark(#ffffff, #3b3b3f);
+      --my-text-primary: light-dark(#323232, rgba(255,255,255,.9));
+      --my-text-secondary: light-dark(#666666, rgba(255,255,255,.6));
+      --my-text-tertiary: light-dark(#999999, rgba(255,255,255,.45));
+      --my-line: light-dark(rgba(0,0,0,.08), rgba(255,255,255,.12));
+      --my-success: #00cc99;
+      --my-warning: #ff9500;
+      --my-danger: #ff4d4d;
+      --my-link: light-dark(#4f7cae, #7ba7e8);
+      --my-radius-sm: 8px;
+      --my-radius-md: 12px;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      padding: 14px 0 22px;
+      color: light-dark(#242127, #f6f2f7);
+      font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+      color-scheme: light;
+    }
+
+    #meiyou-youth-close * { box-sizing: border-box; }
+
+    #meiyou-youth-close .my-flow-switch {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid light-dark(#ebe6eb, #3c363f);
+      border-radius: 14px;
+      background: light-dark(#ffffff, #27232b);
+      box-shadow: 0 7px 22px rgba(58, 31, 46, 0.07);
+    }
+
+    #meiyou-youth-close .my-flow-switch button {
+      min-width: 116px;
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: light-dark(#77717a, #aaa3ad);
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-flow-switch button[aria-pressed=&quot;true&quot;] {
+      background: linear-gradient(90deg, #ff68a1, #ff4f8e);
+      color: #ffffff;
+      box-shadow: 0 5px 14px rgba(255, 79, 146, .2);
+    }
+
+    #meiyou-youth-close .my-phone {
+      position: relative;
+      width: min(390px, calc(100% - 12px));
+      height: 820px;
+      overflow: hidden;
+      border: 1px solid light-dark(#ebe8ed, #39343d);
+      border-radius: 34px;
+      background: light-dark(#f7f6f9, #19171c);
+      box-shadow: 0 20px 55px rgba(58, 31, 46, 0.16);
+    }
+
+    #meiyou-youth-close .my-status {
+      height: 48px;
+      padding: 15px 23px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+      color: light-dark(#111014, #fffaff);
+    }
+
+    #meiyou-youth-close .my-status-icons {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-signal {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 13px;
+    }
+
+    #meiyou-youth-close .my-signal i {
+      display: block;
+      width: 3px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    #meiyou-youth-close .my-signal i:nth-child(1) { height: 5px; }
+    #meiyou-youth-close .my-signal i:nth-child(2) { height: 8px; }
+    #meiyou-youth-close .my-signal i:nth-child(3) { height: 11px; }
+    #meiyou-youth-close .my-signal i:nth-child(4) { height: 13px; }
+
+    #meiyou-youth-close .my-battery {
+      min-width: 27px;
+      height: 14px;
+      padding: 1px 4px;
+      border-radius: 4px;
+      background: light-dark(#222025, #f7f3f8);
+      color: light-dark(#fff, #1a171c);
+      display: grid;
+      place-items: center;
+      font-size: 9px;
+      line-height: 1;
+    }
+
+    #meiyou-youth-close .my-nav {
+      height: 58px;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: 72px 1fr 72px;
+      align-items: center;
+    }
+
+    #meiyou-youth-close button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #meiyou-youth-close .my-nav-btn,
+    #meiyou-youth-close .my-link {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-back {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-back::before {
+      content: &quot;&quot;;
+      width: 12px;
+      height: 12px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    #meiyou-youth-close .my-brand {
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px 5px 6px;
+      border-radius: 999px;
+      background: light-dark(#ffffff, #2c2730);
+      color: #ff4f92;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    #meiyou-youth-close .my-fruit {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      border: 3px solid #ffd942;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fff3a4 0 12%, transparent 13%),
+        repeating-conic-gradient(from -4deg, #ff4d8f 0 39deg, #ffd7e6 40deg 45deg);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.75);
+    }
+
+    #meiyou-youth-close .my-help {
+      justify-self: end;
+      padding: 8px 0;
+      font-size: 13px;
+      color: light-dark(#555159, #d8d2da);
+    }
+
+    #meiyou-youth-close .my-screen {
+      position: absolute;
+      inset: 106px 0 0;
+      display: none;
+      flex-direction: column;
+      padding: 12px 22px 28px;
+      background: light-dark(#f7f6f9, #19171c);
+    }
+
+    #meiyou-youth-close .my-screen[data-active=&quot;true&quot;] {
+      display: flex;
+      animation: my-in .28s ease-out both;
+    }
+
+    @keyframes my-in {
+      from { opacity: 0; transform: translateX(14px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    #meiyou-youth-close .my-step {
+      margin-bottom: 14px;
+      color: #ff4f92;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .2px;
+    }
+
+    #meiyou-youth-close h2,
+    #meiyou-youth-close p { margin: 0; }
+
+    #meiyou-youth-close h2 {
+      font-size: 25px;
+      line-height: 1.3;
+      letter-spacing: -.4px;
+    }
+
+    #meiyou-youth-close .my-subtitle {
+      margin-top: 10px;
+      color: light-dark(#77727d, #aaa3ae);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    #meiyou-youth-close .my-card {
+      border-radius: 24px;
+      background: light-dark(#ffffff, #27232b);
+      box-shadow: 0 8px 28px rgba(58, 31, 46, 0.07);
+    }
+
+    #meiyou-youth-close .my-password-card {
+      min-height: 440px;
+      margin-top: 8px;
+      padding: 42px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #meiyou-youth-close .my-shield {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 24px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #fff0f6, #fff8fb);
+      color: #ff4f92;
+    }
+
+    #meiyou-youth-close .my-shield svg { width: 38px; height: 38px; }
+
+    #meiyou-youth-close .my-password-dots {
+      width: 220px;
+      margin: 50px 0 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    #meiyou-youth-close .my-password-dots span {
+      height: 44px;
+      border-bottom: 2px solid light-dark(#3f3a42, #d3ccd5);
+    }
+
+    #meiyou-youth-close .my-primary {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #ff68a1, #ff4f8e);
+      box-shadow: 0 9px 20px rgba(255, 79, 146, .22);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    #meiyou-youth-close .my-primary:active { transform: scale(.985); }
+
+    #meiyou-youth-close .my-primary:disabled {
+      background: light-dark(#e6e2e6, #3a353e);
+      box-shadow: none;
+      color: light-dark(#aaa5ac, #7f7882);
+      cursor: default;
+    }
+
+    #meiyou-youth-close .my-forgot {
+      margin-top: 22px;
+      color: #e84483;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    #meiyou-youth-close .my-verify-hero {
+      margin: 30px auto 0;
+      text-align: center;
+    }
+
+    #meiyou-youth-close .my-verify-hero .my-fruit {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 22px;
+      border-width: 6px;
+      box-shadow: 0 12px 26px rgba(255, 79, 146, .16), inset 0 0 0 2px rgba(255,255,255,.8);
+    }
+
+    #meiyou-youth-close .my-phone-number {
+      margin-top: 22px;
+      font-size: 28px;
+      font-weight: 750;
+      letter-spacing: 1.5px;
+    }
+
+    #meiyou-youth-close .my-privacy {
+      margin-top: 12px;
+      color: light-dark(#9b96a0, #8e8791);
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-bottom {
+      margin-top: auto;
+    }
+
+    #meiyou-youth-close .my-secondary-link {
+      width: 100%;
+      margin-top: 16px;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      color: light-dark(#73707a, #b5afb8);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-otp-meta {
+      margin-top: 9px;
+      color: light-dark(#77727d, #aaa3ae);
+      font-size: 14px;
+    }
+
+    #meiyou-youth-close .my-otp-meta b {
+      color: light-dark(#27232a, #f6f1f7);
+      font-weight: 700;
+    }
+
+    #meiyou-youth-close .my-otp-row {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+    }
+
+    #meiyou-youth-close .my-otp-row input {
+      width: 100%;
+      min-width: 0;
+      aspect-ratio: 1 / 1;
+      border: 1px solid transparent;
+      border-radius: 18px;
+      outline: none;
+      background: light-dark(#ffffff, #27232b);
+      color: light-dark(#171419, #fffaff);
+      box-shadow: 0 7px 22px rgba(58, 31, 46, 0.06);
+      text-align: center;
+      font: 700 29px/1 -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, sans-serif;
+      caret-color: #ff4f92;
+    }
+
+    #meiyou-youth-close .my-otp-row input:focus {
+      border-color: #ff78aa;
+      box-shadow: 0 0 0 3px rgba(255,79,146,.12);
+    }
+
+    #meiyou-youth-close .my-otp-actions {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    #meiyou-youth-close .my-resend {
+      border: 0;
+      padding: 7px 0;
+      background: transparent;
+      color: light-dark(#8e8992, #99919c);
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-resend:enabled { color: #e84483; }
+
+    #meiyou-youth-close .my-error {
+      min-height: 22px;
+      margin-top: 10px;
+      color: #e5484d;
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-otp-confirm { margin-top: 12px; }
+
+    #meiyou-youth-close .my-success {
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 80px;
+      text-align: center;
+    }
+
+    #meiyou-youth-close .my-success-icon {
+      width: 92px;
+      height: 92px;
+      margin-bottom: 28px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #fff1f7, #fffafd);
+      box-shadow: 0 10px 30px rgba(255, 79, 146, .12);
+    }
+
+    #meiyou-youth-close .my-success-icon svg { width: 48px; height: 48px; }
+
+    #meiyou-youth-close .my-success .my-subtitle {
+      max-width: 280px;
+      margin: 12px auto 28px;
+    }
+
+    #meiyou-youth-close .my-success .my-primary { max-width: 280px; }
+
+    #meiyou-youth-close .my-cancel {
+      margin-top: 15px;
+      border: 0;
+      padding: 8px 18px;
+      background: transparent;
+      color: light-dark(#77727d, #aaa3ae);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-toast {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      z-index: 10;
+      max-width: calc(100% - 44px);
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: rgba(35, 31, 37, .9);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.4;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity .2s ease, transform .2s ease;
+      white-space: nowrap;
+    }
+
+    #meiyou-youth-close .my-toast[data-show=&quot;true&quot;] {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    #meiyou-youth-close .my-enable-intro {
+      padding-top: 2px;
+    }
+
+    #meiyou-youth-close .my-intro-card {
+      min-height: 590px;
+      padding: 30px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      background:
+        linear-gradient(155deg, light-dark(#eefffb, #21302d) 0, light-dark(#ffffff, #27232b) 37%),
+        light-dark(#ffffff, #27232b);
+    }
+
+    #meiyou-youth-close .my-intro-card h2,
+    #meiyou-youth-close .my-intro-card &gt; p { text-align: center; }
+
+    #meiyou-youth-close .my-guardian-mark {
+      width: 86px;
+      height: 86px;
+      margin: 20px auto 2px;
+      display: grid;
+      place-items: center;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #fff7ca, #fff2a7);
+      color: #ff6b9f;
+      box-shadow: 0 10px 24px rgba(243, 196, 72, .19);
+    }
+
+    #meiyou-youth-close .my-guardian-mark svg { width: 58px; height: 58px; }
+
+    #meiyou-youth-close .my-protection {
+      margin-top: 23px;
+      padding: 16px 17px 8px;
+      border: 8px solid light-dark(#e4fbf1, #243a32);
+      border-radius: 23px;
+      background: light-dark(#ffffff, #211e24);
+    }
+
+    #meiyou-youth-close .my-protection-title {
+      margin-bottom: 9px;
+      color: light-dark(#29cba5, #5de0bf);
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    #meiyou-youth-close .my-protection-row {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid light-dark(#f0edf1, #38323b);
+      font-size: 14px;
+    }
+
+    #meiyou-youth-close .my-protection-row:first-of-type { border-top: 0; }
+
+    #meiyou-youth-close .my-protection-row em {
+      padding: 3px 7px;
+      border-radius: 7px;
+      background: light-dark(#e5fbf5, #24463c);
+      color: light-dark(#24b995, #67dfc0);
+      font-size: 11px;
+      font-style: normal;
+    }
+
+    #meiyou-youth-close .my-protection-row em[data-off] {
+      background: light-dark(#fff0f2, #46272e);
+      color: light-dark(#ff6b76, #ff8b95);
+    }
+
+    #meiyou-youth-close .my-policy {
+      margin-top: 13px;
+      border: 0;
+      background: transparent;
+      color: light-dark(#678da2, #91b9cd);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-setup {
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    #meiyou-youth-close .my-setup::-webkit-scrollbar { display: none; }
+
+    #meiyou-youth-close .my-setup-section { margin-top: 26px; }
+
+    #meiyou-youth-close .my-field-label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    #meiyou-youth-close .my-field-help {
+      margin-bottom: 10px;
+      color: light-dark(#8a858e, #9e97a1);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-input-shell {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      background: light-dark(#ffffff, #27232b);
+      box-shadow: 0 7px 22px rgba(58, 31, 46, 0.055);
+    }
+
+    #meiyou-youth-close .my-input-shell:focus-within {
+      border-color: #ff78aa;
+      box-shadow: 0 0 0 3px rgba(255,79,146,.12);
+    }
+
+    #meiyou-youth-close .my-prefix {
+      padding: 0 13px 0 16px;
+      color: light-dark(#6e6972, #b3acb6);
+      border-right: 1px solid light-dark(#eee9ee, #423c45);
+      font-size: 14px;
+    }
+
+    #meiyou-youth-close .my-input-shell input {
+      min-width: 0;
+      flex: 1;
+      height: 52px;
+      padding: 0 15px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: light-dark(#211e23, #fff9ff);
+      font: 500 15px/1 -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, sans-serif;
+    }
+
+    #meiyou-youth-close .my-eye {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: light-dark(#6e6972, #bbb4be);
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-eye svg { width: 20px; height: 20px; }
+
+    #meiyou-youth-close .my-setup-error {
+      min-height: 20px;
+      margin-top: 8px;
+      color: #e5484d;
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-setup .my-bottom { padding-top: 18px; }
+
+    #meiyou-youth-close .my-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(22, 19, 24, .58);
+    }
+
+    #meiyou-youth-close .my-modal-backdrop[data-show=&quot;true&quot;] { display: flex; }
+
+    #meiyou-youth-close .my-confirm-modal {
+      width: 100%;
+      max-width: 330px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: light-dark(#ffffff, #2b262e);
+      box-shadow: 0 20px 55px rgba(18, 15, 20, .3);
+      text-align: center;
+      animation: my-pop .2s ease-out both;
+    }
+
+    @keyframes my-pop {
+      from { opacity: 0; transform: scale(.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #meiyou-youth-close .my-confirm-content { padding: 26px 24px 20px; }
+
+    #meiyou-youth-close .my-confirm-content h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    #meiyou-youth-close .my-confirm-content p {
+      margin-top: 9px;
+      color: light-dark(#77717a, #aaa3ad);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-confirm-code {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      color: light-dark(#211e23, #fff9ff);
+      font-size: 29px;
+      font-weight: 750;
+      letter-spacing: 2px;
+    }
+
+    #meiyou-youth-close .my-confirm-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid light-dark(#eee9ee, #423c45);
+    }
+
+    #meiyou-youth-close .my-confirm-actions button {
+      min-height: 54px;
+      border: 0;
+      background: transparent;
+      color: light-dark(#656069, #c2bbc5);
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-confirm-actions button + button {
+      border-left: 1px solid light-dark(#eee9ee, #423c45);
+      color: #ff4f92;
+      font-weight: 750;
+    }
+
+    #meiyou-youth-close .my-confirm-actions.my-single-action { grid-template-columns: 1fr; }
+
+    #meiyou-youth-close .my-confirm-actions.my-single-action button {
+      color: var(--my-brand-red);
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-special-case-modal {
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    #meiyou-youth-close .my-special-sheet {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+      background: var(--my-bg);
+      box-shadow: 0 -10px 32px rgba(18, 15, 20, .18);
+      text-align: center;
+      animation: my-sheet-up .22s ease-out both;
+    }
+
+    @keyframes my-sheet-up {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    #meiyou-youth-close .my-special-copy {
+      margin: 0;
+      padding: 22px 24px 18px;
+      background: var(--my-surface-elevated);
+      color: var(--my-text-secondary);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-special-sheet button {
+      width: 100%;
+      min-height: 56px;
+      border: 0;
+      border-top: 1px solid var(--my-line);
+      background: var(--my-surface-elevated);
+      color: var(--my-text-primary);
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-special-sheet button[data-confirm-special] {
+      color: var(--my-brand-red);
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-special-sheet button[data-cancel-special] {
+      margin-top: 8px;
+      border-top: 0;
+    }
+
+    #meiyou-youth-close .my-home { padding-top: 4px; }
+
+    #meiyou-youth-close .my-home-hero {
+      min-height: 150px;
+      padding: 25px 22px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ff77b1, #ff5d9d);
+      color: #ffffff;
+      box-shadow: 0 12px 28px rgba(255, 79, 146, .18);
+    }
+
+    #meiyou-youth-close .my-home-hero strong {
+      display: block;
+      font-size: 22px;
+    }
+
+    #meiyou-youth-close .my-home-hero span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.8);
+      font-size: 13px;
+    }
+
+    #meiyou-youth-close .my-youth-banner {
+      margin-top: 14px;
+      padding: 15px 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 18px;
+      background: light-dark(#e9fbf5, #233a32);
+      color: light-dark(#249d81, #68ddc0);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    #meiyou-youth-close .my-feed-item {
+      margin-top: 13px;
+      padding: 17px;
+      border-radius: 20px;
+      background: light-dark(#ffffff, #27232b);
+      box-shadow: 0 7px 22px rgba(58, 31, 46, 0.055);
+    }
+
+    #meiyou-youth-close .my-feed-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    #meiyou-youth-close .my-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffd9e7, #fff2a4);
+    }
+
+    #meiyou-youth-close .my-feed-item &gt; p {
+      margin-top: 13px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-feed-art {
+      height: 105px;
+      margin-top: 13px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 72% 35%, #ffe3ad 0 11%, transparent 12%),
+        radial-gradient(circle at 30% 62%, #ffc4d8 0 16%, transparent 17%),
+        linear-gradient(145deg, #fff4c4, #ffddea);
+    }
+
+    #meiyou-youth-close .my-app-home {
+      inset: 48px 0 0;
+      padding: 0 10px 72px;
+      overflow: hidden;
+      background: var(--my-bg);
+    }
+
+    #meiyou-youth-close .my-app-head {
+      height: 58px;
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      align-items: center;
+      color: var(--my-text-primary);
+    }
+
+    #meiyou-youth-close .my-app-head strong {
+      justify-self: center;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-app-icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    #meiyou-youth-close .my-search-icon {
+      width: 18px;
+      height: 18px;
+      border: 1.8px solid currentColor;
+      border-radius: 50%;
+    }
+
+    #meiyou-youth-close .my-search-icon::after {
+      content: &quot;&quot;;
+      width: 7px;
+      height: 1.8px;
+      display: block;
+      border-radius: 2px;
+      background: currentColor;
+      transform: translate(13px, 15px) rotate(45deg);
+    }
+
+    #meiyou-youth-close .my-bell-icon {
+      position: relative;
+      width: 19px;
+      height: 17px;
+      border: 1.8px solid currentColor;
+      border-bottom: 0;
+      border-radius: 11px 11px 0 0;
+    }
+
+    #meiyou-youth-close .my-bell-icon::before,
+    #meiyou-youth-close .my-bell-icon::after {
+      content: &quot;&quot;;
+      position: absolute;
+      left: 50%;
+      background: currentColor;
+      transform: translateX(-50%);
+    }
+
+    #meiyou-youth-close .my-bell-icon::before { bottom: -3px; width: 23px; height: 1.8px; }
+    #meiyou-youth-close .my-bell-icon::after { bottom: -7px; width: 5px; height: 3px; border-radius: 0 0 5px 5px; }
+
+    #meiyou-youth-close .my-cycle-card {
+      position: relative;
+      min-height: 118px;
+      padding: 24px 18px;
+      overflow: hidden;
+      border-radius: var(--my-radius-md);
+      background: linear-gradient(120deg, #ff68a5, #ff78bb);
+      color: #ffffff;
+    }
+
+    #meiyou-youth-close .my-cycle-card strong { display: block; font-size: 20px; font-weight: 500; }
+    #meiyou-youth-close .my-cycle-card p { margin-top: 8px; color: rgba(255,255,255,.78); font-size: 13px; }
+
+    #meiyou-youth-close .my-cycle-card button {
+      margin-top: 12px;
+      padding: 6px 14px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      color: var(--my-brand-red);
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-cycle-art {
+      position: absolute;
+      right: 16px;
+      top: 18px;
+      width: 78px;
+      height: 78px;
+      border: 11px solid rgba(255,255,255,.5);
+      border-right-color: rgba(255,255,255,.18);
+      border-radius: 50%;
+    }
+
+    #meiyou-youth-close .my-cycle-art::after {
+      content: &quot;&quot;;
+      position: absolute;
+      inset: 15px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      box-shadow: inset 0 0 0 9px #ff96c4;
+    }
+
+    #meiyou-youth-close .my-period-check {
+      min-height: 46px;
+      margin-top: 8px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+      font-size: 15px;
+    }
+
+    #meiyou-youth-close .my-period-drop {
+      width: 22px;
+      height: 22px;
+      border-radius: 50% 50% 50% 8px;
+      background: #ff79ad;
+      transform: rotate(-45deg);
+    }
+
+    #meiyou-youth-close .my-period-check span:nth-child(2) { flex: 1; }
+    #meiyou-youth-close .my-period-toggle { display: flex; overflow: hidden; border-radius: 7px; }
+    #meiyou-youth-close .my-period-toggle button { min-width: 36px; padding: 5px; border: 0; background: light-dark(#e5e5e8, #48484d); color: var(--my-text-tertiary); }
+    #meiyou-youth-close .my-period-toggle button:last-child { background: var(--my-brand-red); color: #ffffff; }
+
+    #meiyou-youth-close .my-app-post {
+      margin-top: 8px;
+      padding: 13px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-app-post-head { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+    #meiyou-youth-close .my-app-post-head .my-avatar { width: 31px; height: 31px; flex: 0 0 31px; }
+    #meiyou-youth-close .my-app-post &gt; p { margin-top: 10px; font-size: 14px; line-height: 1.55; }
+    #meiyou-youth-close .my-post-meta { margin-top: 10px; display: flex; justify-content: flex-end; gap: 18px; color: var(--my-text-secondary); font-size: 12px; }
+
+    #meiyou-youth-close .my-food-strip {
+      height: 82px;
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    #meiyou-youth-close .my-food-strip span {
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #fff3dd, #f3d8dc);
+      color: #9d585d;
+      font-size: 20px;
+    }
+
+    #meiyou-youth-close .my-app-tabbar {
+      position: absolute;
+      inset: auto 0 0;
+      height: 62px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--my-line);
+      background: var(--my-surface-elevated);
+    }
+
+    #meiyou-youth-close .my-app-tabbar button {
+      border: 0;
+      background: transparent;
+      color: var(--my-text-secondary);
+      font-size: 11px;
+    }
+
+    #meiyou-youth-close .my-app-tabbar button::before {
+      content: &quot;&quot;;
+      width: 19px;
+      height: 19px;
+      margin: 0 auto 4px;
+      display: block;
+      border: 1.8px solid currentColor;
+      border-radius: 50%;
+    }
+
+    #meiyou-youth-close .my-app-tabbar button[aria-current=&quot;page&quot;] { color: var(--my-brand-red); }
+
+    #meiyou-youth-close .my-recovery-list {
+      margin-top: 28px;
+      overflow: hidden;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-recovery-option {
+      position: relative;
+      width: 100%;
+      min-height: 72px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 20px;
+      align-items: center;
+      gap: 12px;
+      border: 0;
+      border-bottom: .5px solid var(--my-line);
+      background: transparent;
+      color: var(--my-text-primary);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-recovery-option:last-child { border-bottom: 0; }
+    #meiyou-youth-close .my-recovery-option:active { background: light-dark(rgba(0,0,0,.04), rgba(255,255,255,.05)); }
+
+    #meiyou-youth-close .my-recovery-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--my-radius-md);
+      background: var(--my-brand-soft);
+      color: var(--my-brand-red);
+    }
+
+    #meiyou-youth-close .my-recovery-icon.is-service {
+      background: light-dark(rgba(79,124,174,.1), rgba(123,167,232,.12));
+      color: var(--my-link);
+    }
+
+    #meiyou-youth-close .my-recovery-icon svg { width: 24px; height: 24px; }
+
+    #meiyou-youth-close .my-recovery-copy strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.47;
+    }
+
+    #meiyou-youth-close .my-recovery-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--my-text-tertiary);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    #meiyou-youth-close .my-chevron {
+      width: 12px;
+      height: 12px;
+      border-top: 1.8px solid currentColor;
+      border-right: 1.8px solid currentColor;
+      color: var(--my-text-tertiary);
+      transform: rotate(45deg);
+    }
+
+    #meiyou-youth-close .my-age-note {
+      margin-top: 16px;
+      color: var(--my-text-tertiary);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-face-visual {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      margin: 42px auto 20px;
+      display: grid;
+      place-items: center;
+      border: 2px solid light-dark(rgba(255,77,136,.18), rgba(255,77,136,.28));
+      border-radius: 50%;
+      background: var(--my-brand-soft);
+    }
+
+    #meiyou-youth-close .my-face-visual::before,
+    #meiyou-youth-close .my-face-visual::after {
+      content: &quot;&quot;;
+      position: absolute;
+      inset: 14px;
+      border: 2px solid transparent;
+      border-top-color: var(--my-brand-red);
+      border-bottom-color: var(--my-brand-red);
+      border-radius: 50%;
+    }
+
+    #meiyou-youth-close .my-face-visual svg {
+      width: 92px;
+      height: 92px;
+      color: var(--my-text-secondary);
+    }
+
+    #meiyou-youth-close .my-face-tips {
+      display: grid;
+      gap: 8px;
+      margin: 0 auto;
+      color: var(--my-text-secondary);
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    #meiyou-youth-close .my-service-card {
+      margin-top: 28px;
+      padding: 16px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-service-row {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 28px minmax(0,1fr);
+      align-items: center;
+      gap: 12px;
+      border-bottom: .5px solid var(--my-line);
+    }
+
+    #meiyou-youth-close .my-service-row:last-child { border-bottom: 0; }
+
+    #meiyou-youth-close .my-service-index {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: light-dark(rgba(79,124,174,.1), rgba(123,167,232,.12));
+      color: var(--my-link);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-service-row strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-service-row span {
+      display: block;
+      margin-top: 3px;
+      color: var(--my-text-tertiary);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    #meiyou-youth-close .my-chat {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-chat-agent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--my-text-secondary);
+      font-size: 13px;
+    }
+
+    #meiyou-youth-close .my-chat-avatar {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: light-dark(rgba(79,124,174,.1), rgba(123,167,232,.12));
+      color: var(--my-link);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-chat-bubble {
+      margin: 14px 0 0 46px;
+      padding: 12px;
+      border-radius: 4px 12px 12px 12px;
+      background: var(--my-bg);
+      color: var(--my-text-primary);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-customer-chat { padding-bottom: 16px; }
+
+    #meiyou-youth-close .my-customer-head {
+      min-height: 64px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-customer-avatar {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--my-brand-soft);
+      color: var(--my-brand-red);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-customer-info { min-width: 0; flex: 1; }
+
+    #meiyou-youth-close .my-customer-info strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-customer-info span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 3px;
+      color: var(--my-text-tertiary);
+      font-size: 12px;
+    }
+
+    #meiyou-youth-close .my-online-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--my-success);
+    }
+
+    #meiyou-youth-close .my-chat-thread {
+      min-height: 320px;
+      max-height: 430px;
+      padding: 20px 4px 12px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    #meiyou-youth-close .my-chat-thread::-webkit-scrollbar { display: none; }
+
+    #meiyou-youth-close .my-chat-time {
+      margin-bottom: 18px;
+      color: var(--my-text-tertiary);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    #meiyou-youth-close .my-message-row {
+      margin-top: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    #meiyou-youth-close .my-message-row.is-user { justify-content: flex-end; }
+
+    #meiyou-youth-close .my-message-avatar {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--my-brand-soft);
+      color: var(--my-brand-red);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    #meiyou-youth-close .my-message-bubble {
+      max-width: 75%;
+      padding: 10px 12px;
+      border-radius: 4px 12px 12px 12px;
+      background: var(--my-surface);
+      color: var(--my-text-primary);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    #meiyou-youth-close .my-message-row.is-user .my-message-bubble {
+      border-radius: 12px 4px 12px 12px;
+      background: var(--my-brand-red);
+      color: #ffffff;
+    }
+
+    #meiyou-youth-close .my-chat-recovery {
+      margin-top: 10px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--my-link);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-quick-questions {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 0 10px;
+      scrollbar-width: none;
+    }
+
+    #meiyou-youth-close .my-quick-questions::-webkit-scrollbar { display: none; }
+
+    #meiyou-youth-close .my-quick-questions button {
+      min-height: 36px;
+      flex: 0 0 auto;
+      padding: 0 12px;
+      border: 1px solid light-dark(rgba(255,77,136,.2), rgba(255,77,136,.32));
+      border-radius: 999px;
+      background: var(--my-brand-soft);
+      color: var(--my-brand-red);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #meiyou-youth-close .my-chat-compose {
+      min-height: 52px;
+      margin-top: auto;
+      padding: 6px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      border-radius: var(--my-radius-md);
+      background: var(--my-surface);
+    }
+
+    #meiyou-youth-close .my-chat-compose input {
+      min-width: 0;
+      height: 40px;
+      padding: 0 10px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--my-text-primary);
+      font-size: 15px;
+    }
+
+    #meiyou-youth-close .my-chat-send {
+      min-width: 60px;
+      height: 40px;
+      border: 0;
+      border-radius: var(--my-radius-sm);
+      background: var(--my-brand-red);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Official 美柚 V1.0 component alignment */
+    #meiyou-youth-close .my-phone,
+    #meiyou-youth-close .my-screen { background: var(--my-bg); color: var(--my-text-primary); }
+    #meiyou-youth-close .my-screen { padding-inline: 16px; }
+    #meiyou-youth-close .my-card { border-radius: var(--my-radius-md); background: var(--my-surface); box-shadow: 0 0 10px rgba(50,50,50,.08); }
+    #meiyou-youth-close h2 { font-size: 28px; font-weight: 500; letter-spacing: 0; }
+    #meiyou-youth-close .my-subtitle { color: var(--my-text-secondary); font-size: 14px; }
+    #meiyou-youth-close .my-step { color: var(--my-brand-red); font-size: 13px; font-weight: 500; }
+    #meiyou-youth-close .my-primary { min-height: 44px; border-radius: 999px; background: var(--my-brand-red); box-shadow: none; font-size: 17px; font-weight: 500; }
+    #meiyou-youth-close .my-primary:disabled { background: var(--my-brand-red); opacity: .5; color: #fff; }
+    #meiyou-youth-close .my-input-shell,
+    #meiyou-youth-close .my-otp-row input { border-radius: var(--my-radius-sm); background: var(--my-surface); box-shadow: none; }
+    #meiyou-youth-close .my-confirm-modal { border-radius: var(--my-radius-md); background: var(--my-surface-elevated); }
+    #meiyou-youth-close .my-toast { border-radius: var(--my-radius-sm); font-size: 14px; }
+    #meiyou-youth-close .my-link { color: var(--my-link); }
+    #meiyou-youth-close .my-brand { color: var(--my-brand-red); }
+    #meiyou-youth-close .my-brand.is-title { padding: 0; background: transparent; color: var(--my-text-primary); font-size: 17px; font-weight: 500; letter-spacing: 0; }
+    #meiyou-youth-close .my-brand.is-title .my-fruit { display: none; }
+
+    #meiyou-youth-close .my-shake { animation: my-shake .3s ease-in-out; }
+
+    @keyframes my-shake {
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-3px); }
+    }
+
+    @media (max-width: 380px) {
+      #meiyou-youth-close .my-flow-switch button { min-width: 104px; padding-inline: 12px; }
+      #meiyou-youth-close .my-phone { height: 780px; }
+      #meiyou-youth-close .my-screen { padding-inline: 18px; }
+      #meiyou-youth-close .my-intro-card { min-height: 555px; padding-inline: 18px; }
+      #meiyou-youth-close .my-protection { margin-top: 18px; }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;my-flow-switch&quot; aria-label=&quot;选择体验流程&quot;&gt;
+    &lt;button type=&quot;button&quot; data-flow=&quot;enable&quot; aria-pressed=&quot;true&quot;&gt;开启青少年模式&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-flow=&quot;disable&quot; aria-pressed=&quot;false&quot;&gt;关闭青少年模式&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;section class=&quot;my-phone&quot; aria-label=&quot;美柚青少年模式开启与关闭交互原型&quot;&gt;
+    &lt;div class=&quot;my-status&quot;&gt;
+      &lt;span&gt;10:14&lt;/span&gt;
+      &lt;div class=&quot;my-status-icons&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;span class=&quot;my-signal&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span&gt;5G&lt;/span&gt;
+        &lt;span class=&quot;my-battery&quot;&gt;86&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;nav class=&quot;my-nav&quot; aria-label=&quot;页面导航&quot;&gt;
+      &lt;button class=&quot;my-back&quot; type=&quot;button&quot; aria-label=&quot;返回&quot;&gt;&lt;/button&gt;
+      &lt;div class=&quot;my-brand&quot;&gt;&lt;span class=&quot;my-fruit&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span data-nav-title&gt;美柚&lt;/span&gt;&lt;/div&gt;
+      &lt;button class=&quot;my-nav-btn my-help&quot; type=&quot;button&quot; hidden&gt;联系客服&lt;/button&gt;
+    &lt;/nav&gt;
+
+    &lt;section class=&quot;my-screen my-enable-intro&quot; data-screen=&quot;enable-intro&quot; data-active=&quot;true&quot; aria-label=&quot;开启青少年模式介绍页&quot;&gt;
+      &lt;div class=&quot;my-card my-intro-card&quot;&gt;
+        &lt;h2&gt;美柚青少年模式&lt;/h2&gt;
+        &lt;p class=&quot;my-subtitle&quot;&gt;为呵护青少年健康成长，该模式下部分功能将受限使用&lt;/p&gt;
+        &lt;div class=&quot;my-guardian-mark&quot; aria-hidden=&quot;true&quot;&gt;
+          &lt;svg viewBox=&quot;0 0 64 64&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M10 31c5-13 16-20 31-18 8 1 13 6 15 10-11-4-23 2-28 14-6-5-12-7-18-6Z&quot; fill=&quot;#ffd53c&quot;/&gt;&lt;path d=&quot;M34 24v25&quot; stroke=&quot;#ff6b9f&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;circle cx=&quot;34&quot; cy=&quot;39&quot; r=&quot;12&quot; fill=&quot;#ff91b8&quot;/&gt;&lt;path d=&quot;M29 39h.1M39 39h.1&quot; stroke=&quot;#563747&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;path d=&quot;M31 44c2 2 4 2 6 0&quot; stroke=&quot;#563747&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;my-protection&quot;&gt;
+          &lt;p class=&quot;my-protection-title&quot;&gt;青少年守护&lt;/p&gt;
+          &lt;div class=&quot;my-protection-row&quot;&gt;&lt;span&gt;搜索&lt;/span&gt;&lt;em&gt;青少年内容&lt;/em&gt;&lt;/div&gt;
+          &lt;div class=&quot;my-protection-row&quot;&gt;&lt;span&gt;她她圈&lt;/span&gt;&lt;em&gt;青少年内容&lt;/em&gt;&lt;/div&gt;
+          &lt;div class=&quot;my-protection-row&quot;&gt;&lt;span&gt;爱爱记录&lt;/span&gt;&lt;em data-off&gt;暂停使用&lt;/em&gt;&lt;/div&gt;
+          &lt;div class=&quot;my-protection-row&quot;&gt;&lt;span&gt;怀孕几率预测&lt;/span&gt;&lt;em data-off&gt;暂停使用&lt;/em&gt;&lt;/div&gt;
+          &lt;div class=&quot;my-protection-row&quot;&gt;&lt;span&gt;柚子街&lt;/span&gt;&lt;em data-off&gt;暂停使用&lt;/em&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-start-enable&gt;开启青少年模式&lt;/button&gt;
+        &lt;button class=&quot;my-policy&quot; type=&quot;button&quot;&gt;《儿童个人信息保护规则》&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-setup&quot; data-screen=&quot;enable-setup&quot; data-active=&quot;false&quot; aria-label=&quot;青少年模式设置页&quot;&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;设置家长验证手机号与关闭密码&lt;/p&gt;
+      &lt;div class=&quot;my-setup-section&quot;&gt;
+        &lt;label class=&quot;my-field-label&quot; for=&quot;parent-phone&quot;&gt;预留家长手机号&lt;/label&gt;
+        &lt;p class=&quot;my-field-help&quot;&gt;忘记密码时，可通过该手机号验证家长身份关闭青少年模式&lt;/p&gt;
+        &lt;div class=&quot;my-input-shell&quot;&gt;
+          &lt;span class=&quot;my-prefix&quot;&gt;+86&lt;/span&gt;
+          &lt;input id=&quot;parent-phone&quot; type=&quot;tel&quot; inputmode=&quot;numeric&quot; maxlength=&quot;11&quot; value=&quot;18150383860&quot; aria-label=&quot;家长手机号&quot; aria-required=&quot;true&quot; required&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-setup-section&quot;&gt;
+        &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password&quot;&gt;设置关闭密码&lt;/label&gt;
+        &lt;p class=&quot;my-field-help&quot;&gt;用于管理及退出青少年模式，请牢记4位数字密码&lt;/p&gt;
+        &lt;div class=&quot;my-input-shell&quot;&gt;
+          &lt;input id=&quot;parent-password&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; value=&quot;1314&quot; aria-label=&quot;4位关闭密码&quot; aria-required=&quot;true&quot; required&gt;
+          &lt;button class=&quot;my-eye&quot; type=&quot;button&quot; aria-label=&quot;显示密码&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;/svg&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;my-setup-error&quot; role=&quot;alert&quot;&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary my-next-enable&quot; type=&quot;button&quot;&gt;下一步&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-home&quot; data-screen=&quot;home&quot; data-active=&quot;false&quot; aria-label=&quot;青少年模式首页&quot;&gt;
+      &lt;div class=&quot;my-home-hero&quot;&gt;
+        &lt;strong&gt;今天也要好好长大&lt;/strong&gt;
+        &lt;span&gt;精选健康、积极的青少年内容&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-youth-banner&quot;&gt;&lt;span&gt;青少年模式守护中&lt;/span&gt;&lt;span&gt;已开启&lt;/span&gt;&lt;/div&gt;
+      &lt;article class=&quot;my-feed-item&quot;&gt;
+        &lt;div class=&quot;my-feed-head&quot;&gt;&lt;span class=&quot;my-avatar&quot;&gt;&lt;/span&gt;&lt;span&gt;美柚成长小课堂&lt;/span&gt;&lt;/div&gt;
+        &lt;p&gt;青春期如何管理情绪？给自己一点耐心，也给成长一点时间。&lt;/p&gt;
+        &lt;div class=&quot;my-feed-art&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;my-feed-item&quot;&gt;
+        &lt;div class=&quot;my-feed-head&quot;&gt;&lt;span class=&quot;my-avatar&quot;&gt;&lt;/span&gt;&lt;span&gt;健康生活指南&lt;/span&gt;&lt;/div&gt;
+        &lt;p&gt;规律作息、适量运动，每天积累一点好习惯。&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-app-home&quot; data-screen=&quot;app-home&quot; data-active=&quot;false&quot; aria-label=&quot;美柚APP首页&quot;&gt;
+      &lt;div class=&quot;my-app-head&quot;&gt;
+        &lt;button class=&quot;my-app-icon&quot; type=&quot;button&quot; aria-label=&quot;搜索&quot;&gt;&lt;span class=&quot;my-search-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;strong&gt;美柚&lt;/strong&gt;
+        &lt;button class=&quot;my-app-icon&quot; type=&quot;button&quot; aria-label=&quot;通知&quot;&gt;&lt;span class=&quot;my-bell-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-cycle-card&quot;&gt;
+        &lt;strong&gt;距月经开始还有16天&lt;/strong&gt;
+        &lt;p&gt;预测经期开始日9月3日&lt;/p&gt;
+        &lt;button type=&quot;button&quot;&gt;查看详情&lt;/button&gt;
+        &lt;span class=&quot;my-cycle-art&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-period-check&quot;&gt;
+        &lt;span class=&quot;my-period-drop&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span&gt;月经来了&lt;/span&gt;
+        &lt;span class=&quot;my-period-toggle&quot;&gt;&lt;button type=&quot;button&quot;&gt;是&lt;/button&gt;&lt;button type=&quot;button&quot;&gt;否&lt;/button&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;article class=&quot;my-app-post&quot;&gt;
+        &lt;div class=&quot;my-app-post-head&quot;&gt;&lt;span class=&quot;my-avatar&quot;&gt;&lt;/span&gt;&lt;span&gt;美柚健康小助手&lt;/span&gt;&lt;/div&gt;
+        &lt;p&gt;来姨妈前容易出现哪些身体变化？了解周期信号，轻松做好健康管理。&lt;/p&gt;
+        &lt;div class=&quot;my-post-meta&quot;&gt;&lt;span&gt;♡ 77&lt;/span&gt;&lt;span&gt;◌ 486&lt;/span&gt;&lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;my-app-post&quot;&gt;
+        &lt;div class=&quot;my-app-post-head&quot;&gt;&lt;span class=&quot;my-avatar&quot;&gt;&lt;/span&gt;&lt;span&gt;木木健康课堂&lt;/span&gt;&lt;/div&gt;
+        &lt;p&gt;熬夜后如何恢复状态？规律作息与均衡饮食，给身体一点缓冲时间。&lt;/p&gt;
+        &lt;div class=&quot;my-food-strip&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;🍌&lt;/span&gt;&lt;span&gt;🍎&lt;/span&gt;&lt;span&gt;🥕&lt;/span&gt;&lt;/div&gt;
+      &lt;/article&gt;
+      &lt;nav class=&quot;my-app-tabbar&quot; aria-label=&quot;APP底部导航&quot;&gt;
+        &lt;button type=&quot;button&quot; aria-current=&quot;page&quot;&gt;美柚&lt;/button&gt;
+        &lt;button type=&quot;button&quot;&gt;记录&lt;/button&gt;
+        &lt;button type=&quot;button&quot;&gt;消息&lt;/button&gt;
+        &lt;button type=&quot;button&quot;&gt;我&lt;/button&gt;
+      &lt;/nav&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;password&quot; data-active=&quot;false&quot; aria-label=&quot;关闭青少年模式密码页&quot;&gt;
+      &lt;div class=&quot;my-card my-password-card&quot;&gt;
+        &lt;div class=&quot;my-shield&quot; aria-hidden=&quot;true&quot;&gt;
+          &lt;svg viewBox=&quot;0 0 48 48&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M24 5 39 11v11c0 10-6.1 17.2-15 21-8.9-3.8-15-11-15-21V11L24 5Z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot;/&gt;&lt;path d=&quot;M18 23h12M24 17v12&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;h2&gt;关闭青少年模式&lt;/h2&gt;
+        &lt;p class=&quot;my-subtitle&quot;&gt;请输入开启青少年模式时设置的4位密码&lt;/p&gt;
+        &lt;div class=&quot;my-password-dots&quot; aria-label=&quot;4位密码输入位置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; disabled&gt;确定&lt;/button&gt;
+        &lt;button class=&quot;my-link my-forgot&quot; type=&quot;button&quot; data-go=&quot;verify&quot;&gt;忘记密码？&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;verify&quot; data-active=&quot;false&quot; aria-label=&quot;家长身份验证页&quot;&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;我们将向家长预留的手机号发送短信验证码&lt;/p&gt;
+      &lt;div class=&quot;my-verify-hero&quot;&gt;
+        &lt;div class=&quot;my-fruit&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+        &lt;p class=&quot;my-phone-number&quot;&gt;181 **** 3860&lt;/p&gt;
+        &lt;p class=&quot;my-privacy&quot;&gt;验证码仅用于本次身份验证&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-go=&quot;otp&quot;&gt;继续&lt;/button&gt;
+        &lt;button class=&quot;my-secondary-link&quot; type=&quot;button&quot; data-go=&quot;recovery&quot;&gt;手机号已停用？更换验证方式&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;recovery&quot; data-active=&quot;false&quot; aria-label=&quot;手机号停用后的找回方式页&quot;&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;预留手机号无法使用时，可通过以下方式验证身份，关闭青少年模式&lt;/p&gt;
+      &lt;div class=&quot;my-recovery-list&quot;&gt;
+        &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;face&quot;&gt;
+          &lt;span class=&quot;my-recovery-icon&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M9 10h.01M15 10h.01M9 15c2 1.5 4 1.5 6 0&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span class=&quot;my-recovery-copy&quot;&gt;&lt;strong&gt;人脸识别验证&lt;/strong&gt;&lt;span&gt;由18岁以上成年人完成验证&lt;/span&gt;&lt;/span&gt;
+          &lt;span class=&quot;my-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;service&quot;&gt;
+          &lt;span class=&quot;my-recovery-icon is-service&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M5 13v-2a7 7 0 0 1 14 0v2M5 13H3v5h4v-5H5Zm14 0h2v5h-4v-5h2ZM17 20c-1 1-3 1-5 1&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span class=&quot;my-recovery-copy&quot;&gt;&lt;strong&gt;联系人工客服&lt;/strong&gt;&lt;span&gt;由客服协助核验身份信息&lt;/span&gt;&lt;/span&gt;
+          &lt;span class=&quot;my-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;my-age-note&quot;&gt;仅限18岁以上成年人验证身份；未成年人请由监护人操作。人脸信息仅用于本次身份核验。&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;face&quot; data-active=&quot;false&quot; aria-label=&quot;人脸识别验证页&quot;&gt;
+      &lt;p class=&quot;my-step&quot;&gt;人脸识别验证&lt;/p&gt;
+      &lt;h2&gt;验证本人身份&lt;/h2&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;由18岁以上成年人完成验证&lt;/p&gt;
+      &lt;div class=&quot;my-face-visual&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 96 96&quot; fill=&quot;none&quot;&gt;&lt;circle cx=&quot;48&quot; cy=&quot;39&quot; r=&quot;20&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot;/&gt;&lt;path d=&quot;M17 83c4-19 15-28 31-28s27 9 31 28&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;path d=&quot;M39 40h.01M57 40h.01M40 49c5 4 11 4 16 0&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-face-tips&quot;&gt;&lt;span&gt;保持面部光线充足&lt;/span&gt;&lt;span&gt;请勿佩戴口罩、帽子或墨镜&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary my-face-start&quot; type=&quot;button&quot;&gt;开始人脸识别&lt;/button&gt;
+        &lt;button class=&quot;my-secondary-link&quot; type=&quot;button&quot; data-go=&quot;service&quot;&gt;无法识别？联系人工客服&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;service&quot; data-active=&quot;false&quot; aria-label=&quot;人工客服找回页&quot;&gt;
+      &lt;p class=&quot;my-step&quot;&gt;人工客服找回&lt;/p&gt;
+      &lt;h2&gt;联系人工客服&lt;/h2&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;客服将核验家长身份，审核通过后可继续关闭青少年模式&lt;/p&gt;
+      &lt;div class=&quot;my-service-card&quot;&gt;
+        &lt;div class=&quot;my-service-row&quot;&gt;&lt;span class=&quot;my-service-index&quot;&gt;1&lt;/span&gt;&lt;div&gt;&lt;strong&gt;准备身份信息&lt;/strong&gt;&lt;span&gt;预留手机号、账号信息及有效身份证明&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;my-service-row&quot;&gt;&lt;span class=&quot;my-service-index&quot;&gt;2&lt;/span&gt;&lt;div&gt;&lt;strong&gt;由成年人本人申请&lt;/strong&gt;&lt;span&gt;未成年人请由监护人发起并完成核验&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;my-service-row&quot;&gt;&lt;span class=&quot;my-service-index&quot;&gt;3&lt;/span&gt;&lt;div&gt;&lt;strong&gt;客服审核&lt;/strong&gt;&lt;span&gt;审核结果会在当前会话中告知&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary my-service-start&quot; type=&quot;button&quot;&gt;开始人工核验&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;service-chat&quot; data-active=&quot;false&quot; aria-label=&quot;人工客服核验结果页&quot;&gt;
+      &lt;p class=&quot;my-step&quot;&gt;人工客服找回&lt;/p&gt;
+      &lt;h2&gt;身份核验结果&lt;/h2&gt;
+      &lt;div class=&quot;my-chat&quot;&gt;
+        &lt;div class=&quot;my-chat-agent&quot;&gt;&lt;span class=&quot;my-chat-avatar&quot;&gt;客服&lt;/span&gt;&lt;span&gt;美柚青少年模式专属客服&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;my-chat-bubble&quot;&gt;家长身份信息已核验通过，你可以继续关闭青少年模式。&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-go=&quot;verified&quot;&gt;继续关闭青少年模式&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-customer-chat&quot; data-screen=&quot;customer-chat&quot; data-active=&quot;false&quot; aria-label=&quot;客服聊天页面&quot;&gt;
+      &lt;div class=&quot;my-customer-head&quot;&gt;
+        &lt;span class=&quot;my-customer-avatar&quot;&gt;客服&lt;/span&gt;
+        &lt;div class=&quot;my-customer-info&quot;&gt;&lt;strong&gt;美柚青少年模式客服&lt;/strong&gt;&lt;span&gt;&lt;i class=&quot;my-online-dot&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;在线为你服务&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-chat-thread&quot; aria-live=&quot;polite&quot;&gt;
+        &lt;p class=&quot;my-chat-time&quot;&gt;今天 10:14&lt;/p&gt;
+        &lt;div class=&quot;my-message-row&quot;&gt;
+          &lt;span class=&quot;my-message-avatar&quot;&gt;客服&lt;/span&gt;
+          &lt;div class=&quot;my-message-bubble&quot;&gt;你好，我是美柚客服。请问你在关闭青少年模式时遇到了什么问题？&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-quick-questions&quot; aria-label=&quot;快捷问题&quot;&gt;
+        &lt;button type=&quot;button&quot; data-chat-question=&quot;预留手机号已停用&quot;&gt;预留手机号已停用&lt;/button&gt;
+        &lt;button type=&quot;button&quot; data-chat-question=&quot;收不到短信验证码&quot;&gt;收不到验证码&lt;/button&gt;
+        &lt;button type=&quot;button&quot; data-chat-question=&quot;忘记关闭密码&quot;&gt;忘记关闭密码&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;form class=&quot;my-chat-compose&quot;&gt;
+        &lt;input type=&quot;text&quot; maxlength=&quot;100&quot; placeholder=&quot;请输入问题&quot; aria-label=&quot;聊天消息&quot;&gt;
+        &lt;button class=&quot;my-chat-send&quot; type=&quot;submit&quot;&gt;发送&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen&quot; data-screen=&quot;otp&quot; data-active=&quot;false&quot; aria-label=&quot;短信验证码校验页&quot;&gt;
+      &lt;h2&gt;请输入验证码&lt;/h2&gt;
+      &lt;p class=&quot;my-otp-meta&quot;&gt;短信已发送至 &lt;b&gt;+86 181 **** 3860&lt;/b&gt;&lt;/p&gt;
+      &lt;div class=&quot;my-otp-row&quot; aria-label=&quot;4位短信验证码&quot;&gt;
+        &lt;input aria-label=&quot;第1位验证码&quot; inputmode=&quot;numeric&quot; maxlength=&quot;1&quot; value=&quot;7&quot;&gt;
+        &lt;input aria-label=&quot;第2位验证码&quot; inputmode=&quot;numeric&quot; maxlength=&quot;1&quot; value=&quot;3&quot;&gt;
+        &lt;input aria-label=&quot;第3位验证码&quot; inputmode=&quot;numeric&quot; maxlength=&quot;1&quot; value=&quot;6&quot;&gt;
+        &lt;input aria-label=&quot;第4位验证码&quot; inputmode=&quot;numeric&quot; maxlength=&quot;1&quot; value=&quot;9&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-otp-actions&quot;&gt;
+        &lt;button class=&quot;my-link&quot; type=&quot;button&quot; data-sms-help&gt;收不到验证码？&lt;/button&gt;
+        &lt;button class=&quot;my-resend&quot; type=&quot;button&quot; disabled&gt;60秒后重新发送&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;my-error&quot; role=&quot;alert&quot;&gt;&lt;/p&gt;
+      &lt;button class=&quot;my-primary my-otp-confirm&quot; type=&quot;button&quot;&gt;确认&lt;/button&gt;
+      &lt;button class=&quot;my-secondary-link&quot; type=&quot;button&quot; data-go=&quot;recovery&quot;&gt;其他验证方式&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-success&quot; data-screen=&quot;verified&quot; data-active=&quot;false&quot; aria-label=&quot;家长验证成功页&quot;&gt;
+      &lt;div class=&quot;my-success-icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 48 48&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;m11 25 9 9 18-20&quot; stroke=&quot;#ff4f92&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;h2&gt;家长身份验证成功&lt;/h2&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;验证已通过，点击下方按钮即可关闭青少年模式&lt;/p&gt;
+      &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-go=&quot;closed&quot;&gt;关闭青少年模式&lt;/button&gt;
+      &lt;button class=&quot;my-cancel&quot; type=&quot;button&quot; data-cancel-close&gt;暂不关闭&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-success&quot; data-screen=&quot;closed&quot; data-active=&quot;false&quot; aria-label=&quot;青少年模式关闭成功页&quot;&gt;
+      &lt;div class=&quot;my-success-icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 48 48&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;m11 25 9 9 18-20&quot; stroke=&quot;#ff4f92&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;h2&gt;青少年模式已关闭&lt;/h2&gt;
+      &lt;p class=&quot;my-subtitle&quot;&gt;已恢复完整功能。后续可在「我的－设置－青少年模式」重新开启&lt;/p&gt;
+      &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-home&gt;返回美柚首页&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;div class=&quot;my-modal-backdrop my-special-case-modal&quot; data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;special-case-title&quot;&gt;
+      &lt;div class=&quot;my-special-sheet&quot;&gt;
+        &lt;p class=&quot;my-special-copy&quot; id=&quot;special-case-title&quot;&gt;你是美柚会员，青少年模式开启后将暂时无法使用会员权益功能，是否继续开启？&lt;/p&gt;
+        &lt;button type=&quot;button&quot; data-confirm-special&gt;继续开启青少年模式&lt;/button&gt;
+        &lt;button type=&quot;button&quot; data-cancel-special&gt;取消&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;my-modal-backdrop my-password-confirm-modal&quot; data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;confirm-title&quot;&gt;
+      &lt;div class=&quot;my-confirm-modal&quot;&gt;
+        &lt;div class=&quot;my-confirm-content&quot;&gt;
+          &lt;h3 id=&quot;confirm-title&quot;&gt;请记住密码&lt;/h3&gt;
+          &lt;p&gt;此密码为长期密码，用于后续关闭青少年模式验证&lt;/p&gt;
+          &lt;div class=&quot;my-confirm-code&quot; aria-label=&quot;确认的4位关闭密码&quot;&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;my-confirm-actions&quot;&gt;
+          &lt;button type=&quot;button&quot; data-reenter&gt;重新输入&lt;/button&gt;
+          &lt;button type=&quot;button&quot; data-confirm-enable&gt;确认密码&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;my-modal-backdrop my-sms-help-modal&quot; data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;sms-help-title&quot;&gt;
+      &lt;div class=&quot;my-confirm-modal&quot;&gt;
+        &lt;div class=&quot;my-confirm-content&quot;&gt;
+          &lt;h3 id=&quot;sms-help-title&quot;&gt;收不到验证码？&lt;/h3&gt;
+          &lt;p&gt;请检查移动网络状态，并确认当前手机号状态是否正常。&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;my-confirm-actions my-single-action&quot;&gt;
+          &lt;button type=&quot;button&quot; data-close-sms-help&gt;关闭&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;my-toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById('meiyou-youth-close');
+      const screens = [...root.querySelectorAll('.my-screen')];
+      const flowButtons = [...root.querySelectorAll('[data-flow]')];
+      const toast = root.querySelector('.my-toast');
+      const back = root.querySelector('.my-back');
+      const pageNav = root.querySelector('.my-nav');
+      const helpButton = root.querySelector('.my-help');
+      const navBrand = root.querySelector('.my-brand');
+      const navTitle = root.querySelector('[data-nav-title]');
+      const otpInputs = [...root.querySelectorAll('.my-otp-row input')];
+      const otpRow = root.querySelector('.my-otp-row');
+      const otpConfirm = root.querySelector('.my-otp-confirm');
+      const otpError = root.querySelector('.my-error');
+      const resend = root.querySelector('.my-resend');
+      const phoneInput = root.querySelector('#parent-phone');
+      const passwordInput = root.querySelector('#parent-password');
+      const setupError = root.querySelector('.my-setup-error');
+      const specialCaseModal = root.querySelector('.my-special-case-modal');
+      const enableModal = root.querySelector('.my-password-confirm-modal');
+      const smsHelpModal = root.querySelector('.my-sms-help-modal');
+      const confirmCode = [...root.querySelectorAll('.my-confirm-code span')];
+      const nextEnable = root.querySelector('.my-next-enable');
+      const faceStart = root.querySelector('.my-face-start');
+      const serviceStart = root.querySelector('.my-service-start');
+      const chatThread = root.querySelector('.my-chat-thread');
+      const chatCompose = root.querySelector('.my-chat-compose');
+      const chatInput = chatCompose.querySelector('input');
+      let current = 'enable-intro';
+      let toastTimer;
+      let countdownTimer;
+      const history = [];
+      const helpScreens = new Set(['password', 'verify', 'recovery', 'face', 'service', 'service-chat', 'otp', 'verified']);
+      const navTitles = {
+        'enable-intro': '美柚',
+        'enable-setup': '开启青少年模式',
+        home: '美柚',
+        'app-home': '美柚',
+        password: '关闭青少年模式',
+        verify: '家长身份验证',
+        recovery: '验证家长身份',
+        face: '人脸识别',
+        service: '人工客服',
+        'service-chat': '人工客服',
+        'customer-chat': '客服聊天',
+        otp: '短信验证',
+        verified: '验证结果',
+        closed: '关闭结果'
+      };
+
+      const showToast = (message) =&gt; {
+        clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.dataset.show = 'true';
+        toastTimer = setTimeout(() =&gt; { toast.dataset.show = 'false'; }, 1800);
+      };
+
+      const startCountdown = () =&gt; {
+        clearInterval(countdownTimer);
+        let seconds = 60;
+        resend.disabled = true;
+        resend.textContent = `${seconds}秒后重新发送`;
+        countdownTimer = setInterval(() =&gt; {
+          seconds -= 1;
+          if (seconds &lt;= 0) {
+            clearInterval(countdownTimer);
+            resend.disabled = false;
+            resend.textContent = '重新发送';
+          } else {
+            resend.textContent = `${seconds}秒后重新发送`;
+          }
+        }, 1000);
+      };
+
+      const go = (name, remember = true) =&gt; {
+        if (name === current) return;
+        if (remember) history.push(current);
+        screens.forEach((screen) =&gt; {
+          screen.dataset.active = String(screen.dataset.screen === name);
+        });
+        current = name;
+        pageNav.hidden = name === 'app-home';
+        const title = navTitles[name] || '美柚';
+        navTitle.textContent = title;
+        navBrand.classList.toggle('is-title', title !== '美柚');
+        helpButton.hidden = !helpScreens.has(name);
+        if (name === 'otp') {
+          otpError.textContent = '';
+          startCountdown();
+        }
+      };
+
+      root.querySelectorAll('[data-go]').forEach((button) =&gt; {
+        button.addEventListener('click', () =&gt; go(button.dataset.go));
+      });
+
+      root.querySelector('[data-start-enable]').addEventListener('click', () =&gt; {
+        specialCaseModal.dataset.show = 'true';
+        root.querySelector('[data-confirm-special]').focus();
+      });
+
+      root.querySelector('[data-confirm-special]').addEventListener('click', () =&gt; {
+        specialCaseModal.dataset.show = 'false';
+        go('enable-setup');
+      });
+
+      root.querySelector('[data-cancel-special]').addEventListener('click', () =&gt; {
+        specialCaseModal.dataset.show = 'false';
+      });
+
+      specialCaseModal.addEventListener('click', (event) =&gt; {
+        if (event.target === specialCaseModal) specialCaseModal.dataset.show = 'false';
+      });
+
+      root.querySelector('[data-cancel-close]').addEventListener('click', () =&gt; {
+        history.length = 0;
+        go('app-home', false);
+        showToast('已返回首页，青少年模式仍在开启');
+      });
+
+      flowButtons.forEach((button) =&gt; {
+        button.addEventListener('click', () =&gt; {
+          const flow = button.dataset.flow;
+          flowButtons.forEach((item) =&gt; item.setAttribute('aria-pressed', String(item === button)));
+          history.length = 0;
+          go(flow === 'enable' ? 'enable-intro' : 'password', false);
+        });
+      });
+
+      helpButton.addEventListener('click', () =&gt; go('customer-chat'));
+
+      back.addEventListener('click', () =&gt; {
+        if (history.length) go(history.pop(), false);
+        else showToast('已返回上一页');
+      });
+
+      otpInputs.forEach((input, index) =&gt; {
+        input.addEventListener('input', () =&gt; {
+          input.value = input.value.replace(/\D/g, '').slice(-1);
+          otpError.textContent = '';
+          if (input.value &amp;&amp; otpInputs[index + 1]) otpInputs[index + 1].focus();
+          otpConfirm.disabled = otpInputs.some((item) =&gt; !item.value);
+        });
+        input.addEventListener('keydown', (event) =&gt; {
+          if (event.key === 'Backspace' &amp;&amp; !input.value &amp;&amp; otpInputs[index - 1]) otpInputs[index - 1].focus();
+        });
+      });
+
+      otpConfirm.addEventListener('click', () =&gt; {
+        const value = otpInputs.map((input) =&gt; input.value).join('');
+        if (value !== '7369') {
+          otpError.textContent = '验证码不正确，请重新输入';
+          otpRow.classList.remove('my-shake');
+          void otpRow.offsetWidth;
+          otpRow.classList.add('my-shake');
+          return;
+        }
+        otpConfirm.disabled = true;
+        otpConfirm.textContent = '验证中…';
+        setTimeout(() =&gt; {
+          otpConfirm.disabled = false;
+          otpConfirm.textContent = '确认';
+          go('verified');
+        }, 650);
+      });
+
+      resend.addEventListener('click', () =&gt; {
+        showToast('新的验证码已发送');
+        startCountdown();
+      });
+
+      const sanitizeDigits = (input, limit) =&gt; {
+        input.value = input.value.replace(/\D/g, '').slice(0, limit);
+      };
+
+      phoneInput.addEventListener('input', () =&gt; {
+        sanitizeDigits(phoneInput, 11);
+        setupError.textContent = '';
+      });
+
+      passwordInput.addEventListener('input', () =&gt; {
+        sanitizeDigits(passwordInput, 4);
+        setupError.textContent = '';
+      });
+
+      root.querySelector('.my-eye').addEventListener('click', (event) =&gt; {
+        const show = passwordInput.type === 'password';
+        passwordInput.type = show ? 'text' : 'password';
+        event.currentTarget.setAttribute('aria-label', show ? '隐藏密码' : '显示密码');
+      });
+
+      nextEnable.addEventListener('click', () =&gt; {
+        const validPhone = /^1\d{10}$/.test(phoneInput.value);
+        const validPassword = /^\d{4}$/.test(passwordInput.value);
+        if (!validPhone || !validPassword) {
+          setupError.textContent = !validPhone ? '请输入正确的11位家长手机号' : '请设置4位数字关闭密码';
+          return;
+        }
+        confirmCode.forEach((item, index) =&gt; { item.textContent = passwordInput.value[index]; });
+        enableModal.dataset.show = 'true';
+        root.querySelector('[data-reenter]').focus();
+      });
+
+      root.querySelector('[data-reenter]').addEventListener('click', () =&gt; {
+        enableModal.dataset.show = 'false';
+        passwordInput.focus();
+      });
+
+      root.querySelector('[data-confirm-enable]').addEventListener('click', () =&gt; {
+        enableModal.dataset.show = 'false';
+        go('home');
+        showToast('已开启青少年模式');
+      });
+
+      enableModal.addEventListener('click', (event) =&gt; {
+        if (event.target === enableModal) enableModal.dataset.show = 'false';
+      });
+
+      root.querySelector('[data-sms-help]').addEventListener('click', () =&gt; {
+        smsHelpModal.dataset.show = 'true';
+        root.querySelector('[data-close-sms-help]').focus();
+      });
+
+      root.querySelector('[data-close-sms-help]').addEventListener('click', () =&gt; {
+        smsHelpModal.dataset.show = 'false';
+      });
+
+      smsHelpModal.addEventListener('click', (event) =&gt; {
+        if (event.target === smsHelpModal) smsHelpModal.dataset.show = 'false';
+      });
+
+      root.addEventListener('keydown', (event) =&gt; {
+        if (event.key !== 'Escape') return;
+        if (specialCaseModal.dataset.show === 'true') specialCaseModal.dataset.show = 'false';
+        if (enableModal.dataset.show === 'true') enableModal.dataset.show = 'false';
+        if (smsHelpModal.dataset.show === 'true') smsHelpModal.dataset.show = 'false';
+      });
+
+      root.querySelector('.my-policy').addEventListener('click', () =&gt; showToast('已打开儿童个人信息保护规则'));
+
+      faceStart.addEventListener('click', () =&gt; {
+        faceStart.disabled = true;
+        faceStart.textContent = '识别中…';
+        setTimeout(() =&gt; {
+          faceStart.disabled = false;
+          faceStart.textContent = '开始人脸识别';
+          go('verified');
+          showToast('人脸识别验证成功');
+        }, 850);
+      });
+
+      serviceStart.addEventListener('click', () =&gt; {
+        serviceStart.disabled = true;
+        serviceStart.textContent = '连接客服中…';
+        setTimeout(() =&gt; {
+          serviceStart.disabled = false;
+          serviceStart.textContent = '开始人工核验';
+          go('service-chat');
+          showToast('已连接人工客服');
+        }, 650);
+      });
+
+      const appendChatMessage = (message, role, includeRecovery = false) =&gt; {
+        const row = document.createElement('div');
+        row.className = `my-message-row${role === 'user' ? ' is-user' : ''}`;
+        if (role !== 'user') {
+          const avatar = document.createElement('span');
+          avatar.className = 'my-message-avatar';
+          avatar.textContent = '客服';
+          row.appendChild(avatar);
+        }
+        const bubble = document.createElement('div');
+        bubble.className = 'my-message-bubble';
+        const copy = document.createElement('div');
+        copy.textContent = message;
+        bubble.appendChild(copy);
+        if (includeRecovery) {
+          const recoveryButton = document.createElement('button');
+          recoveryButton.type = 'button';
+          recoveryButton.className = 'my-chat-recovery';
+          recoveryButton.textContent = '前往身份找回 →';
+          recoveryButton.addEventListener('click', () =&gt; go('recovery'));
+          bubble.appendChild(recoveryButton);
+        }
+        row.appendChild(bubble);
+        chatThread.appendChild(row);
+        chatThread.scrollTop = chatThread.scrollHeight;
+      };
+
+      const replyToQuestion = (question) =&gt; {
+        if (question.includes('停用')) {
+          return { message: '预留手机号无法使用时，可以选择人脸识别或由人工客服核验家长身份。', recovery: true };
+        }
+        if (question.includes('验证码')) {
+          return { message: '请先检查短信拦截与手机信号；仍无法接收时，可进入身份找回选择其他验证方式。', recovery: true };
+        }
+        if (question.includes('密码')) {
+          return { message: '忘记关闭密码时，请先验证家长身份，验证通过后即可继续关闭青少年模式。', recovery: true };
+        }
+        return { message: '已收到你的问题。请补充账号信息或具体报错，我会继续协助处理。', recovery: false };
+      };
+
+      const sendChatQuestion = (question) =&gt; {
+        const content = question.trim();
+        if (!content) return;
+        appendChatMessage(content, 'user');
+        chatInput.value = '';
+        const reply = replyToQuestion(content);
+        setTimeout(() =&gt; appendChatMessage(reply.message, 'agent', reply.recovery), 350);
+      };
+
+      root.querySelectorAll('[data-chat-question]').forEach((button) =&gt; {
+        button.addEventListener('click', () =&gt; sendChatQuestion(button.dataset.chatQuestion));
+      });
+
+      chatCompose.addEventListener('submit', (event) =&gt; {
+        event.preventDefault();
+        sendChatQuestion(chatInput.value);
+      });
+
+      root.querySelector('[data-home]').addEventListener('click', () =&gt; showToast('已返回美柚首页'));
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  frame.srcdoc = srcdoc;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
 </html>
