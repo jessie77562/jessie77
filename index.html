@@ -2564,14 +2564,14 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;p class=&quot;my-field-help&quot;&gt;忘记密码时，可通过该手机号验证家长身份关闭青少年模式&lt;/p&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
           &lt;span class=&quot;my-prefix&quot;&gt;+86&lt;/span&gt;
-          &lt;input id=&quot;parent-phone&quot; type=&quot;tel&quot; inputmode=&quot;numeric&quot; maxlength=&quot;11&quot; value=&quot;18150383860&quot; aria-label=&quot;家长手机号&quot; aria-required=&quot;true&quot; required&gt;
+          &lt;input id=&quot;parent-phone&quot; type=&quot;tel&quot; inputmode=&quot;numeric&quot; maxlength=&quot;11&quot; placeholder=&quot;请输入家长手机号&quot; aria-label=&quot;家长手机号&quot; aria-required=&quot;true&quot; required&gt;
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
         &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password&quot;&gt;设置关闭密码&lt;/label&gt;
         &lt;p class=&quot;my-field-help&quot;&gt;用于管理及退出青少年模式，请牢记4位数字密码&lt;/p&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
-          &lt;input id=&quot;parent-password&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; value=&quot;1314&quot; aria-label=&quot;4位关闭密码&quot; aria-required=&quot;true&quot; required&gt;
+          &lt;input id=&quot;parent-password&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; placeholder=&quot;请输入4位数字密码&quot; aria-label=&quot;4位关闭密码&quot; aria-required=&quot;true&quot; required&gt;
           &lt;button class=&quot;my-eye&quot; type=&quot;button&quot; aria-label=&quot;显示密码&quot;&gt;
             &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;/svg&gt;
           &lt;/button&gt;
@@ -2579,7 +2579,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;p class=&quot;my-setup-error&quot; role=&quot;alert&quot;&gt;&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;my-bottom&quot;&gt;
-        &lt;button class=&quot;my-primary my-next-enable&quot; type=&quot;button&quot;&gt;下一步&lt;/button&gt;
+        &lt;button class=&quot;my-primary my-next-enable&quot; type=&quot;button&quot; disabled&gt;下一步&lt;/button&gt;
       &lt;/div&gt;
     &lt;/section&gt;
 
@@ -2644,25 +2644,25 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;p class=&quot;my-subtitle&quot;&gt;请输入开启青少年模式时设置的4位密码&lt;/p&gt;
         &lt;div class=&quot;my-password-dots&quot; aria-label=&quot;4位密码输入位置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
         &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; disabled&gt;确定&lt;/button&gt;
-        &lt;button class=&quot;my-link my-forgot&quot; type=&quot;button&quot; data-go=&quot;verify&quot;&gt;验证家长身份&lt;/button&gt;
+        &lt;button class=&quot;my-link my-forgot&quot; type=&quot;button&quot; data-go=&quot;verify&quot;&gt;忘记密码&lt;/button&gt;
       &lt;/div&gt;
     &lt;/section&gt;
 
     &lt;section class=&quot;my-screen&quot; data-screen=&quot;verify&quot; data-active=&quot;false&quot; aria-label=&quot;家长身份验证页&quot;&gt;
       &lt;p class=&quot;my-subtitle&quot;&gt;请选择一种方式完成家长身份验证，验证通过后可关闭青少年模式&lt;/p&gt;
       &lt;div class=&quot;my-recovery-list&quot;&gt;
-        &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;phone-verify&quot;&gt;
-          &lt;span class=&quot;my-recovery-icon is-phone&quot; aria-hidden=&quot;true&quot;&gt;
-            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;rect x=&quot;6&quot; y=&quot;2.5&quot; width=&quot;12&quot; height=&quot;19&quot; rx=&quot;2.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;path d=&quot;M10 5h4M10.5 18.5h3&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
-          &lt;/span&gt;
-          &lt;span class=&quot;my-recovery-copy&quot;&gt;&lt;strong&gt;手机号验证&lt;/strong&gt;&lt;span&gt;通过 181 **** 3860 接收短信验证码&lt;/span&gt;&lt;/span&gt;
-          &lt;span class=&quot;my-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-        &lt;/button&gt;
         &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;face&quot;&gt;
           &lt;span class=&quot;my-recovery-icon&quot; aria-hidden=&quot;true&quot;&gt;
             &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M9 10h.01M15 10h.01M9 15c2 1.5 4 1.5 6 0&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
           &lt;/span&gt;
           &lt;span class=&quot;my-recovery-copy&quot;&gt;&lt;strong&gt;人脸识别验证&lt;/strong&gt;&lt;span&gt;由18岁以上成年人完成验证&lt;/span&gt;&lt;/span&gt;
+          &lt;span class=&quot;my-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;phone-verify&quot;&gt;
+          &lt;span class=&quot;my-recovery-icon is-phone&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;rect x=&quot;6&quot; y=&quot;2.5&quot; width=&quot;12&quot; height=&quot;19&quot; rx=&quot;2.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;path d=&quot;M10 5h4M10.5 18.5h3&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span class=&quot;my-recovery-copy&quot;&gt;&lt;strong&gt;手机号验证&lt;/strong&gt;&lt;span&gt;通过 181 **** 3860 接收短信验证码&lt;/span&gt;&lt;/span&gt;
           &lt;span class=&quot;my-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
         &lt;/button&gt;
         &lt;button class=&quot;my-recovery-option&quot; type=&quot;button&quot; data-go=&quot;customer-chat&quot;&gt;
@@ -2930,6 +2930,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
       root.querySelector('[data-confirm-special]').addEventListener('click', () =&gt; {
         specialCaseModal.dataset.show = 'false';
+        resetEnableForm();
         go('enable-setup');
       });
 
@@ -3002,14 +3003,31 @@ html&gt;body{padding:0}&lt;/style&gt;
         input.value = input.value.replace(/\D/g, '').slice(0, limit);
       };
 
+      const syncEnableFormState = () =&gt; {
+        const validPhone = /^1\d{10}$/.test(phoneInput.value);
+        const validPassword = /^\d{4}$/.test(passwordInput.value);
+        nextEnable.disabled = !validPhone || !validPassword;
+      };
+
+      const resetEnableForm = () =&gt; {
+        phoneInput.value = '';
+        passwordInput.value = '';
+        passwordInput.type = 'password';
+        setupError.textContent = '';
+        root.querySelector('.my-eye').setAttribute('aria-label', '显示密码');
+        syncEnableFormState();
+      };
+
       phoneInput.addEventListener('input', () =&gt; {
         sanitizeDigits(phoneInput, 11);
         setupError.textContent = '';
+        syncEnableFormState();
       });
 
       passwordInput.addEventListener('input', () =&gt; {
         sanitizeDigits(passwordInput, 4);
         setupError.textContent = '';
+        syncEnableFormState();
       });
 
       root.querySelector('.my-eye').addEventListener('click', (event) =&gt; {
