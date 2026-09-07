@@ -2558,7 +2558,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;/section&gt;
 
     &lt;section class=&quot;my-screen my-setup&quot; data-screen=&quot;enable-setup&quot; data-active=&quot;false&quot; aria-label=&quot;青少年模式设置页&quot;&gt;
-      &lt;p class=&quot;my-subtitle&quot;&gt;设置家长验证手机号与关闭密码&lt;/p&gt;
+      &lt;h2&gt;1/2 完成家长预留手机号设置&lt;/h2&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
         &lt;label class=&quot;my-field-label&quot; for=&quot;parent-phone&quot;&gt;预留家长手机号&lt;/label&gt;
         &lt;p class=&quot;my-field-help&quot;&gt;忘记密码时，可通过该手机号验证家长身份关闭青少年模式&lt;/p&gt;
@@ -2568,6 +2568,24 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
+        &lt;label class=&quot;my-field-label&quot; for=&quot;enable-sms-code&quot;&gt;短信验证码&lt;/label&gt;
+        &lt;div class=&quot;my-input-shell&quot;&gt;
+          &lt;input id=&quot;enable-sms-code&quot; type=&quot;text&quot; inputmode=&quot;numeric&quot; autocomplete=&quot;one-time-code&quot; maxlength=&quot;4&quot; placeholder=&quot;请输入短信验证码&quot; aria-label=&quot;开启短信验证码&quot; required&gt;
+          &lt;button class=&quot;my-link&quot; type=&quot;button&quot; data-enable-send disabled style=&quot;flex-shrink:0;white-space:nowrap&quot;&gt;获取验证码&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;my-field-help&quot; data-enable-sms-status aria-live=&quot;polite&quot;&gt;验证码将发送至上方家长手机号&lt;/p&gt;
+        &lt;p class=&quot;my-error&quot; data-enable-sms-error role=&quot;alert&quot;&gt;&lt;/p&gt;
+        &lt;button class=&quot;my-link&quot; type=&quot;button&quot; data-enable-sms-help&gt;收不到验证码？&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-bottom&quot;&gt;
+        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-enable-verify disabled&gt;验证并进入下一步&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;my-screen my-setup&quot; data-screen=&quot;enable-password&quot; data-active=&quot;false&quot; aria-label=&quot;设置关闭密码页&quot;&gt;
+      &lt;h2&gt;2/2 设置关闭密码&lt;/h2&gt;
+      &lt;p class=&quot;my-field-help&quot; data-enable-verified-phone&gt;&lt;/p&gt;
+      &lt;div class=&quot;my-setup-section&quot;&gt;
         &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password&quot;&gt;设置关闭密码&lt;/label&gt;
         &lt;p class=&quot;my-field-help&quot;&gt;用于管理及退出青少年模式，请牢记4位数字密码&lt;/p&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
@@ -2576,10 +2594,16 @@ html&gt;body{padding:0}&lt;/style&gt;
             &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2.7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.8&quot;/&gt;&lt;/svg&gt;
           &lt;/button&gt;
         &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;my-setup-section&quot;&gt;
+        &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password-repeat&quot;&gt;确认关闭密码&lt;/label&gt;
+        &lt;div class=&quot;my-input-shell&quot;&gt;
+          &lt;input id=&quot;parent-password-repeat&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; placeholder=&quot;请再次输入4位数字密码&quot; aria-label=&quot;再次输入关闭密码&quot; required&gt;
+        &lt;/div&gt;
         &lt;p class=&quot;my-setup-error&quot; role=&quot;alert&quot;&gt;&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;my-bottom&quot;&gt;
-        &lt;button class=&quot;my-primary my-next-enable&quot; type=&quot;button&quot; disabled&gt;下一步&lt;/button&gt;
+        &lt;button class=&quot;my-primary my-next-enable&quot; type=&quot;button&quot; disabled&gt;确认并开启&lt;/button&gt;
       &lt;/div&gt;
     &lt;/section&gt;
 
@@ -2797,20 +2821,6 @@ html&gt;body{padding:0}&lt;/style&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&quot;my-modal-backdrop my-password-confirm-modal&quot; data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;confirm-title&quot;&gt;
-      &lt;div class=&quot;my-confirm-modal&quot;&gt;
-        &lt;div class=&quot;my-confirm-content&quot;&gt;
-          &lt;h3 id=&quot;confirm-title&quot;&gt;请记住密码&lt;/h3&gt;
-          &lt;p&gt;此密码为长期密码，用于后续关闭青少年模式验证&lt;/p&gt;
-          &lt;div class=&quot;my-confirm-code&quot; aria-label=&quot;确认的4位关闭密码&quot;&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;my-confirm-actions&quot;&gt;
-          &lt;button type=&quot;button&quot; data-reenter&gt;重新输入&lt;/button&gt;
-          &lt;button type=&quot;button&quot; data-confirm-enable&gt;确认密码&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
     &lt;div class=&quot;my-modal-backdrop my-sms-help-modal&quot; data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;sms-help-title&quot;&gt;
       &lt;div class=&quot;my-confirm-modal&quot;&gt;
         &lt;div class=&quot;my-confirm-content&quot;&gt;
@@ -2844,11 +2854,18 @@ html&gt;body{padding:0}&lt;/style&gt;
       const resend = root.querySelector('.my-resend');
       const phoneInput = root.querySelector('#parent-phone');
       const passwordInput = root.querySelector('#parent-password');
+      const passwordRepeat = root.querySelector('#parent-password-repeat');
+      const enableSms = root.querySelector('#enable-sms-code');
+      const enableSend = root.querySelector('[data-enable-send]');
+      const enableVerify = root.querySelector('[data-enable-verify]');
+      const enableSmsError = root.querySelector('[data-enable-sms-error]');
+      let sentPhone = '';
+      let verifiedPhone = '';
+      let enableCountdown;
+      let enableSeconds = 0;
       const setupError = root.querySelector('.my-setup-error');
       const specialCaseModal = root.querySelector('.my-special-case-modal');
-      const enableModal = root.querySelector('.my-password-confirm-modal');
       const smsHelpModal = root.querySelector('.my-sms-help-modal');
-      const confirmCode = [...root.querySelectorAll('.my-confirm-code span')];
       const nextEnable = root.querySelector('.my-next-enable');
       const faceStart = root.querySelector('.my-face-start');
       const serviceStart = root.querySelector('.my-service-start');
@@ -2863,6 +2880,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       const navTitles = {
         'enable-intro': '美柚',
         'enable-setup': '开启青少年模式',
+        'enable-password': '开启青少年模式',
         home: '美柚',
         'app-home': '美柚',
         password: '关闭青少年模式',
@@ -2902,6 +2920,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       };
 
       const go = (name, remember = true) =&gt; {
+        if (name === 'enable-password' &amp;&amp; (!verifiedPhone || verifiedPhone !== phoneInput.value)) return;
         if (name === current) return;
         if (remember) history.push(current);
         screens.forEach((screen) =&gt; {
@@ -3006,12 +3025,23 @@ html&gt;body{padding:0}&lt;/style&gt;
       const syncEnableFormState = () =&gt; {
         const validPhone = /^1\d{10}$/.test(phoneInput.value);
         const validPassword = /^\d{4}$/.test(passwordInput.value);
-        nextEnable.disabled = !validPhone || !validPassword;
+        enableSend.disabled = !validPhone || enableSeconds &gt; 0;
+        enableVerify.disabled = sentPhone !== phoneInput.value || !/^\d{4}$/.test(enableSms.value);
+        nextEnable.disabled = !validPassword || !/^\d{4}$/.test(passwordRepeat.value) || !verifiedPhone || verifiedPhone !== phoneInput.value;
       };
 
       const resetEnableForm = () =&gt; {
         phoneInput.value = '';
         passwordInput.value = '';
+        passwordRepeat.value = '';
+        enableSms.value = '';
+        sentPhone = '';
+        verifiedPhone = '';
+        clearInterval(enableCountdown);
+        enableSeconds = 0;
+        enableSend.textContent = '获取验证码';
+        enableSmsError.textContent = '';
+        root.querySelector('[data-enable-sms-status]').textContent = '验证码将发送至上方家长手机号';
         passwordInput.type = 'password';
         setupError.textContent = '';
         root.querySelector('.my-eye').setAttribute('aria-label', '显示密码');
@@ -3020,6 +3050,13 @@ html&gt;body{padding:0}&lt;/style&gt;
 
       phoneInput.addEventListener('input', () =&gt; {
         sanitizeDigits(phoneInput, 11);
+        verifiedPhone = '';
+        sentPhone = '';
+        enableSms.value = '';
+        passwordInput.value = '';
+        passwordRepeat.value = '';
+        enableSmsError.textContent = '';
+        root.querySelector('[data-enable-sms-status]').textContent = '验证码将发送至上方家长手机号';
         setupError.textContent = '';
         syncEnableFormState();
       });
@@ -3028,6 +3065,54 @@ html&gt;body{padding:0}&lt;/style&gt;
         sanitizeDigits(passwordInput, 4);
         setupError.textContent = '';
         syncEnableFormState();
+      });
+
+      passwordRepeat.addEventListener('input', () =&gt; {
+        sanitizeDigits(passwordRepeat, 4);
+        setupError.textContent = '';
+        syncEnableFormState();
+      });
+
+      enableSms.addEventListener('input', () =&gt; {
+        sanitizeDigits(enableSms, 4);
+        enableSmsError.textContent = '';
+        syncEnableFormState();
+      });
+
+      enableSend.addEventListener('click', () =&gt; {
+        if (!/^1\d{10}$/.test(phoneInput.value) || enableSeconds &gt; 0) return;
+        sentPhone = phoneInput.value;
+        enableSms.value = '';
+        enableSmsError.textContent = '';
+        root.querySelector('[data-enable-sms-status]').textContent = `验证码已发送至 ${sentPhone.slice(0, 3)} **** ${sentPhone.slice(-4)}`;
+        enableSeconds = 60;
+        enableSend.textContent = `${enableSeconds}秒后重发`;
+        clearInterval(enableCountdown);
+        enableCountdown = setInterval(() =&gt; {
+          enableSeconds -= 1;
+          enableSend.textContent = enableSeconds &gt; 0 ? `${enableSeconds}秒后重发` : '重新获取';
+          if (!enableSeconds) clearInterval(enableCountdown);
+          syncEnableFormState();
+        }, 1000);
+        syncEnableFormState();
+        enableSms.focus();
+      });
+
+      enableVerify.addEventListener('click', () =&gt; {
+        if (!sentPhone || sentPhone !== phoneInput.value) return;
+        if (enableSms.value !== '7369') {
+          enableSmsError.textContent = '验证码不正确，请重新输入';
+          return;
+        }
+        verifiedPhone = phoneInput.value;
+        root.querySelector('[data-enable-verified-phone]').textContent = `家长手机号 ${verifiedPhone.slice(0, 3)} **** ${verifiedPhone.slice(-4)} 已验证`;
+        syncEnableFormState();
+        go('enable-password');
+      });
+
+      root.querySelector('[data-enable-sms-help]').addEventListener('click', () =&gt; {
+        smsHelpModal.dataset.show = 'true';
+        root.querySelector('[data-close-sms-help]').focus();
       });
 
       root.querySelector('.my-eye').addEventListener('click', (event) =&gt; {
@@ -3043,24 +3128,14 @@ html&gt;body{padding:0}&lt;/style&gt;
           setupError.textContent = !validPhone ? '请输入正确的11位家长手机号' : '请设置4位数字关闭密码';
           return;
         }
-        confirmCode.forEach((item, index) =&gt; { item.textContent = passwordInput.value[index]; });
-        enableModal.dataset.show = 'true';
-        root.querySelector('[data-reenter]').focus();
-      });
-
-      root.querySelector('[data-reenter]').addEventListener('click', () =&gt; {
-        enableModal.dataset.show = 'false';
-        passwordInput.focus();
-      });
-
-      root.querySelector('[data-confirm-enable]').addEventListener('click', () =&gt; {
-        enableModal.dataset.show = 'false';
-        go('home');
+        if (verifiedPhone !== phoneInput.value) return;
+        if (passwordInput.value !== passwordRepeat.value) {
+          setupError.textContent = '两次输入的密码不一致，请重新输入';
+          return;
+        }
+        history.length = 0;
+        go('app-home', false);
         showToast('已开启青少年模式');
-      });
-
-      enableModal.addEventListener('click', (event) =&gt; {
-        if (event.target === enableModal) enableModal.dataset.show = 'false';
       });
 
       root.querySelector('[data-sms-help]').addEventListener('click', () =&gt; {
@@ -3079,7 +3154,6 @@ html&gt;body{padding:0}&lt;/style&gt;
       root.addEventListener('keydown', (event) =&gt; {
         if (event.key !== 'Escape') return;
         if (specialCaseModal.dataset.show === 'true') specialCaseModal.dataset.show = 'false';
-        if (enableModal.dataset.show === 'true') enableModal.dataset.show = 'false';
         if (smsHelpModal.dataset.show === 'true') smsHelpModal.dataset.show = 'false';
       });
 
