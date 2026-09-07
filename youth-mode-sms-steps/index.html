@@ -2558,42 +2558,23 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;/section&gt;
 
     &lt;section class=&quot;my-screen my-setup&quot; data-screen=&quot;enable-setup&quot; data-active=&quot;false&quot; aria-label=&quot;青少年模式设置页&quot;&gt;
-      &lt;style&gt;
-        #meiyou-youth-close .setup-progress { display:flex;align-items:flex-start;gap:10px;margin:12px 0 28px; }
-        #meiyou-youth-close .setup-progress .step { text-align:center;flex:1;color:#aaa5ae;font-size:13px;line-height:1.5; }
-        #meiyou-youth-close .setup-progress .node { display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#e9e6ec;color:#8e8993;margin:0 auto 8px;font-weight:600; }
-        #meiyou-youth-close .setup-progress .active { color:#ed4686; }
-        #meiyou-youth-close .setup-progress .active .node { background:#ff4f91;color:white; }
-        #meiyou-youth-close .setup-progress .connector { flex:0 0 38px;height:2px;background:#e9e6ec;margin-top:13px; }
-        #meiyou-youth-close .setup-progress[data-verified=&quot;true&quot;] .connector { background:#ff4f91; }
-      &lt;/style&gt;
-      &lt;div class=&quot;setup-progress&quot; aria-label=&quot;开启设置进度&quot; data-verified=&quot;false&quot;&gt;
-        &lt;div class=&quot;step active&quot; data-progress-phone aria-current=&quot;step&quot;&gt;&lt;span class=&quot;node&quot; data-step-one&gt;1&lt;/span&gt;预留家长手机号设置&lt;/div&gt;
-        &lt;span class=&quot;connector&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-        &lt;div class=&quot;step&quot; data-progress-password&gt;&lt;span class=&quot;node&quot;&gt;2&lt;/span&gt;密码设置&lt;/div&gt;
-      &lt;/div&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
         &lt;label class=&quot;my-field-label&quot; for=&quot;parent-phone&quot;&gt;预留家长手机号&lt;/label&gt;
-        &lt;p class=&quot;my-field-help&quot;&gt;用于忘记密码时验证家长身份&lt;/p&gt;
+        &lt;p class=&quot;my-field-help&quot;&gt;用于关闭青少年模式忘记密码时家长身份验证&lt;/p&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
           &lt;span class=&quot;my-prefix&quot;&gt;+86&lt;/span&gt;
           &lt;input id=&quot;parent-phone&quot; type=&quot;tel&quot; inputmode=&quot;numeric&quot; maxlength=&quot;11&quot; placeholder=&quot;请输入家长手机号&quot; aria-label=&quot;家长手机号&quot; aria-required=&quot;true&quot; required&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;my-setup-section&quot;&gt;
-        &lt;label class=&quot;my-field-label&quot; for=&quot;enable-sms-code&quot;&gt;短信验证码&lt;/label&gt;
-        &lt;div class=&quot;my-input-shell&quot;&gt;
+        &lt;div class=&quot;my-input-shell&quot; style=&quot;margin-top:12px&quot;&gt;
           &lt;input id=&quot;enable-sms-code&quot; type=&quot;text&quot; inputmode=&quot;numeric&quot; autocomplete=&quot;one-time-code&quot; maxlength=&quot;4&quot; placeholder=&quot;请输入短信验证码&quot; aria-label=&quot;开启短信验证码&quot; required&gt;
           &lt;button class=&quot;my-link&quot; type=&quot;button&quot; data-enable-send disabled style=&quot;flex-shrink:0;white-space:nowrap&quot;&gt;获取验证码&lt;/button&gt;
         &lt;/div&gt;
-        &lt;p class=&quot;my-field-help&quot; data-enable-sms-status aria-live=&quot;polite&quot;&gt;验证码将发送至上方家长手机号&lt;/p&gt;
+        &lt;p class=&quot;my-field-help&quot; data-enable-sms-status aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
         &lt;p class=&quot;my-error&quot; data-enable-sms-error role=&quot;alert&quot;&gt;&lt;/p&gt;
-        &lt;button class=&quot;my-link&quot; type=&quot;button&quot; data-enable-sms-help&gt;收不到验证码？&lt;/button&gt;
-        &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-check-phone disabled style=&quot;margin-top:12px&quot;&gt;验证手机号&lt;/button&gt;
       &lt;/div&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
         &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password&quot;&gt;设置关闭密码&lt;/label&gt;
-        &lt;p class=&quot;my-field-help&quot; data-password-lock aria-live=&quot;polite&quot;&gt;请先验证手机号&lt;/p&gt;
+        &lt;p class=&quot;my-field-help&quot;&gt;用于管理及关闭青少年模式时验证，请牢记4位数字密码&lt;/p&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
           &lt;input id=&quot;parent-password&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; placeholder=&quot;请输入4位数字密码&quot; aria-label=&quot;4位关闭密码&quot; aria-required=&quot;true&quot; required&gt;
           &lt;button class=&quot;my-eye&quot; type=&quot;button&quot; aria-label=&quot;显示密码&quot;&gt;
@@ -2606,13 +2587,12 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;button class=&quot;my-primary&quot; type=&quot;button&quot; data-enable-verify disabled&gt;下一步&lt;/button&gt;
       &lt;/div&gt;
     &lt;/section&gt;
-    &lt;section class=&quot;my-modal-backdrop&quot; data-password-confirm data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-label=&quot;请记住密码&quot;&gt;
+    &lt;section class=&quot;my-modal-backdrop&quot; data-password-confirm data-show=&quot;false&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-label=&quot;确认关闭密码&quot;&gt;
       &lt;div class=&quot;my-confirm-modal&quot;&gt;
       &lt;div class=&quot;my-confirm-content&quot;&gt;
-        &lt;h3&gt;请记住密码&lt;/h3&gt;
+        &lt;h3&gt;确认关闭密码&lt;/h3&gt;
         &lt;p&gt;此密码为长期密码，用于后续关闭青少年模式验证&lt;/p&gt;
       &lt;div class=&quot;my-setup-section&quot;&gt;
-        &lt;label class=&quot;my-field-label&quot; for=&quot;parent-password-repeat&quot;&gt;确认关闭密码&lt;/label&gt;
         &lt;div class=&quot;my-input-shell&quot;&gt;
           &lt;input id=&quot;parent-password-repeat&quot; type=&quot;password&quot; inputmode=&quot;numeric&quot; maxlength=&quot;4&quot; placeholder=&quot;请再次输入4位数字密码&quot; aria-label=&quot;再次输入关闭密码&quot; required&gt;
         &lt;/div&gt;
@@ -3043,21 +3023,8 @@ html&gt;body{padding:0}&lt;/style&gt;
       const syncEnableFormState = () =&gt; {
         const validPhone = /^1\d{10}$/.test(phoneInput.value);
         const validPassword = /^\d{4}$/.test(passwordInput.value);
-        const verified = !!verifiedPhone &amp;&amp; verifiedPhone === phoneInput.value;
-        passwordInput.disabled = !verified;
-        root.querySelector('.my-eye').disabled = !verified;
-        root.querySelector('[data-password-lock]').textContent = verified ? '' : '请先验证手机号';
-        root.querySelector('[data-password-lock]').hidden = verified;
-        root.querySelector('[data-step-one]').textContent = verified ? '✓' : '1';
-        root.querySelector('.setup-progress').dataset.verified = String(verified);
-        root.querySelector('[data-progress-password]').classList.toggle('active', verified);
-        root.querySelector('[data-progress-phone]').setAttribute('aria-current', verified ? 'false' : 'step');
-        root.querySelector('[data-progress-password]').setAttribute('aria-current', verified ? 'step' : 'false');
-        root.querySelector('[data-check-phone]').disabled = verified || sentPhone !== phoneInput.value || !/^\d{4}$/.test(enableSms.value);
-        root.querySelector('[data-check-phone]').textContent = verified ? '手机号已验证' : '验证手机号';
-        enableSms.disabled = verified;
-        enableSend.disabled = verified || !validPhone || enableSeconds &gt; 0;
-        enableVerify.disabled = !verified || !validPassword;
+        enableSend.disabled = !validPhone || enableSeconds &gt; 0;
+        enableVerify.disabled = !validPhone || !validPassword || sentPhone !== phoneInput.value || !/^\d{4}$/.test(enableSms.value);
         nextEnable.disabled = !validPassword || !/^\d{4}$/.test(passwordRepeat.value) || !verifiedPhone || verifiedPhone !== phoneInput.value;
       };
 
@@ -3072,7 +3039,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         enableSeconds = 0;
         enableSend.textContent = '获取验证码';
         enableSmsError.textContent = '';
-        root.querySelector('[data-enable-sms-status]').textContent = '验证码将发送至上方家长手机号';
+        root.querySelector('[data-enable-sms-status]').textContent = '';
         passwordInput.type = 'password';
         setupError.textContent = '';
         root.querySelector('.my-eye').setAttribute('aria-label', '显示密码');
@@ -3087,7 +3054,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         passwordInput.value = '';
         passwordRepeat.value = '';
         enableSmsError.textContent = '';
-        root.querySelector('[data-enable-sms-status]').textContent = '验证码将发送至上方家长手机号';
+        root.querySelector('[data-enable-sms-status]').textContent = '';
         setupError.textContent = '';
         syncEnableFormState();
       });
@@ -3129,19 +3096,16 @@ html&gt;body{padding:0}&lt;/style&gt;
         enableSms.focus();
       });
 
-      root.querySelector('[data-check-phone]').addEventListener('click', () =&gt; {
-        if (!sentPhone || sentPhone !== phoneInput.value) return;
+      enableVerify.addEventListener('click', () =&gt; {
+        if (!sentPhone || sentPhone !== phoneInput.value || !/^\d{4}$/.test(passwordInput.value)) return;
         if (enableSms.value !== '7369') {
+          verifiedPhone = '';
           enableSmsError.textContent = '验证码不正确，请重新输入';
+          enableSms.focus();
           return;
         }
+        enableSmsError.textContent = '';
         verifiedPhone = phoneInput.value;
-        syncEnableFormState();
-        passwordInput.focus();
-      });
-
-      enableVerify.addEventListener('click', () =&gt; {
-        if (!verifiedPhone || verifiedPhone !== phoneInput.value || !/^\d{4}$/.test(passwordInput.value)) return;
         root.querySelector('[data-password-confirm]').dataset.show = 'true';
         passwordRepeat.value = '';
         syncEnableFormState();
@@ -3151,11 +3115,6 @@ html&gt;body{padding:0}&lt;/style&gt;
       root.querySelector('[data-edit-password]').addEventListener('click', () =&gt; {
         root.querySelector('[data-password-confirm]').dataset.show = 'false';
         passwordInput.focus();
-      });
-
-      root.querySelector('[data-enable-sms-help]').addEventListener('click', () =&gt; {
-        smsHelpModal.dataset.show = 'true';
-        root.querySelector('[data-close-sms-help]').focus();
       });
 
       root.querySelector('.my-eye').addEventListener('click', (event) =&gt; {
